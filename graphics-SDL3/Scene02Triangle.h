@@ -21,8 +21,8 @@ private:
 	SDL_GPUGraphicsPipeline* fillPipeline;
 	SDL_GPUGraphicsPipeline* linePipeline;
 
-	SDL_GPUViewport smallViewport = { 160, 120, 320, 240, 0.1f, 1.0f };
-	SDL_Rect scissorRect = { 320, 240, 320, 240 };
+	SDL_GPUViewport smallViewport = { 256, 190, 512, 380, 0.1f, 1.0f };
+	SDL_Rect scissorRect = { 512, 380, 512, 380 };
 
 	bool useWireframeMode = false;
 	bool useSmallViewport = false;
