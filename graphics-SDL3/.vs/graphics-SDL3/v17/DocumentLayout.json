@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\VulkanIntro.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:VulkanIntro.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene03VertexBuffer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scene03VertexBuffer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,12 +19,8 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Renderer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene01Clear.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scene01Clear.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene01Clear.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scene01Clear.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene03VertexBuffer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scene03VertexBuffer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,55 +30,74 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Scene01Clear.h",
-              "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene01Clear.h",
-              "RelativeDocumentMoniker": "Scene01Clear.h",
-              "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene01Clear.h",
-              "RelativeToolTip": "Scene01Clear.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-06T09:36:53.264Z"
+              "DocumentIndex": 0,
+              "Title": "VulkanIntro.cpp",
+              "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\VulkanIntro.cpp",
+              "RelativeDocumentMoniker": "VulkanIntro.cpp",
+              "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\VulkanIntro.cpp",
+              "RelativeToolTip": "VulkanIntro.cpp",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-06T10:07:06.563Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Scene01Clear.cpp",
-              "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene01Clear.cpp",
-              "RelativeDocumentMoniker": "Scene01Clear.cpp",
-              "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene01Clear.cpp",
-              "RelativeToolTip": "Scene01Clear.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-06T09:36:48.978Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Renderer.h",
               "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Renderer.h",
               "RelativeDocumentMoniker": "Renderer.h",
               "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Renderer.h",
               "RelativeToolTip": "Renderer.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAD0AAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-06T09:33:59.286Z"
+              "WhenOpened": "2025-01-06T10:07:02.824Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Renderer.cpp",
               "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Renderer.cpp",
               "RelativeDocumentMoniker": "Renderer.cpp",
               "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Renderer.cpp",
               "RelativeToolTip": "Renderer.cpp",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABwAAAAWAAAA",
+              "ViewState": "AQIAAMQAAAAAAAAAAAAMwOMAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-06T09:33:47.913Z",
+              "WhenOpened": "2025-01-06T10:07:03.585Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Scene03VertexBuffer.h",
+              "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene03VertexBuffer.h",
+              "RelativeDocumentMoniker": "Scene03VertexBuffer.h",
+              "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene03VertexBuffer.h",
+              "RelativeToolTip": "Scene03VertexBuffer.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-06T10:07:39.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Scene03VertexBuffer.cpp",
+              "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene03VertexBuffer.cpp",
+              "RelativeDocumentMoniker": "Scene03VertexBuffer.cpp",
+              "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene03VertexBuffer.cpp",
+              "RelativeToolTip": "Scene03VertexBuffer.cpp",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAG0AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-06T10:07:17.077Z",
               "EditorCaption": ""
             }
           ]

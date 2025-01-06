@@ -13,15 +13,27 @@
 },
 {
   "directory": "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug",
+  "command": "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-build\\include-revision -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\include /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\graphics-SDL3.dir\\Scene.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene.cpp",
+  "file": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene.cpp",
+  "output": "CMakeFiles\\graphics-SDL3.dir\\Scene.cpp.obj"
+},
+{
+  "directory": "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug",
   "command": "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-build\\include-revision -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\include /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\graphics-SDL3.dir\\Scene01Clear.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene01Clear.cpp",
   "file": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene01Clear.cpp",
   "output": "CMakeFiles\\graphics-SDL3.dir\\Scene01Clear.cpp.obj"
 },
 {
   "directory": "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug",
-  "command": "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-build\\include-revision -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\include /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\graphics-SDL3.dir\\Scenes.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scenes.cpp",
-  "file": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scenes.cpp",
-  "output": "CMakeFiles\\graphics-SDL3.dir\\Scenes.cpp.obj"
+  "command": "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-build\\include-revision -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\include /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\graphics-SDL3.dir\\Scene02Triangle.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene02Triangle.cpp",
+  "file": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene02Triangle.cpp",
+  "output": "CMakeFiles\\graphics-SDL3.dir\\Scene02Triangle.cpp.obj"
+},
+{
+  "directory": "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug",
+  "command": "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-build\\include-revision -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\include /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\graphics-SDL3.dir\\Scene03VertexBuffer.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene03VertexBuffer.cpp",
+  "file": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene03VertexBuffer.cpp",
+  "output": "CMakeFiles\\graphics-SDL3.dir\\Scene03VertexBuffer.cpp.obj"
 },
 {
   "directory": "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug",

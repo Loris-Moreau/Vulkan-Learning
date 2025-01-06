@@ -4,9 +4,9 @@
 
 #include "Renderer.h"
 #include "Scene01Clear.h"
-/*#include "Scene02Triangle.h"
-#include "Scene03TriangleVertexBuffer.h"
-#include "Scene04TriangleCullModes.h"
+#include "Scene02Triangle.h"
+#include "Scene03VertexBuffer.h"
+/*#include "Scene04TriangleCullModes.h"
 #include "Scene05TriangleStencil.h"
 #include "Scene06TriangleInstances.h"
 #include "Scene07TextureQuad.h"
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
     window.Init();
     renderer.Init(window);
     
-    auto scene = std::make_unique<Scene01Clear>();
+    auto scene = std::make_unique<Scene02Triangle>(); // Scene
     scene->Load(renderer);
     
     bool isRunning { true };
