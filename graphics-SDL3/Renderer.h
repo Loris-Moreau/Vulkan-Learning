@@ -59,5 +59,5 @@ public:
     void EndUploadToBuffer(SDL_GPUTransferBuffer* transferBuffer) const;
 
     void ReleaseBuffer(SDL_GPUBuffer* buffer) const;
-    void BindBuffer(SDL_GPURenderPass* renderPass, SDL_GPUBufferBinding binding, Uint32 numBinding) const;
+    void BindVertexBuffers(Uint32 firstSlot, const SDL_GPUBufferBinding& bindings, Uint32 numBindings) const;
 };

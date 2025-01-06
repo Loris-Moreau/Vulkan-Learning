@@ -3,6 +3,7 @@
 #include <SDL3/SDL_main.h>
 
 #include "Renderer.h"
+
 #include "Scene01Clear.h"
 #include "Scene02Triangle.h"
 #include "Scene03VertexBuffer.h"
@@ -11,6 +12,7 @@
 #include "Scene06TriangleInstances.h"
 #include "Scene07TextureQuad.h"
 #include "Scene08TextureQuadMoving.h"*/
+
 #include "Time.h"
 #include "Window.h"
 
@@ -24,7 +26,7 @@ int main(int argc, char **argv)
     window.Init();
     renderer.Init(window);
     
-    auto scene = std::make_unique<Scene02Triangle>(); // Scene
+    auto scene = std::make_unique<Scene03VertexBuffer>(); // Scene
     scene->Load(renderer);
     
     bool isRunning { true };

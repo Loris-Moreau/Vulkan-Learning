@@ -152,8 +152,7 @@ void Renderer::BindGraphicsPipeline(SDL_GPUGraphicsPipeline* pipeline) const
 
 void Renderer::DrawPrimitives(int numVertices, int numInstances, int firstVertex, int firstInstance) const 
 {
-    SDL_DrawGPUPrimitives(renderPass, numVertices, numInstances, firstVertex,
-        firstInstance);
+    SDL_DrawGPUPrimitives(renderPass, numVertices, numInstances, firstVertex, firstInstance);
 }
 
 void Renderer::SetViewport(const SDL_GPUViewport& viewport) const 
@@ -174,6 +173,16 @@ void Renderer::ReleaseGraphicsPipeline(SDL_GPUGraphicsPipeline* pipeline) const
 SDL_GPUBuffer* Renderer::CreateBuffer(const SDL_GPUBufferCreateInfo& createInfo) const 
 {
     return SDL_CreateGPUBuffer(device, &createInfo);
+}
+
+void Renderer::BindVertexBuffers(Uint32 firstSlot, const SDL_GPUBufferBinding& bindings, Uint32 numBindings) const 
+{
+    SDL_BindGPUVertexBuffers(renderPass, firstSlot, &bindings, numBindings);
+}
+
+void Renderer::ReleaseBuffer(SDL_GPUBuffer* buffer) const 
+{
+    SDL_ReleaseGPUBuffer(device, buffer);
 }
 
 SDL_GPUTransferBuffer* Renderer::CreateTransferBuffer(const SDL_GPUTransferBufferCreateInfo& createInfo) const 
@@ -215,15 +224,4 @@ void Renderer::EndUploadToBuffer(SDL_GPUTransferBuffer* transferBuffer) const
     SDL_EndGPUCopyPass(copyPass);
     SDL_SubmitGPUCommandBuffer(uploadCmdBuf);
     SDL_ReleaseGPUTransferBuffer(device, transferBuffer);
-}
-
-
-void Renderer::ReleaseBuffer(SDL_GPUBuffer* buffer) const
-{
-    SDL_ReleaseGPUBuffer(device, buffer);
-}
-
-void Renderer::BindBuffer(SDL_GPURenderPass* renderPass, SDL_GPUBufferBinding binding, Uint32 numBinding) const
-{
-    //SDL_BindGPUVertexBuffers(renderPass, 0, binding, numBinding);
 }

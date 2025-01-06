@@ -1,16 +1,12 @@
 #include "Scene03VertexBuffer.h"
 
-#include "PositionColorVertex.h"
-
-#include <SDL3/SDL_filesystem.h>
-
 void Scene03VertexBuffer::Load(Renderer& renderer)
 {
 	basePath = SDL_GetBasePath();
 	vertexShader = renderer.LoadShader(basePath, "PositionColor.vert", 0, 0, 0, 0);
 	fragmentShader = renderer.LoadShader(basePath, "SolidColor.frag", 0, 0, 0, 0);
-	// Create the pipeline
 
+	// Create the pipeline
 	SDL_GPUGraphicsPipelineCreateInfo pipelineCreateInfo = {
 	.vertex_shader = vertexShader,
 	.fragment_shader = fragmentShader,
@@ -58,14 +54,16 @@ void Scene03VertexBuffer::Load(Renderer& renderer)
 	renderer.ReleaseShader(fragmentShader);
 
 	// Create the vertex buffer
-	SDL_GPUBufferCreateInfo vertexBufferCreateInfo = {
+	SDL_GPUBufferCreateInfo vertexBufferCreateInfo = 
+	{
 	.usage = SDL_GPU_BUFFERUSAGE_VERTEX,
 	.size = sizeof(PositionColorVertex) * 3
 	};
 	vertexBuffer = renderer.CreateBuffer(vertexBufferCreateInfo);
 
 	// To get data into the vertex buffer, we have to use a transfer buffer
-	SDL_GPUTransferBufferCreateInfo transferBufferCreateInfo = {
+	SDL_GPUTransferBufferCreateInfo transferBufferCreateInfo = 
+	{
 	.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD,
 	.size = sizeof(PositionColorVertex) * 3
 	};
@@ -107,9 +105,12 @@ void Scene03VertexBuffer::Draw(Renderer& renderer)
 {
 	renderer.Begin();
 	renderer.BindGraphicsPipeline(pipeline);
-	SDL_GPUBufferBinding vertexBindings = { .buffer = vertexBuffer, .offset = 0 };
-	renderer.BindBuffer(0, vertexBindings, 1);
+
+	SDL_GPUBufferBinding vertexBindings = { .buffer = vertexBuffer,  .offset = 0 };
+	renderer.BindVertexBuffers(0, vertexBindings, 1);
+
 	renderer.DrawPrimitives(3, 1, 0, 0);
+
 	renderer.End();
 }
 
