@@ -1,11 +1,15 @@
 ﻿#pragma once
 
 #include <SDL3/SDL_gpu.h>
+#include <SDL3/SDL_log.h>
+
 #include <vector>
 #include <string>
 
 using std::vector;
 using std::string;
+
+#include "Window.h"
 
 class Window;
 
