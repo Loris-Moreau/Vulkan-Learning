@@ -1,15 +1,16 @@
 # ninja log v5
 2	40	7578592091994095	sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-mkdir	a12381528d05145f
 2	40	7578592091994095	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-mkdir	a12381528d05145f
+2747	2783	7578592119404282	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-patch	775e5d68eba7a436
 41	2711	7578592118700655	sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-download	bbbbd65c816f8ad9
 41	2711	7578592118700655	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-download	bbbbd65c816f8ad9
 2712	2747	7578592119054641	sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-update	ce371627703a8ae0
-2712	2747	7578592119054641	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-update	ce371627703a8ae0
 2747	2783	7578592119404282	sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-patch	775e5d68eba7a436
-2747	2783	7578592119404282	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-patch	775e5d68eba7a436
+2712	2747	7578592119054641	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-update	ce371627703a8ae0
 2783	2818	7578592119766268	sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-configure	68bb345558c6b08
-2783	2818	7578592119766268	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-configure	68bb345558c6b08
 2818	2853	7578592120115379	sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-build	60a1163b9b9a094a
+2923	2971	7578592121302023	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/CMakeFiles/sdl3-populate-complete	fce54b7ee62141f9
+2783	2818	7578592119766268	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-configure	68bb345558c6b08
 2818	2853	7578592120115379	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-build	60a1163b9b9a094a
 2853	2889	7578592120475278	sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-install	88e75eb39927001d
 2853	2889	7578592120475278	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-install	88e75eb39927001d
@@ -17,5 +18,4 @@
 2889	2923	7578592120822932	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-test	9225d39b3078087e
 2923	2971	7578592121302023	CMakeFiles/sdl3-populate-complete	fce54b7ee62141f9
 2923	2971	7578592121302023	sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-done	fce54b7ee62141f9
-2923	2971	7578592121302023	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/CMakeFiles/sdl3-populate-complete	fce54b7ee62141f9
 2923	2971	7578592121302023	C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/sdl3-populate-done	fce54b7ee62141f9
