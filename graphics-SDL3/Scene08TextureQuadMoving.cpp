@@ -44,21 +44,21 @@ void Scene08TextureQuadMoving::Load(Renderer& renderer)
 	.primitive_type = SDL_GPU_PRIMITIVETYPE_TRIANGLELIST,
 	.target_info = 
 		{
-	.color_target_descriptions = new SDL_GPUColorTargetDescription[1] {{
-	.format = SDL_GetGPUSwapchainTextureFormat(renderer.device,
-	renderer.renderWindow),
-	.blend_state = 
-	{
-	.src_color_blendfactor = SDL_GPU_BLENDFACTOR_SRC_ALPHA,
-	.dst_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA,
-	.color_blend_op = SDL_GPU_BLENDOP_ADD,
-	.src_alpha_blendfactor = SDL_GPU_BLENDFACTOR_SRC_ALPHA,
-	.dst_alpha_blendfactor = SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA,
-	.alpha_blend_op = SDL_GPU_BLENDOP_ADD,
-	.enable_blend = true,
-	}
+			.color_target_descriptions = new SDL_GPUColorTargetDescription[1] 
+		{{
+				.format = SDL_GetGPUSwapchainTextureFormat(renderer.device, renderer.renderWindow), 
+				.blend_state = 
+		{
+			.src_color_blendfactor = SDL_GPU_BLENDFACTOR_SRC_ALPHA,
+			.dst_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA,
+			.color_blend_op = SDL_GPU_BLENDOP_ADD,
+			.src_alpha_blendfactor = SDL_GPU_BLENDFACTOR_SRC_ALPHA,
+			.dst_alpha_blendfactor = SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA,
+			.alpha_blend_op = SDL_GPU_BLENDOP_ADD,
+			.enable_blend = true,
+		}
 	}},
-	.num_color_targets = 1,
+		.num_color_targets = 1,
 	},
 	};
 
@@ -70,20 +70,20 @@ void Scene08TextureQuadMoving::Load(Renderer& renderer)
 
 	// Texture sampler
 	sampler = renderer.CreateSampler(SDL_GPUSamplerCreateInfo
-		{
-	.min_filter = SDL_GPU_FILTER_NEAREST,
-	.mag_filter = SDL_GPU_FILTER_NEAREST,
-	.mipmap_mode = SDL_GPU_SAMPLERMIPMAPMODE_NEAREST,
-	.address_mode_u = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
-	.address_mode_v = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
-	.address_mode_w = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
-		});
+	{
+			.min_filter = SDL_GPU_FILTER_NEAREST,
+			.mag_filter = SDL_GPU_FILTER_NEAREST,
+			.mipmap_mode = SDL_GPU_SAMPLERMIPMAPMODE_NEAREST,
+			.address_mode_u = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
+			.address_mode_v = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
+			.address_mode_w = SDL_GPU_SAMPLERADDRESSMODE_CLAMP_TO_EDGE,
+	});
 
 	// Create the vertex buffer
 	SDL_GPUBufferCreateInfo vertexBufferCreateInfo = 
 	{
-	.usage = SDL_GPU_BUFFERUSAGE_VERTEX,
-	.size = sizeof(PositionTextureVertex) * 4
+		.usage = SDL_GPU_BUFFERUSAGE_VERTEX,
+		.size = sizeof(PositionTextureVertex) * 4
 	};
 	vertexBuffer = renderer.CreateBuffer(vertexBufferCreateInfo);
 	renderer.SetBufferName(vertexBuffer, "Ravioli Vertex Buffer");
@@ -91,29 +91,30 @@ void Scene08TextureQuadMoving::Load(Renderer& renderer)
 	// Create the index buffer
 	SDL_GPUBufferCreateInfo indexBufferCreateInfo = 
 	{
-	.usage = SDL_GPU_BUFFERUSAGE_INDEX,
-	.size = sizeof(Uint16) * 6
+		.usage = SDL_GPU_BUFFERUSAGE_INDEX,
+		.size = sizeof(Uint16) * 6
 	};
 	indexBuffer = renderer.CreateBuffer(indexBufferCreateInfo);
 
 	// Create texture
 	SDL_GPUTextureCreateInfo textureInfo
 	{
-	.type = SDL_GPU_TEXTURETYPE_2D,
-	.format = SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM,
-	.usage = SDL_GPU_TEXTUREUSAGE_SAMPLER,
-	.width = static_cast<Uint32>(imageData->w),
-	.height = static_cast<Uint32>(imageData->h),
-	.layer_count_or_depth = 1,
-	.num_levels = 1,
+		.type = SDL_GPU_TEXTURETYPE_2D,
+		.format = SDL_GPU_TEXTUREFORMAT_R8G8B8A8_UNORM,
+		.usage = SDL_GPU_TEXTUREUSAGE_SAMPLER,
+		.width = static_cast<Uint32>(imageData->w),
+		.height = static_cast<Uint32>(imageData->h),
+		.layer_count_or_depth = 1,
+		.num_levels = 1,
 	};
 	texture = renderer.CreateTexture(textureInfo);
 	renderer.SetTextureName(texture, "Ravioli Texture");
 
 	// Set the buffer data
-	SDL_GPUTransferBufferCreateInfo transferBufferCreateInfo = {
-	.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD,
-	.size = (sizeof(PositionTextureVertex) * 4) + (sizeof(Uint16) * 6),
+	SDL_GPUTransferBufferCreateInfo transferBufferCreateInfo = 
+	{
+		.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD,
+		.size = (sizeof(PositionTextureVertex) * 4) + (sizeof(Uint16) * 6),
 	};
 	SDL_GPUTransferBuffer* transferBuffer = renderer.CreateTransferBuffer(transferBufferCreateInfo);
 
@@ -197,7 +198,7 @@ void Scene08TextureQuadMoving::Load(Renderer& renderer)
 bool Scene08TextureQuadMoving::Update(float dt) 
 {
 	const bool isRunning = ManageInput(inputState);
-	time -= dt;  // rotata direction
+	time += dt;  // rotata direction
 	return isRunning;
 }
 
@@ -225,32 +226,32 @@ void Scene08TextureQuadMoving::Draw(Renderer& renderer)
 	renderer.BindFragmentSamplers(0, textureSamplerBinding, 1);
 
 	// Top-left
-	Mat4 matrixUniform = Mat4::CreateRotationZ(time) * Mat4::CreateTranslation(-0.5f, -0.5f, 0);
+	Mat4 matrixUniform = Mat4::CreateRotationZ(time) * Mat4::CreateTranslation(0.0f, 0.0f, 0); // Speed & Position
 	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
-	FragMultiplyUniform fragMultiplyUniform0{ 1.0f, 0.5f + SDL_sinf(time) * 0.5f, 1.0f, 1.0f };
+	FragMultiplyUniform fragMultiplyUniform0{ 1.0f, 0.0f, 0.0f, 1.0f };						   // Color
 	renderer.PushFragmentUniformData(0, &fragMultiplyUniform0, sizeof(FragMultiplyUniform));
 	renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
 
-	// Top-right
-	matrixUniform = Mat4::CreateRotationZ((2.0f * SDL_PI_F) - time) * Mat4::CreateTranslation(0.5f, -0.5f, 0);
-	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
-	FragMultiplyUniform fragMultiplyUniform1{ 1.0f, 0.5f + SDL_cosf(time) * 0.5f, 1.0f, 1.0f };
-	renderer.PushFragmentUniformData(0, &fragMultiplyUniform1, sizeof(FragMultiplyUniform));
-	renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
+	//// Top-right
+	//matrixUniform = Mat4::CreateRotationZ((2.0f * SDL_PI_F) - time) * Mat4::CreateTranslation(0.5f, -0.5f, 0);
+	//renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
+	//FragMultiplyUniform fragMultiplyUniform1{ 1.0f, 0.5f + SDL_cosf(time) * 0.5f, 1.0f, 1.0f };
+	//renderer.PushFragmentUniformData(0, &fragMultiplyUniform1, sizeof(FragMultiplyUniform));
+	//renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
 
-	// Bottom-left
-	matrixUniform = Mat4::CreateRotationZ(time) * Mat4::CreateTranslation(-0.5f, 0.5f, 0);
-	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
-	FragMultiplyUniform fragMultiplyUniform2{ 1.0f, 0.5f + SDL_sinf(time) * 0.2f, 1.0f, 1.0f };
-	renderer.PushFragmentUniformData(0, &fragMultiplyUniform2, sizeof(FragMultiplyUniform));
-	renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
-	
-	// Bottom-right
-	matrixUniform = Mat4::CreateRotationZ(time) * Mat4::CreateTranslation(0.5f, 0.5f, 0);
-	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
-	FragMultiplyUniform fragMultiplyUniform3{ 1.0f, 0.5f + SDL_cosf(time) * 1.0f, 1.0f, 1.0f };
-	renderer.PushFragmentUniformData(0, &fragMultiplyUniform3, sizeof(FragMultiplyUniform));
-	renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
+	//// Bottom-left
+	//matrixUniform = Mat4::CreateRotationZ(time) * Mat4::CreateTranslation(-0.5f, 0.5f, 0);
+	//renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
+	//FragMultiplyUniform fragMultiplyUniform2{ 1.0f, 0.5f + SDL_sinf(time) * 0.2f, 1.0f, 1.0f };
+	//renderer.PushFragmentUniformData(0, &fragMultiplyUniform2, sizeof(FragMultiplyUniform));
+	//renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
+	//
+	//// Bottom-right
+	//matrixUniform = Mat4::CreateRotationZ(time) * Mat4::CreateTranslation(0.5f, 0.5f, 0);
+	//renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
+	//FragMultiplyUniform fragMultiplyUniform3{ 1.0f, 0.5f + SDL_cosf(time) * 1.0f, 1.0f, 1.0f };
+	//renderer.PushFragmentUniformData(0, &fragMultiplyUniform3, sizeof(FragMultiplyUniform));
+	//renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
 
 	renderer.End();
 }
