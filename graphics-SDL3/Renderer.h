@@ -3,11 +3,11 @@
 #include <SDL3/SDL_gpu.h>
 #include <SDL3/SDL_log.h>
 
-#include <vector>
 #include <string>
+#include <vector>
 
-using std::vector;
 using std::string;
+using std::vector;
 
 #include "Window.h"
 
@@ -67,4 +67,23 @@ public:
 
     void BindIndexBuffer(const SDL_GPUBufferBinding& bindings, SDL_GPUIndexElementSize indexElementSize) const;
     void DrawIndexedPrimitives(int numIndices, int numInstances, int firstIndex, int vertexOffset, int firstInstance) const;
+
+
+    SDL_Surface* LoadBMPImage(const char* basePath, const char* imageFilename, int desiredChannels);
+
+    SDL_GPUSampler* CreateSampler(const SDL_GPUSamplerCreateInfo& createInfo) const;
+
+    void ReleaseSurface(SDL_Surface* surface) const;
+
+    void SetBufferName(SDL_GPUBuffer* buffer, const string& name) const;
+
+    SDL_GPUTexture* CreateTexture(const SDL_GPUTextureCreateInfo& createInfo) const;
+    void SetTextureName(SDL_GPUTexture* texture, const string& name) const;
+    void ReleaseTexture(SDL_GPUTexture* texture) const;
+
+    void ReleaseSampler(SDL_GPUSampler* sampler) const;
+
+    void UploadToTexture(const SDL_GPUTextureTransferInfo& source, const SDL_GPUTextureRegion& destination, bool cycle) const;
+
+    void BindFragmentSamplers(Uint32 firstSlot, const SDL_GPUTextureSamplerBinding& bindings, Uint32 numBindings) const;
 };

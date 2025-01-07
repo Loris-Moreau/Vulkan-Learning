@@ -1,5 +1,7 @@
 ﻿#include "Renderer.h"
 
+#include <SDL3/SDL_assert.h>
+
 void Renderer::Init(Window &window)
 {
     renderWindow = window.sdlWindow;
@@ -235,4 +237,80 @@ void Renderer::DrawIndexedPrimitives(int numIndices, int numInstances, int first
 {
     SDL_DrawGPUIndexedPrimitives(renderPass, numIndices, numInstances, firstIndex,
         vertexOffset, firstInstance);
+}
+
+SDL_Surface* Renderer::LoadBMPImage(const char* basePath, const char* imageFilename, int desiredChannels) 
+{
+    char fullPath[256];
+    SDL_PixelFormat format;
+
+    SDL_snprintf(fullPath, sizeof(fullPath), "%sContent/Images/%s", basePath, imageFilename);
+    SDL_Surface* result = SDL_LoadBMP(fullPath);
+    if (result == nullptr) 
+    {
+        SDL_Log("Failed to load BMP: %s", SDL_GetError());
+        return nullptr;
+    }
+    if (desiredChannels == 4) 
+    {
+        format = SDL_PIXELFORMAT_ABGR8888;
+    }
+    else 
+    {
+        SDL_assert(!"Unexpected desiredChannels");
+        SDL_DestroySurface(result);
+        return nullptr;
+    }
+    if (result->format != format) 
+    {
+        SDL_Surface* next = SDL_ConvertSurface(result, format);
+        SDL_DestroySurface(result);
+        result = next;
+    }
+    return result;
+}
+
+SDL_GPUSampler* Renderer::CreateSampler(const SDL_GPUSamplerCreateInfo& createInfo) const
+{
+    return SDL_CreateGPUSampler(device, &createInfo);
+}
+
+void Renderer::ReleaseSurface(SDL_Surface* surface) const 
+{
+    SDL_DestroySurface(surface);
+}
+
+void Renderer::SetBufferName(SDL_GPUBuffer* buffer, const string& name) const 
+{
+    SDL_SetGPUBufferName(device, buffer, name.c_str());
+}
+
+SDL_GPUTexture* Renderer::CreateTexture(const SDL_GPUTextureCreateInfo& createInfo) const
+{
+    return SDL_CreateGPUTexture(device, &createInfo);
+}
+
+void Renderer::SetTextureName(SDL_GPUTexture* texture, const string& name) const 
+{
+    SDL_SetGPUTextureName(device, texture, name.c_str());
+}
+
+void Renderer::ReleaseTexture(SDL_GPUTexture* texture) const 
+{
+    SDL_ReleaseGPUTexture(device, texture);
+}
+
+void Renderer::ReleaseSampler(SDL_GPUSampler* sampler) const 
+{
+    SDL_ReleaseGPUSampler(device, sampler);
+}
+
+void Renderer::UploadToTexture(const SDL_GPUTextureTransferInfo& source, const SDL_GPUTextureRegion& destination, bool cycle) const 
+{
+    SDL_UploadToGPUTexture(copyPass, &source, &destination, cycle);
+}
+
+void Renderer::BindFragmentSamplers(Uint32 firstSlot, const SDL_GPUTextureSamplerBinding& bindings, Uint32 numBindings) const 
+{
+    SDL_BindGPUFragmentSamplers(renderPass, firstSlot, &bindings, numBindings);
 }
