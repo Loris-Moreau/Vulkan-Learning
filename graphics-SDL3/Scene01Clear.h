@@ -2,6 +2,8 @@
 
 #include "Scene.h"
 
+#include <SDL3/SDL_events.h>
+
 class Scene01Clear : public Scene
 {
 public:

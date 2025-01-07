@@ -1,5 +1,4 @@
 #include "Scene02Triangle.h"
-#include <SDL3/SDL_filesystem.h>
 
 void Scene02Triangle::Load(Renderer& renderer) 
 {

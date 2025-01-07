@@ -1,8 +1,4 @@
 #include "Scene03VertexBuffer.h"
-#include "Renderer.h"
-
-#include <SDL3/SDL.h>
-#include "PositionColorVertex.h"
 
 void Scene03VertexBuffer::Load(Renderer& renderer) 
 {

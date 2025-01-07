@@ -1,7 +1,5 @@
 #pragma once
 
-#include <SDL3/SDL_gpu.h>
-
 #include "Scene.h"
 
 class Scene02Triangle : public Scene 

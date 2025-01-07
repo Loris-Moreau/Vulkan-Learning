@@ -5,6 +5,12 @@
 #include "InputState.h"
 #include "Renderer.h"
 
+#include <SDL3/SDL_filesystem.h>
+#include <SDL3/SDL_gpu.h>
+
+#include "PositionColorVertex.h"
+
+
 class Renderer;
 
 class Scene

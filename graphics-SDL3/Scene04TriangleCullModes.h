@@ -1,9 +1,5 @@
 #pragma once
 
-#include <SDL3/SDL_gpu.h>
-#include <SDL3/SDL_filesystem.h>
-
-#include "PositionColorVertex.h"
 #include "Scene.h"
 
 #include <array>

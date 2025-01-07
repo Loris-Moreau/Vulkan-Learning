@@ -30,7 +30,7 @@
 2147	2302	7578665350878268	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/video/SDL_blit.c.obj	ea67d8d8728d3394
 1658	1805	7578665345836695	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/render/gpu/SDL_render_gpu.c.obj	1c7b3cdbfe2bc6a0
 78	588	7578665333800575	_deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/src/libm/e_exp.c.obj	76666c8efd072721
-51	2016	7578665347846871	CMakeFiles/graphics-SDL3.dir/VulkanIntro.cpp.obj	a57df1d5d1114a8
+32	701	7579441497814647	CMakeFiles/graphics-SDL3.dir/VulkanIntro.cpp.obj	a57df1d5d1114a8
 3539	3614	7578665364030317	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/process/SDL_process.c.obj	e9a4b8998bbd1dde
 85	585	7578665333780625	_deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/src/libm/e_log.c.obj	ed486b5052fc6d4a
 82	592	7578665333800575	_deps/sdl3-build/CMakeFiles/SDL_uclibc.dir/src/libm/e_fmod.c.obj	6d4b699557806075
@@ -267,11 +267,8 @@
 3495	4432	7578665372233990	_deps/sdl3-build/CMakeFiles/SDL3-shared.dir/src/joystick/windows/SDL_rawinputjoystick.c.obj	96b3067b414c5a7
 4451	5604	7578665383327714	_deps/sdl3-build/SDL3.dll	51834bc7bf308481
 4451	5604	7578665383327714	_deps/sdl3-build/SDL3.lib	51834bc7bf308481
-5605	5773	7578665385290442	graphics-SDL3.exe	d7302b31cd41e20d
+701	844	7579441498815085	graphics-SDL3.exe	d7302b31cd41e20d
 36	1176	7578665339509164	CMakeFiles/graphics-SDL3.dir/Scene02Triangle.cpp.obj	d01c13f86f3977e7
-40	1209	7578665339957964	CMakeFiles/graphics-SDL3.dir/Scene03VertexBuffer.cpp.obj	b1d81894323ff5b8
+28	751	7579440954423482	CMakeFiles/graphics-SDL3.dir/Scene03VertexBuffer.cpp.obj	b1d81894323ff5b8
 28	1194	7578665339778444	CMakeFiles/graphics-SDL3.dir/Scene.cpp.obj	d7b62c738ec809a8
 44	1258	7578665340446652	CMakeFiles/graphics-SDL3.dir/Scene04TriangleCullModes.cpp.obj	ced8ded1ca4f08a6
-28	751	7579440954423482	CMakeFiles/graphics-SDL3.dir/Scene03VertexBuffer.cpp.obj	b1d81894323ff5b8
-32	906	7579440955970905	CMakeFiles/graphics-SDL3.dir/VulkanIntro.cpp.obj	a57df1d5d1114a8
-906	1411	7579440960445120	graphics-SDL3.exe	d7302b31cd41e20d

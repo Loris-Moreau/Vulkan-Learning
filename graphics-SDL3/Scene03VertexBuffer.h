@@ -1,12 +1,8 @@
 #pragma once
 
-#include <SDL3/SDL_gpu.h>
-
 #include "Scene.h"
-#include "PositionColorVertex.h"
 
-#include <SDL3/SDL_filesystem.h>
-
+#include <SDL3/SDL.h>
 
 class Scene03VertexBuffer : public Scene 
 {

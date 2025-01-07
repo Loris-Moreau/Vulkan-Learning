@@ -1,7 +1,4 @@
 ﻿#include "Scene01Clear.h"
-#include "Renderer.h"
-
-#include <SDL3/SDL_events.h>
 
 void Scene01Clear::Load(Renderer& renderer) 
 {
