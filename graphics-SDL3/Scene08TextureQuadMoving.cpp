@@ -111,7 +111,6 @@ void Scene08TextureQuadMoving::Load(Renderer& renderer)
 	renderer.SetTextureName(texture, "Ravioli Texture");
 
 	// Set the buffer data
-
 	SDL_GPUTransferBufferCreateInfo transferBufferCreateInfo = {
 	.usage = SDL_GPU_TRANSFERBUFFERUSAGE_UPLOAD,
 	.size = (sizeof(PositionTextureVertex) * 4) + (sizeof(Uint16) * 6),
@@ -119,13 +118,12 @@ void Scene08TextureQuadMoving::Load(Renderer& renderer)
 	SDL_GPUTransferBuffer* transferBuffer = renderer.CreateTransferBuffer(transferBufferCreateInfo);
 
 	// Map the transfer buffer and fill it with data (data is bound to the transfer buffer)
-	auto transferData = static_cast<PositionTextureVertex*>(
-	renderer.MapTransferBuffer(transferBuffer, false)
-	);
+	auto transferData = static_cast<PositionTextureVertex*>(renderer.MapTransferBuffer(transferBuffer, false));
 	transferData[0] = PositionTextureVertex{ -0.5f, -0.5f, 0, 0, 0 };
 	transferData[1] = PositionTextureVertex{ 0.5f, -0.5f, 0, 1, 0 };
 	transferData[2] = PositionTextureVertex{ 0.5f, 0.5f, 0, 1, 1 };
 	transferData[3] = PositionTextureVertex{ -0.5f, 0.5f, 0, 0, 1 };
+
 	auto indexData = reinterpret_cast<Uint16*>(&transferData[4]);
 	indexData[0] = 0;
 	indexData[1] = 1;
@@ -133,6 +131,7 @@ void Scene08TextureQuadMoving::Load(Renderer& renderer)
 	indexData[3] = 0;
 	indexData[4] = 2;
 	indexData[5] = 3;
+
 	renderer.UnmapTransferBuffer(transferBuffer);
 
 	// Setup texture transfer buffer
@@ -198,7 +197,7 @@ void Scene08TextureQuadMoving::Load(Renderer& renderer)
 bool Scene08TextureQuadMoving::Update(float dt) 
 {
 	const bool isRunning = ManageInput(inputState);
-	time += dt;
+	time -= dt;  // rotata direction
 	return isRunning;
 }
 
@@ -252,6 +251,7 @@ void Scene08TextureQuadMoving::Draw(Renderer& renderer)
 	FragMultiplyUniform fragMultiplyUniform3{ 1.0f, 0.5f + SDL_cosf(time) * 1.0f, 1.0f, 1.0f };
 	renderer.PushFragmentUniformData(0, &fragMultiplyUniform3, sizeof(FragMultiplyUniform));
 	renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
+
 	renderer.End();
 }
 	
