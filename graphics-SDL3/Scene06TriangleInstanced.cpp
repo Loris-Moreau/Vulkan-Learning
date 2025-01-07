@@ -93,9 +93,9 @@ void Scene06TriangleIndexed::Load(Renderer& renderer)
 	transferData[1] = PositionColorVertex{ 0.5f, -0.5f, 0.0f, 216, 255, 0, 255 }; // Bottom right
 	transferData[2] = PositionColorVertex{ -0.5f,  0.5f, 0.0f, 255, 147, 255, 255 }; // Top left 
 
-	transferData[3] = PositionColorVertex{ 0.5f, -0.5f, 0.0f, 0, 255, 0, 255 }; // Bottom right
-	transferData[4] = PositionColorVertex{ 0.5f,  0.5f, 0.0f, 255, 255, 0, 255 }; // Top right 
-	transferData[5] = PositionColorVertex{ -0.5f,  0.5f, 0.0f, 0, 0, 255, 255 }; // Top left 
+	transferData[3] = PositionColorVertex{ 0.5f, -0.5f, 0.0f, 255, 255, 255, 255 }; // Bottom right
+	transferData[4] = PositionColorVertex{ 0.5f,  0.5f, 0.0f, 255, 255, 255, 255 }; // Top right 
+	transferData[5] = PositionColorVertex{ -0.5f,  0.5f, 0.0f, 255, 255, 255, 255 }; // Top left 
 
 	Uint16* indexData = reinterpret_cast<Uint16*>(&transferData[6]);
 	for (Uint16 i = 0; i < 6; i += 1) 

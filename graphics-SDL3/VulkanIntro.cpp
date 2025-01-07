@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     window.Init();
     renderer.Init(window);
     
-    auto scene = std::make_unique<Scene07TextureQuad>(); // Scene
+    auto scene = std::make_unique<Scene06TriangleIndexed>(); // Scene
     scene->Load(renderer);
     
     bool isRunning { true };
