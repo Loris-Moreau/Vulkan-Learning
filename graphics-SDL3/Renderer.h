@@ -86,4 +86,9 @@ public:
     void UploadToTexture(const SDL_GPUTextureTransferInfo& source, const SDL_GPUTextureRegion& destination, bool cycle) const;
 
     void BindFragmentSamplers(Uint32 firstSlot, const SDL_GPUTextureSamplerBinding& bindings, Uint32 numBindings) const;
+
+
+
+    void PushVertexUniformData(uint32_t slot, const void* data, Uint32 size) const;
+    void PushFragmentUniformData(uint32_t slot, const void* data, Uint32 size) const;
 };

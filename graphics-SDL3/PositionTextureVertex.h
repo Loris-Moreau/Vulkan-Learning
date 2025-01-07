@@ -2,6 +2,6 @@
 
 typedef struct PositionTextureVertex
 {
-	float u, v;
 	float x, y, z;
+	float u, v;
 } PositionTextureVertex;

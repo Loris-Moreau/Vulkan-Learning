@@ -314,3 +314,13 @@ void Renderer::BindFragmentSamplers(Uint32 firstSlot, const SDL_GPUTextureSample
 {
     SDL_BindGPUFragmentSamplers(renderPass, firstSlot, &bindings, numBindings);
 }
+
+void Renderer::PushVertexUniformData(uint32_t slot, const void* data, Uint32 size) const
+{
+    SDL_PushGPUVertexUniformData(cmdBuffer, 0, data, size);
+}
+
+void Renderer::PushFragmentUniformData(uint32_t slot, const void* data, Uint32 size) const
+{
+    SDL_PushGPUFragmentUniformData(cmdBuffer, 0, data, size);
+}
