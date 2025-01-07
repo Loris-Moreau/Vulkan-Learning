@@ -7,10 +7,8 @@
   },
   "ExpandedNodes": [
     "",
-    "\\Content",
-    "\\Content\\Shaders\\Compiled",
-    "\\Content\\Shaders\\Compiled\\DXIL"
+    "\\Content"
   ],
-  "SelectedNode": "\\Scene09Cube.h",
+  "SelectedNode": "\\Time.cpp",
   "PreviewInSolutionExplorer": false
 }

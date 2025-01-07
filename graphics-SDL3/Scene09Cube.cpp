@@ -247,20 +247,20 @@ void Scene09Cube::Draw(Renderer& renderer)
 	renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
 
 	/*
-		// Side 1
-		matrixUniform = Mat4::CreateRotationZ((2.0f * SDL_PI_F) - time) * Mat4::CreateTranslation(0.5f, -0.5f, 0);
-		renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
-		FragMultiplyUniform2 fragMultiplyUniform2{ 1.0f, 0.5f + SDL_sinf(time) * 0.2f, 1.0f, 1.0f };
-		renderer.PushFragmentUniformData(0, &fragMultiplyUniform2, sizeof(FragMultiplyUniform));
-		renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
+	// Side 1
+	matrixUniform = Mat4::CreateRotationZ((2.0f * SDL_PI_F) - time) * Mat4::CreateTranslation(0.5f, -0.5f, 0);
+	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
+	FragMultiplyUniform2 fragMultiplyUniform2{ 1.0f, 0.5f + SDL_sinf(time) * 0.2f, 1.0f, 1.0f };
+	renderer.PushFragmentUniformData(0, &fragMultiplyUniform2, sizeof(FragMultiplyUniform2));
+	renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
 
-		// Rotata ^
-		matrixUniform = Mat4::CreateRotationX((2.0f * SDL_PI_F) - time) * Mat4::CreateTranslation(0.5f, 0.5f, 0);
-		renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
-		FragMultiplyUniform2 fragMultiplyUniform3{ 1.0f, 0.5f + SDL_cosf(time) * 0.5f, 1.0f, 1.0f };
-		renderer.PushFragmentUniformData(0, &fragMultiplyUniform3, sizeof(FragMultiplyUniform));
-		renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
-		*/
+	// Rotata ^
+	matrixUniform = Mat4::CreateRotationX((2.0f * SDL_PI_F) - time) * Mat4::CreateTranslation(0.5f, 0.5f, 0);
+	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
+	FragMultiplyUniform2 fragMultiplyUniform3{ 1.0f, 0.5f + SDL_cosf(time) * 0.5f, 1.0f, 1.0f };
+	renderer.PushFragmentUniformData(0, &fragMultiplyUniform3, sizeof(FragMultiplyUniform2));
+	renderer.DrawIndexedPrimitives(6, 1, 0, 0, 0);
+	*/
 
 	renderer.End();
 }
