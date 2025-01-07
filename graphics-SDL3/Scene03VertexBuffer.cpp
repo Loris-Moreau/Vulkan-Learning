@@ -73,6 +73,7 @@ void Scene03VertexBuffer::Load(Renderer& renderer)
     transferData[0] = PositionColorVertex{ -0.5f, -0.5f, 0.0f, 255, 0, 197, 255 }; // Bottom left 
     transferData[1] = PositionColorVertex{ 0.5f, -0.5f, 0.0f, 216, 255, 0, 255 }; // Bottom right
     transferData[2] = PositionColorVertex{ -0.5f,  0.5f, 0.0f, 255, 147, 255, 255 }; // Top left 
+
     transferData[3] = PositionColorVertex{ 0.5f, -0.5f, 0.0f, 0, 255, 0, 255 }; // Bottom right
     transferData[4] = PositionColorVertex{ 0.5f,  0.5f, 0.0f, 255, 255, 0, 255 }; // Top right 
     transferData[5] = PositionColorVertex{ -0.5f,  0.5f, 0.0f, 0, 0, 255, 255 }; // Top left 
