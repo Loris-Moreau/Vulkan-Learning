@@ -100,7 +100,7 @@ void Scene06TriangleIndexed::Load(Renderer& renderer)
 	Uint16* indexData = reinterpret_cast<Uint16*>(&transferData[6]);
 	for (Uint16 i = 0; i < 6; i += 1) 
 	{
-		indexData[i] = i;
+		indexData[i] = i +3; // draw from index 3
 	}
 	renderer.UnmapTransferBuffer(transferBuffer);
 	renderer.BeginUploadToBuffer();

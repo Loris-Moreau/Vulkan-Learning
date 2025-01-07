@@ -47,8 +47,7 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-06T10:07:06.563Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -99,8 +98,7 @@
               "RelativeToolTip": "Scene06TriangleInstanced.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-07T10:22:35.433Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-07T10:22:35.433Z"
             },
             {
               "$type": "Document",
@@ -110,7 +108,7 @@
               "RelativeDocumentMoniker": "Scene06TriangleInstanced.cpp",
               "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Scene06TriangleInstanced.cpp",
               "RelativeToolTip": "Scene06TriangleInstanced.cpp",
-              "ViewState": "AQIAAJwAAAAAAAAAAAAAAGEAAABeAAAA",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAAAGYAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-07T10:22:34.583Z",
               "EditorCaption": ""
