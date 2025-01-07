@@ -23,6 +23,8 @@ public:
 
 	static Mat4 CreateRotationMatrix(float axisX, float axisY, float axisZ, float angle);
 	static Mat4 CreateRotationZ(float angle);
+	static Mat4 CreateRotationX(float angle);
+	static Mat4 CreateRotationY(float angle);
 	static Mat4 CreateTranslation(float x, float y, float z);
 
 	Mat4 operator*(const Mat4& other) const;

@@ -32,16 +32,17 @@ Mat4 Mat4::CreateRotationMatrix(float x, float y, float z, float angle)
 	result.m1 = y * x * t + z * sinRes;
 	result.m2 = z * x * t - y * sinRes;
 	result.m3 = 0.0f;
+
 	result.m4 = x * y * t - z * sinRes;
 	result.m5 = y * y * t + cosRes;
-
 	result.m6 = z * y * t + x * sinRes;
 	result.m7 = 0.0f;
+
 	result.m8 = x * z * t + y * sinRes;
 	result.m9 = y * z * t - x * sinRes;
 	result.m10 = z * z * t + cosRes;
-
 	result.m0 = 0.0f;
+
 	result.m4 = 0.0f;
 	result.m8 = 0.0f;
 	result.m12 = 0.0f;
@@ -61,6 +62,28 @@ Mat4 Mat4::CreateRotationZ(float radians)
 	};
 }
 
+Mat4 Mat4::CreateRotationX(float radians) 
+{
+	return Mat4
+	{
+		1, 0, 0, 0,
+		0, cosf(radians), 0, sinf(radians),
+		0, -sinf(radians), 0, cosf(radians),
+		0, 0, 0, 1
+	};
+}
+
+Mat4 Mat4::CreateRotationY(float radians) 
+{
+	return Mat4
+	{
+		cosf(radians), sinf(radians), 0, 0, 
+		0, 1, 0, 0,
+		-sinf(radians), cosf(radians), 0, 0, 
+		0, 0, 0, 1
+	};
+}
+
 Mat4 Mat4::CreateTranslation(float x, float y, float z)
 {
 	return Mat4
@@ -76,8 +99,9 @@ Mat4 Mat4::CreateOrthographicOffCenter(float left, float right, float bottom, fl
 {
 	return Mat4
 	{
-		2.0f / (right - left), 0, 0, 0, 0, 2.0f / (top - bottom), 
-		0, 0, 0, 0, 1.0f / (zNearPlane - zFarPlane), 0, 
+		2.0f / (right - left), 0, 0, 0, 
+		0, 2.0f / (top - bottom), 0, 0, 
+		0, 0, 1.0f / (zNearPlane - zFarPlane), 0, 
 		(left + right) / (left - right), (top + bottom) / (bottom - top), zNearPlane / (zNearPlane - zFarPlane), 1
 	};
 }
@@ -88,9 +112,10 @@ Mat4 Mat4::CreatePerspectiveFieldOfView(float fieldOfView, float aspectRatio, fl
 
 	return Mat4
 	{
-		num / aspectRatio, 0, 0, 0, 0, 
-		num, 0, 0, 0, 0, farPlaneDistance / (nearPlaneDistance - farPlaneDistance), 
-		-1, 0, 0, (nearPlaneDistance * farPlaneDistance) / (nearPlaneDistance - farPlaneDistance), 0
+		num / aspectRatio, 0, 0, 0,
+		0, num, 0, 0, 
+		0, 0, farPlaneDistance / (nearPlaneDistance - farPlaneDistance), -1, 
+		0, 0, (nearPlaneDistance * farPlaneDistance) / (nearPlaneDistance - farPlaneDistance), 0
 	};
 }
 
@@ -219,16 +244,17 @@ Mat4::Mat4()
 	m1 = 0.0f;
 	m2 = 0.0f;
 	m3 = 0.0f;
+
 	m4 = 0.0f;
 	m5 = 0.0f;
-
 	m6 = 0.0f;
 	m7 = 0.0f;
+
 	m8 = 0.0f;
 	m9 = 0.0f;
 	m10 = 0.0f;
-
 	m0 = 0.0f;
+
 	m4 = 0.0f;
 	m8 = 0.0f;
 	m12 = 0.0f;

@@ -8,9 +8,9 @@
   "ExpandedNodes": [
     "",
     "\\Content",
-    "\\Content\\Shaders",
     "\\Content\\Shaders\\Compiled",
     "\\Content\\Shaders\\Compiled\\DXIL"
   ],
+  "SelectedNode": "\\Scene09Cube.h",
   "PreviewInSolutionExplorer": false
 }
