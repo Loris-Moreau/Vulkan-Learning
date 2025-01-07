@@ -225,3 +225,14 @@ void Renderer::EndUploadToBuffer(SDL_GPUTransferBuffer* transferBuffer) const
     SDL_SubmitGPUCommandBuffer(uploadCmdBuf);
     SDL_ReleaseGPUTransferBuffer(device, transferBuffer);
 }
+
+void Renderer::BindIndexBuffer(const SDL_GPUBufferBinding& bindings, SDL_GPUIndexElementSize indexElementSize) const 
+{
+    SDL_BindGPUIndexBuffer(renderPass, &bindings, indexElementSize);
+}
+
+void Renderer::DrawIndexedPrimitives(int numIndices, int numInstances, int firstIndex, int vertexOffset, int firstInstance) const 
+{
+    SDL_DrawGPUIndexedPrimitives(renderPass, numIndices, numInstances, firstIndex,
+        vertexOffset, firstInstance);
+}

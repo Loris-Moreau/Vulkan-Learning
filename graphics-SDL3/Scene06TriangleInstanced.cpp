@@ -111,4 +111,45 @@ void Scene06TriangleIndexed::Load(Renderer& renderer)
 	renderer.UploadToBuffer(transferVertexBufferLocation, vertexBufferRegion, false);
 	renderer.UploadToBuffer(transferIndexBufferLocation, indexBufferRegion, false);
 	renderer.EndUploadToBuffer(transferBuffer);
+
+	// Finally, print instructions!
+	SDL_Log("Press Up to toggle the Index Buffer"); 
+	SDL_Log("Using index buffer: %s", useIndexBuffer ? "true" : "false");
+}
+
+bool Scene06TriangleIndexed::Update(float dt) 
+{
+	const bool isRunning = ManageInput(inputState);
+	if (inputState.IsPressed(DirectionalKey::Up))
+	{
+		useIndexBuffer = !useIndexBuffer;
+		SDL_Log("Using index buffer: %s", useIndexBuffer ? "true" : "false");
+	}
+	return isRunning;
+}
+
+void Scene06TriangleIndexed::Draw(Renderer& renderer) 
+{
+	renderer.Begin();
+	renderer.BindGraphicsPipeline(pipeline);
+	SDL_GPUBufferBinding vertexBindings = { .buffer = vertexBuffer, .offset = 0 };
+	renderer.BindVertexBuffers(0, vertexBindings, 1);
+	if (useIndexBuffer) 
+	{
+		SDL_GPUBufferBinding indexBindings = { .buffer = indexBuffer, .offset = 0 };
+		renderer.BindIndexBuffer(indexBindings, SDL_GPU_INDEXELEMENTSIZE_16BIT);
+		renderer.DrawIndexedPrimitives(3, 16, 0, 0, 0);
+	}
+	else 
+	{
+		renderer.DrawPrimitives(3, 16, 0, 0);
+	}
+	renderer.End();
+}
+
+void Scene06TriangleIndexed::Unload(Renderer& renderer) 
+{
+	renderer.ReleaseBuffer(vertexBuffer);
+	renderer.ReleaseBuffer(indexBuffer);
+	renderer.ReleaseGraphicsPipeline(pipeline);
 }

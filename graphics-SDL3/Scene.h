@@ -23,7 +23,8 @@ public:
     virtual void Unload(Renderer& renderer) = 0;
     
 protected:
-    static bool ManageInput(InputState &inputState) {
+    static bool ManageInput(InputState &inputState) 
+    {
         inputState.previousLeft = inputState.left;
         inputState.previousRight = inputState.right;
         inputState.previousUp = inputState.up;
