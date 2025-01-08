@@ -4,6 +4,10 @@
 #include "PositionTextureVertex.h"
 #include "Scene.h"
 
+#include <SDL3/SDL.h>
+#include "PositionColorVertex.h"
+#include "Renderer.h"
+
 #include <array>
 #include <string>
 using std::array;

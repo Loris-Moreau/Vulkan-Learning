@@ -1,8 +1,4 @@
 #include "Scene09Cube.h"
-#include <SDL3/SDL.h>
-#include "PositionColorVertex.h"
-#include "Renderer.h"
-#include "PositionTextureVertex.h"
 
 typedef struct CubeVertex
 {
@@ -81,7 +77,7 @@ static const CubeVertex cubeVertices[] = {
 Uint32 vertsSize = sizeof(cubeVertices);
 Uint32 vertsNum = vertsSize / sizeof(CubeVertex);
 
-void Scene09Cube::Load()
+void Scene09Cube::Load(Renderer& renderer)
 {
 	auto basePath = SDL_GetBasePath();
 	vertexShader = renderer.LoadShader(basePath, "TexturedQuadWithMatrix.vert", 0, 1, 0,
@@ -218,6 +214,7 @@ void Scene09Cube::Load()
 		.w = static_cast<Uint32>(imageData->w),
 		.h = static_cast<Uint32>(imageData->h),
 		.d = 1 };
+
 	renderer.UploadToBuffer(transferVertexBufferLocation, vertexBufferRegion, false);
 	renderer.UploadToTexture(textureBufferLocation, textureBufferRegion, false);
 	renderer.EndUploadToBuffer(transferBuffer);
@@ -226,7 +223,7 @@ void Scene09Cube::Load()
 }
 
 
-void Scene09Cube::Unload()
+void Scene09Cube::Unload(Renderer& renderer)
 {
 	renderer.ReleaseSampler(sampler);
 	renderer.ReleaseBuffer(vertexBuffer);
@@ -234,7 +231,7 @@ void Scene09Cube::Unload()
 	renderer.ReleaseGraphicsPipeline(pipeline);
 }
 
-void Scene09Cube::Draw(Mat4 matrixUniform, FragMultiplyUniformCube fragMultiplyUniform0)
+void Scene09Cube::Draw(Renderer& renderer, Mat4 matrixUniform, FragMultiplyUniform2 fragMultiplyUniform2)
 {
 
 	renderer.BindGraphicsPipeline(pipeline);
@@ -245,8 +242,7 @@ void Scene09Cube::Draw(Mat4 matrixUniform, FragMultiplyUniformCube fragMultiplyU
 
 	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
 
-	renderer.PushFragmentUniformData(0, &fragMultiplyUniform0,
-		sizeof(FragMultiplyUniformCube));
+	renderer.PushFragmentUniformData(0, &fragMultiplyUniform2, sizeof(FragMultiplyUniform2));
 
 	renderer.DrawPrimitives(vertsNum, 1, 0, 0);	
 }
