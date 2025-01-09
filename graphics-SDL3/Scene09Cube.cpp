@@ -11,7 +11,7 @@ void Scene09Cube::Load(Renderer& renderer)
 	vertexShader = renderer.LoadShader(basePath, "TexturedQuadWithMatrix.vert", 0, 1, 0, 0);
 	fragmentShader = renderer.LoadShader(basePath, "TexturedQuadWithMultiplyColor.frag", 1, 1, 0, 0);
 
-	SDL_Surface* imageData = renderer.LoadBMPImage(basePath, "cube.bmp", 4);
+	SDL_Surface* imageData = renderer.LoadBMPImage(basePath, "cube1.bmp", 4);
 	if (imageData == nullptr) 
 	{
 		SDL_Log("Could not load image data!");
