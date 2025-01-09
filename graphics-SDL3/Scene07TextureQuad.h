@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Scene.h"
-#include "PositionTextureVertex.h"
+#include "PositionCTVertex.h"
 
 #include <array>
 #include <string>

@@ -1,18 +1,13 @@
 #pragma once
 
-#include "Mat4.h"
-#include "PositionTextureVertex.h"
+#include "PositionCTVertex.h"
+#include "Quad.h"
 #include "Scene.h"
 
 #include <array>
 #include <string>
 using std::array;
 using std::string;
-
-typedef struct FragMultiplyUniform
-{
-	float r, g, b, a;
-} fragMultiplyUniform;
 
 class Scene08TextureQuadMoving : public Scene 
 {

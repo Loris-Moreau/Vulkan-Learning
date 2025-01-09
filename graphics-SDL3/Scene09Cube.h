@@ -1,22 +1,17 @@
 #pragma once
 
-#include "Mat4.h"
-#include "PositionTextureVertex.h"
+#include "PositionCTVertex.h"
+#include "Quad.h"
 #include "Scene.h"
 
-#include <SDL3/SDL.h>
-#include "PositionColorVertex.h"
-#include "Renderer.h"
+#include <SDL3/SDL_filesystem.h>
 
 #include <array>
 #include <string>
 using std::array;
 using std::string;
 
-typedef struct FragMultiplyUniform2
-{
-	float r, g, b, a;
-} fragMultiplyUniform2;
+class Quad;
 
 class Scene09Cube : public Scene
 {
@@ -42,6 +37,5 @@ private:
 	SDL_GPUTexture* texture{ nullptr };
 
 	SDL_GPUSampler* sampler{ nullptr };
-
-	float time{ 0 };
+	Quad* quads[4];
 };

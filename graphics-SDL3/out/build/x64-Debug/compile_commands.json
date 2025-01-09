@@ -13,6 +13,12 @@
 },
 {
   "directory": "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug",
+  "command": "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-build\\include-revision -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\include /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\graphics-SDL3.dir\\Quad.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Quad.cpp",
+  "file": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Quad.cpp",
+  "output": "CMakeFiles\\graphics-SDL3.dir\\Quad.cpp.obj"
+},
+{
+  "directory": "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug",
   "command": "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-build\\include-revision -IC:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\include /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -std:c++20 -MDd /FoCMakeFiles\\graphics-SDL3.dir\\Renderer.cpp.obj /FdTARGET_COMPILE_PDB /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Renderer.cpp",
   "file": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\Renderer.cpp",
   "output": "CMakeFiles\\graphics-SDL3.dir\\Renderer.cpp.obj"

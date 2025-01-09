@@ -8,7 +8,7 @@
 #include <SDL3/SDL_filesystem.h>
 #include <SDL3/SDL_gpu.h>
 
-#include "PositionColorVertex.h"
+#include "PositionCTVertex.h"
 
 
 class Renderer;
