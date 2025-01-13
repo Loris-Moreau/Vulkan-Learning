@@ -1,8 +1,8 @@
 #pragma once
 
 #include "PositionCTVertex.h"
-#include "Quad.h"
 #include "Scene.h"
+#include "Mat4.h"
 
 #include <array>
 #include <string>

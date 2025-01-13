@@ -1,4 +1,4 @@
-#line 1 "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\src\\core\\windows\\version.rc"
+#line 1 "E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\src\\core\\windows\\version.rc"
 
 #line 1 "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22621.0\\um\\winresrc.h"
 
@@ -3403,7 +3403,7 @@
 
 
 
-#line 1 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 1 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -3553,11 +3553,11 @@
 
 
 
-#line 151 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 151 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
-#line 155 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 155 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -3587,29 +3587,29 @@
 
 
 
-#line 185 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 185 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
-#line 188 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 188 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
-#line 190 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 190 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
 
 
-#line 196 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 196 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
-#line 200 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 200 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
 
 
 
-#line 207 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 207 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -3621,7 +3621,7 @@
 
 
 
-#line 219 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 219 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -3631,7 +3631,7 @@
 
 
 
-#line 229 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 229 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -4957,7 +4957,7 @@
 
 
 
-#line 1555 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 1555 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -4988,7 +4988,7 @@
 
 
 
-#line 1586 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 1586 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -5013,7 +5013,7 @@
 
 
 
-#line 1611 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 1611 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -5026,7 +5026,7 @@
 
 
 
-#line 1624 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 1624 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -5065,7 +5065,7 @@
 
 
 
-#line 1663 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 1663 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -5177,7 +5177,7 @@
 
 
 
-#line 1775 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 1775 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -5280,7 +5280,7 @@
 
 
 
-#line 1878 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 1878 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -5449,7 +5449,7 @@
 
 
 
-#line 2047 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2047 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -5551,7 +5551,7 @@
 
 
 
-#line 2149 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2149 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -5768,8 +5768,8 @@
 
 
 
-#line 2366 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
-#line 2367 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2366 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
+#line 2367 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -5997,7 +5997,7 @@
 
 
 
-#line 2595 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2595 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
     
     
     
@@ -6036,7 +6036,7 @@
     
     
 
-#line 2634 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2634 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -6270,7 +6270,7 @@
 
 
 
-#line 2868 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2868 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -6280,7 +6280,7 @@
 
 
 
-#line 2878 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2878 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -6288,24 +6288,24 @@
     
 
 
-#line 2886 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
-#line 2887 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2886 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
+#line 2887 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
 
 
 
-#line 2894 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
-#line 2895 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2894 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
+#line 2895 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
 
 
 
-#line 2902 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
-#line 2903 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2902 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
+#line 2903 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -6317,7 +6317,7 @@
 
 
 
-#line 2915 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2915 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -6351,7 +6351,7 @@
 
 
 
-#line 2949 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 2949 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 
 
 
@@ -6377,7 +6377,7 @@
 
 
 
-#line 1 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\concurrencysal.h"
+#line 1 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\concurrencysal.h"
 
 
 
@@ -6668,11 +6668,11 @@
 
 
 
-#line 292 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\concurrencysal.h"
+#line 292 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\concurrencysal.h"
 
 
 
-#line 296 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\concurrencysal.h"
+#line 296 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\concurrencysal.h"
 
 
 
@@ -6765,14 +6765,14 @@
 
 
 
-#line 389 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\concurrencysal.h"
+#line 389 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\concurrencysal.h"
 
 
 
 
 
-#line 395 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\concurrencysal.h"
-#line 2975 "C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\include\\sal.h"
+#line 395 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\concurrencysal.h"
+#line 2975 "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\sal.h"
 #line 62 "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22621.0\\shared\\SpecStrings.h"
 
 
@@ -8768,7 +8768,7 @@
 #line 42 "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22621.0\\um\\winresrc.h"
 
 #line 44 "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22621.0\\um\\winresrc.h"
-#line 3 "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\src\\core\\windows\\version.rc"
+#line 3 "E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-src\\src\\core\\windows\\version.rc"
 
 LANGUAGE 0x09, 0x01
 

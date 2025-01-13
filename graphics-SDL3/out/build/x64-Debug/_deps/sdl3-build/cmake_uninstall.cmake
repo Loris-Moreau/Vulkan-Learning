@@ -1,13 +1,13 @@
-if (NOT EXISTS "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/install_manifest.txt")
-    message(FATAL_ERROR "Cannot find install manifest: \"C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/install_manifest.txt\"")
+if (NOT EXISTS "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/install_manifest.txt")
+    message(FATAL_ERROR "Cannot find install manifest: \"E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/install_manifest.txt\"")
 endif()
 
-file(READ "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/install_manifest.txt" files)
+file(READ "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 foreach(file ${files})
     message(STATUS "Uninstalling \"$ENV{DESTDIR}${file}\"")
     execute_process(
-        COMMAND C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe -E remove "$ENV{DESTDIR}${file}"
+        COMMAND E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe -E remove "$ENV{DESTDIR}${file}"
         OUTPUT_VARIABLE rm_out
         RESULT_VARIABLE rm_retval
     )

@@ -26,7 +26,7 @@ if (NOT SDL3_FOUND) # If there's none, fetch and build SDL3
 endif()
 
 file( GLOB graphics-with-SDL3_SOURCES *.cpp )
-add_executable(${PROJECT_NAME} ${graphics-with-SDL3_SOURCES} "Scene02Triangle.cpp" "Scene03VertexBuffer.h" "Scene03VertexBuffer.cpp" "PositionCTVertex.h" "Scene04TriangleCullModes.h" "Scene04TriangleCullModes.cpp" "Scene06TriangleInstanced.h" "Scene06TriangleInstanced.cpp" "Scene07TextureQuad.h" "Scene07TextureQuad.cpp"  "Mat4.h" "Mat4.cpp" "Quad.h" "Quad.cpp" "Scene08TextureQuadMoving.h" "Scene08TextureQuadMoving.cpp" "Scene09Cube.h" "Scene09Cube.cpp"   "Quad.h")
+add_executable(${PROJECT_NAME} ${graphics-with-SDL3_SOURCES} "Scene02Triangle.cpp" "Scene03VertexBuffer.h" "Scene03VertexBuffer.cpp" "PositionCTVertex.h" "Scene04TriangleCullModes.h" "Scene04TriangleCullModes.cpp" "Scene06TriangleInstanced.h" "Scene06TriangleInstanced.cpp" "Scene07TextureQuad.h" "Scene07TextureQuad.cpp" "Mat4.h" "Mat4.cpp" "Scene08TextureQuadMoving.h" "Scene08TextureQuadMoving.cpp" "Scene09Cube.h" "Scene09Cube.cpp" )
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${SDL3_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} SDL3::SDL3)

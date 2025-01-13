@@ -5,8 +5,8 @@ cmake_minimum_required(VERSION 3.5)
 
 # Make file names absolute:
 #
-get_filename_component(filename "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/preview-3.1.6.zip" ABSOLUTE)
-get_filename_component(directory "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src" ABSOLUTE)
+get_filename_component(filename "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/preview-3.1.6.zip" ABSOLUTE)
+get_filename_component(directory "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src" ABSOLUTE)
 
 message(STATUS "extracting...
      src='${filename}'

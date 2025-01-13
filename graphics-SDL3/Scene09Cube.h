@@ -1,19 +1,16 @@
 #pragma once
 
-#include "PositionCTVertex.h"
-#include "Quad.h"
 #include "Scene.h"
+#include "PositionCTVertex.h"
 
-#include <SDL3/SDL_filesystem.h>
+#include <SDL3/SDL_gpu.h>
 
 #include <array>
 #include <string>
 using std::array;
 using std::string;
 
-class Quad;
-
-class Scene09Cube : public Scene
+class Scene09Cube : public Scene 
 {
 public:
 	void Load(Renderer& renderer) override;
@@ -35,7 +32,7 @@ private:
 	SDL_GPUBuffer* indexBuffer{ nullptr };
 
 	SDL_GPUTexture* texture{ nullptr };
-
 	SDL_GPUSampler* sampler{ nullptr };
-	Quad* quads[4];
+
+	float time{ 0 };
 };

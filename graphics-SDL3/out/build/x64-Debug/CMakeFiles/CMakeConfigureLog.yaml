@@ -4,30 +4,30 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:205 (message)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      The system is: Windows - 10.0.19045 - AMD64
+      The system is: Windows - 10.0.22631 - AMD64
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-      Compiler: C:/VisualStudio/VC/Tools/MSVC/14.40.33807/bin/Hostx64/x64/cl.exe 
+      Compiler: E:/Files/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/cl.exe 
       Build flags: 
       Id flags:  
       
       The output was:
       0
-      Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33812 for x64
+      Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34123 for x64
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       CMakeCCompilerId.c
-      Microsoft (R) Incremental Linker Version 14.40.33812.0
+      Microsoft (R) Incremental Linker Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       /out:CMakeCCompilerId.exe 
@@ -39,41 +39,41 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
       
       The C compiler identification is MSVC, found in:
-        C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/3.28.3-msvc11/CompilerIdC/CMakeCCompilerId.exe
+        E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/3.29.5-msvc4/CompilerIdC/CMakeCCompilerId.exe
       
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1182 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:247 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1216 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Detecting C compiler /showIncludes prefix:
         main.c
-        Note: including file: C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\ShowIncludes\\foo.h
+        Note: including file: E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\ShowIncludes\\foo.h
         
       Found prefix "Note: including file: "
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-      Compiler: C:/VisualStudio/VC/Tools/MSVC/14.40.33807/bin/Hostx64/x64/cl.exe 
+      Compiler: E:/Files/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/cl.exe 
       Build flags: 
       Id flags:  
       
       The output was:
       0
-      Microsoft (R) C/C++ Optimizing Compiler Version 19.40.33812 for x64
+      Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34123 for x64
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       CMakeCXXCompilerId.cpp
-      Microsoft (R) Incremental Linker Version 14.40.33812.0
+      Microsoft (R) Incremental Linker Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       /out:CMakeCXXCompilerId.exe 
@@ -85,32 +85,32 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
       
       The CXX compiler identification is MSVC, found in:
-        C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/3.28.3-msvc11/CompilerIdCXX/CMakeCXXCompilerId.exe
+        E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/3.29.5-msvc4/CompilerIdCXX/CMakeCXXCompilerId.exe
       
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1182 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:247 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1216 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Detecting CXX compiler /showIncludes prefix:
         main.c
-        Note: including file: C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\ShowIncludes\\foo.h
+        Note: including file: E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\ShowIncludes\\foo.h
         
       Found prefix "Note: including file: "
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-rd7f9g"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-rd7f9g"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-brcla9"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-brcla9"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -119,73 +119,134 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-rd7f9g'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-brcla9'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_0e252
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_0e252.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_0e252.dir\\ /FS -c C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_0e252.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_0e252.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_0e252.exe /implib:cmTC_0e252.lib /pdb:cmTC_0e252.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_7df0b
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_7df0b.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_7df0b.dir\\ /FS -c "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_7df0b.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_7df0b.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_7df0b.exe /implib:cmTC_7df0b.lib /pdb:cmTC_7df0b.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-9s2wf7"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-9s2wf7"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-6i88n6"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-6i88n6"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
     buildResult:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-9s2wf7'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-6i88n6'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_83879
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP   /DWIN32 /D_WINDOWS /EHsc  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_83879.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_83879.dir\\ /FS -c C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_83879.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_83879.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_83879.exe /implib:cmTC_83879.lib /pdb:cmTC_83879.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_de286
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo /TP   /DWIN32 /D_WINDOWS /EHsc  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_de286.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_de286.dir\\ /FS -c "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_de286.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_de286.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_de286.exe /implib:cmTC_de286.lib /pdb:cmTC_de286.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
   -
     kind: "try_compile-v1"
     backtrace:
       - "out/build/x64-Debug/_deps/sdl3-src/cmake/sdlcpu.cmake:93 (try_compile)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:54 (SDL_DetectTargetCPUArchitectures)"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "SDL_CPU_CHECK_ALL"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-build/CMakeFiles/CMakeTmp/SDL_detect_arch/CMakeFiles/CMakeTmp'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_22643
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_22643.dir\\SDL_detect_arch.c.obj /FdCMakeFiles\\cmTC_22643.dir\\cmTC_22643.pdb /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-build\\CMakeFiles\\CMakeTmp\\SDL_detect_arch.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\lib.exe /nologo /machine:x64 /out:cmTC_22643.lib CMakeFiles\\cmTC_22643.dir\\SDL_detect_arch.c.obj  && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_47c2f
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_47c2f.dir\\SDL_detect_arch.c.obj /FdCMakeFiles\\cmTC_47c2f.dir\\cmTC_47c2f.pdb /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\_deps\\sdl3-build\\CMakeFiles\\CMakeTmp\\SDL_detect_arch.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\lib.exe" /nologo /machine:x64 /out:cmTC_47c2f.lib CMakeFiles\\cmTC_47c2f.dir\\SDL_detect_arch.c.obj && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "out/build/x64-Debug/_deps/sdl3-src/cmake/macros.cmake:304 (check_c_source_compiles)"
+      - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:428 (check_linker_supports_version_file)"
+    checks:
+      - "Performing Test LINKER_SUPPORTS_VERSION_SCRIPT"
+    directories:
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-1qg18h"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-1qg18h"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+    buildResult:
+      variable: "LINKER_SUPPORTS_VERSION_SCRIPT"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-1qg18h'
+        
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_d3af6
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DLINKER_SUPPORTS_VERSION_SCRIPT  /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_d3af6.dir\\src.c.obj /FdCMakeFiles\\cmTC_d3af6.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-1qg18h\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_d3af6.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_d3af6.dir\\src.c.obj  /out:cmTC_d3af6.exe /implib:cmTC_d3af6.lib /pdb:cmTC_d3af6.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  -Wl,--version-script=E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-build/CMakeFiles/dummy.sym  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1178 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       MASM : warning A4018:invalid command-line option : --version
@@ -193,13 +254,13 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1178 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is AppleClang using "--version" did not match "(Apple (clang|LLVM) version)":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       MASM : warning A4018:invalid command-line option : --version
@@ -207,13 +268,13 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1178 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is Clang using "--version" did not match "(clang version)":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       MASM : warning A4018:invalid command-line option : --version
@@ -221,13 +282,13 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1178 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is ARMClang using "--version" did not match "armclang":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       MASM : warning A4018:invalid command-line option : --version
@@ -235,13 +296,13 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1178 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is OrangeC using "--version" did not match "occ \\(OrangeC\\) Version":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       MASM : warning A4018:invalid command-line option : --version
@@ -249,13 +310,13 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1178 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is HP using "-V" did not match "HP C":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       MASM : warning A4018:invalid command-line option : -V
@@ -263,13 +324,13 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1178 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is Intel using "--version" did not match "(ICC)":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       MASM : warning A4018:invalid command-line option : --version
@@ -277,14 +338,14 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1178 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is IntelLLVM using "--version" did not match "(Intel[^
       ]+oneAPI)":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       MASM : warning A4018:invalid command-line option : --version
@@ -292,13 +353,13 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1178 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is SunPro using "-V" did not match "Sun C":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       MASM : warning A4018:invalid command-line option : -V
@@ -306,13 +367,13 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1144 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1178 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is XL using "-qversion" did not match "XL C":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
       MASM : warning A4018:invalid command-line option : -qversion
@@ -320,13 +381,13 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1131 (message)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1165 (message)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CMakeDetermineASM_MASMCompiler.cmake:17 (include)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:467 (enable_language)"
     message: |
       Checking whether the ASM_MASM compiler is MSVC using "-?" matched "Microsoft":
-      Microsoft (R) Macro Assembler (x64) Version 14.40.33812.0
+      Microsoft (R) Macro Assembler (x64) Version 14.41.34123.0
       Copyright (C) Microsoft Corporation.  All rights reserved.
       
               ML64 [ /options ] filelist [ /link linkoptions ]
@@ -359,330 +420,330 @@ events:
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:605 (check_c_source_compiles)"
     checks:
       - "Performing Test COMPILER_SUPPORTS_MMX"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-uxhjqy"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-uxhjqy"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-8mlk7b"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-8mlk7b"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "COMPILER_SUPPORTS_MMX"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-uxhjqy'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-8mlk7b'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_c0439
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCOMPILER_SUPPORTS_MMX  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_c0439.dir\\src.c.obj /FdCMakeFiles\\cmTC_c0439.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-uxhjqy\\src.c
-        FAILED: CMakeFiles/cmTC_c0439.dir/src.c.obj 
-        C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCOMPILER_SUPPORTS_MMX  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_c0439.dir\\src.c.obj /FdCMakeFiles\\cmTC_c0439.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-uxhjqy\\src.c
-        C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-uxhjqy\\src.c(5): error C2440: '=': cannot convert from 'int' to '__m64'
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_09aa0
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCOMPILER_SUPPORTS_MMX  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_09aa0.dir\\src.c.obj /FdCMakeFiles\\cmTC_09aa0.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-8mlk7b\\src.c
+        FAILED: CMakeFiles/cmTC_09aa0.dir/src.c.obj 
+        "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCOMPILER_SUPPORTS_MMX  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_09aa0.dir\\src.c.obj /FdCMakeFiles\\cmTC_09aa0.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-8mlk7b\\src.c
+        E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-8mlk7b\\src.c(5): error C2440: '=': cannot convert from 'int' to '__m64'
         ninja: build stopped: subcommand failed.
         
       exitCode: 1
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:626 (check_c_source_compiles)"
     checks:
       - "Performing Test COMPILER_SUPPORTS_SSE"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-hizl06"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-hizl06"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-nntl6s"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-nntl6s"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "COMPILER_SUPPORTS_SSE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-hizl06'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-nntl6s'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_0df68
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCOMPILER_SUPPORTS_SSE  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_0df68.dir\\src.c.obj /FdCMakeFiles\\cmTC_0df68.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-hizl06\\src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_0df68.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_0df68.dir\\src.c.obj  /out:cmTC_0df68.exe /implib:cmTC_0df68.lib /pdb:cmTC_0df68.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_e08e8
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCOMPILER_SUPPORTS_SSE  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_e08e8.dir\\src.c.obj /FdCMakeFiles\\cmTC_e08e8.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-nntl6s\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_e08e8.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_e08e8.dir\\src.c.obj  /out:cmTC_e08e8.exe /implib:cmTC_e08e8.lib /pdb:cmTC_e08e8.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:647 (check_c_source_compiles)"
     checks:
       - "Performing Test COMPILER_SUPPORTS_SSE2"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-8k0ezo"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-8k0ezo"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-qyypld"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-qyypld"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "COMPILER_SUPPORTS_SSE2"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-8k0ezo'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-qyypld'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_ef972
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCOMPILER_SUPPORTS_SSE2  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_ef972.dir\\src.c.obj /FdCMakeFiles\\cmTC_ef972.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-8k0ezo\\src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_ef972.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_ef972.dir\\src.c.obj  /out:cmTC_ef972.exe /implib:cmTC_ef972.lib /pdb:cmTC_ef972.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_6ee5d
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCOMPILER_SUPPORTS_SSE2  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_6ee5d.dir\\src.c.obj /FdCMakeFiles\\cmTC_6ee5d.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-qyypld\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_6ee5d.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_6ee5d.dir\\src.c.obj  /out:cmTC_6ee5d.exe /implib:cmTC_6ee5d.lib /pdb:cmTC_6ee5d.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:668 (check_c_source_compiles)"
     checks:
       - "Performing Test COMPILER_SUPPORTS_SSE3"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-amln0v"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-amln0v"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-s8q91r"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-s8q91r"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "COMPILER_SUPPORTS_SSE3"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-amln0v'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-s8q91r'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_8f659
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCOMPILER_SUPPORTS_SSE3  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_8f659.dir\\src.c.obj /FdCMakeFiles\\cmTC_8f659.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-amln0v\\src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_8f659.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_8f659.dir\\src.c.obj  /out:cmTC_8f659.exe /implib:cmTC_8f659.lib /pdb:cmTC_8f659.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_8f192
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCOMPILER_SUPPORTS_SSE3  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_8f192.dir\\src.c.obj /FdCMakeFiles\\cmTC_8f192.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-s8q91r\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_8f192.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_8f192.dir\\src.c.obj  /out:cmTC_8f192.exe /implib:cmTC_8f192.lib /pdb:cmTC_8f192.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:689 (check_c_source_compiles)"
     checks:
       - "Performing Test COMPILER_SUPPORTS_SSE4_1"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-41dvo4"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-41dvo4"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-rv37kr"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-rv37kr"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "COMPILER_SUPPORTS_SSE4_1"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-41dvo4'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-rv37kr'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_09119
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCOMPILER_SUPPORTS_SSE4_1  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_09119.dir\\src.c.obj /FdCMakeFiles\\cmTC_09119.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-41dvo4\\src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_09119.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_09119.dir\\src.c.obj  /out:cmTC_09119.exe /implib:cmTC_09119.lib /pdb:cmTC_09119.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_3cb73
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCOMPILER_SUPPORTS_SSE4_1  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_3cb73.dir\\src.c.obj /FdCMakeFiles\\cmTC_3cb73.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-rv37kr\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_3cb73.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_3cb73.dir\\src.c.obj  /out:cmTC_3cb73.exe /implib:cmTC_3cb73.lib /pdb:cmTC_3cb73.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:710 (check_c_source_compiles)"
     checks:
       - "Performing Test COMPILER_SUPPORTS_SSE4_2"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-v0baur"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-v0baur"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-jmnfh9"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-jmnfh9"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "COMPILER_SUPPORTS_SSE4_2"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-v0baur'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-jmnfh9'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_1679f
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCOMPILER_SUPPORTS_SSE4_2  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_1679f.dir\\src.c.obj /FdCMakeFiles\\cmTC_1679f.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-v0baur\\src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_1679f.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_1679f.dir\\src.c.obj  /out:cmTC_1679f.exe /implib:cmTC_1679f.lib /pdb:cmTC_1679f.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_f1a4f
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCOMPILER_SUPPORTS_SSE4_2  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_f1a4f.dir\\src.c.obj /FdCMakeFiles\\cmTC_f1a4f.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-jmnfh9\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_f1a4f.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_f1a4f.dir\\src.c.obj  /out:cmTC_f1a4f.exe /implib:cmTC_f1a4f.lib /pdb:cmTC_f1a4f.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:733 (check_c_source_compiles)"
     checks:
       - "Performing Test COMPILER_SUPPORTS_AVX"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-fnsa9u"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-fnsa9u"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-w1v9g0"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-w1v9g0"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "COMPILER_SUPPORTS_AVX"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-fnsa9u'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-w1v9g0'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_80744
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCOMPILER_SUPPORTS_AVX  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_80744.dir\\src.c.obj /FdCMakeFiles\\cmTC_80744.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-fnsa9u\\src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_80744.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_80744.dir\\src.c.obj  /out:cmTC_80744.exe /implib:cmTC_80744.lib /pdb:cmTC_80744.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_39ac1
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCOMPILER_SUPPORTS_AVX  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_39ac1.dir\\src.c.obj /FdCMakeFiles\\cmTC_39ac1.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-w1v9g0\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_39ac1.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_39ac1.dir\\src.c.obj  /out:cmTC_39ac1.exe /implib:cmTC_39ac1.lib /pdb:cmTC_39ac1.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:754 (check_c_source_compiles)"
     checks:
       - "Performing Test COMPILER_SUPPORTS_AVX2"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-rpvr2t"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-rpvr2t"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-ew1awk"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-ew1awk"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "COMPILER_SUPPORTS_AVX2"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-rpvr2t'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-ew1awk'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_62675
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCOMPILER_SUPPORTS_AVX2  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_62675.dir\\src.c.obj /FdCMakeFiles\\cmTC_62675.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-rpvr2t\\src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_62675.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_62675.dir\\src.c.obj  /out:cmTC_62675.exe /implib:cmTC_62675.lib /pdb:cmTC_62675.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_198dd
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCOMPILER_SUPPORTS_AVX2  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_198dd.dir\\src.c.obj /FdCMakeFiles\\cmTC_198dd.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-ew1awk\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_198dd.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_198dd.dir\\src.c.obj  /out:cmTC_198dd.exe /implib:cmTC_198dd.lib /pdb:cmTC_198dd.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:775 (check_c_source_compiles)"
     checks:
       - "Performing Test COMPILER_SUPPORTS_AVX512F"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-evjef1"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-evjef1"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-lgb8lp"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-lgb8lp"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "COMPILER_SUPPORTS_AVX512F"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-evjef1'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-lgb8lp'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_4f687
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DCOMPILER_SUPPORTS_AVX512F  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_4f687.dir\\src.c.obj /FdCMakeFiles\\cmTC_4f687.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-evjef1\\src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_4f687.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_4f687.dir\\src.c.obj  /out:cmTC_4f687.exe /implib:cmTC_4f687.lib /pdb:cmTC_4f687.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_48cee
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCOMPILER_SUPPORTS_AVX512F  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_48cee.dir\\src.c.obj /FdCMakeFiles\\cmTC_48cee.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-lgb8lp\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_48cee.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_48cee.dir\\src.c.obj  /out:cmTC_48cee.exe /implib:cmTC_48cee.lib /pdb:cmTC_48cee.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:1901 (check_c_source_compiles)"
     checks:
       - "Performing Test HAVE_GAMEINPUT_H"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-0hleiz"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-0hleiz"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-egdx6f"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-egdx6f"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "HAVE_GAMEINPUT_H"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-0hleiz'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-egdx6f'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_738d5
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DHAVE_GAMEINPUT_H  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_738d5.dir\\src.c.obj /FdCMakeFiles\\cmTC_738d5.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-0hleiz\\src.c
-        FAILED: CMakeFiles/cmTC_738d5.dir/src.c.obj 
-        C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DHAVE_GAMEINPUT_H  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_738d5.dir\\src.c.obj /FdCMakeFiles\\cmTC_738d5.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-0hleiz\\src.c
-        C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-0hleiz\\src.c(4): fatal error C1083: Cannot open include file: 'gameinput.h': No such file or directory
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_bae46
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DHAVE_GAMEINPUT_H  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_bae46.dir\\src.c.obj /FdCMakeFiles\\cmTC_bae46.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-egdx6f\\src.c
+        FAILED: CMakeFiles/cmTC_bae46.dir/src.c.obj 
+        "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DHAVE_GAMEINPUT_H  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_bae46.dir\\src.c.obj /FdCMakeFiles\\cmTC_bae46.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-egdx6f\\src.c
+        E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-egdx6f\\src.c(4): fatal error C1083: Cannot open include file: 'gameinput.h': No such file or directory
         ninja: build stopped: subcommand failed.
         
       exitCode: 1
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckIncludeFile.cmake:90 (try_compile)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:1907 (check_include_file)"
     checks:
       - "Looking for dxgi1_6.h"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-11i74f"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-11i74f"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-asl988"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-asl988"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "HAVE_DXGI1_6_H"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-11i74f'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-asl988'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_15062
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo   /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_15062.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_15062.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-11i74f\\CheckIncludeFile.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_15062.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_15062.dir\\CheckIncludeFile.c.obj  /out:cmTC_15062.exe /implib:cmTC_15062.lib /pdb:cmTC_15062.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_7d088
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo   /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_7d088.dir\\CheckIncludeFile.c.obj /FdCMakeFiles\\cmTC_7d088.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-asl988\\CheckIncludeFile.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_7d088.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_7d088.dir\\CheckIncludeFile.c.obj  /out:cmTC_7d088.exe /implib:cmTC_7d088.lib /pdb:cmTC_7d088.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
     kind: "try_compile-v1"
     backtrace:
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "C:/VisualStudio/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
       - "out/build/x64-Debug/_deps/sdl3-src/CMakeLists.txt:1914 (check_c_source_compiles)"
     checks:
       - "Performing Test HAVE_MFAPI_H"
     directories:
-      source: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-9wtiku"
-      binary: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-9wtiku"
+      source: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-m08wzf"
+      binary: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-m08wzf"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od "
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
-      CMAKE_MODULE_PATH: "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
+      CMAKE_MODULE_PATH: "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src/cmake"
     buildResult:
       variable: "HAVE_MFAPI_H"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-9wtiku'
+        Change Dir: 'E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/CMakeFiles/CMakeScratch/TryCompile-m08wzf'
         
-        Run Build Command(s): C:\\VISUALSTUDIO\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe -v cmTC_3f913
-        [1/2] C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\cl.exe  /nologo -DHAVE_MFAPI_H  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_3f913.dir\\src.c.obj /FdCMakeFiles\\cmTC_3f913.dir\\ /FS -c C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-9wtiku\\src.c
-        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\VisualStudio\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe -E vs_link_exe --intdir=CMakeFiles\\cmTC_3f913.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- C:\\VisualStudio\\VC\\Tools\\MSVC\\14.40.33807\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_3f913.dir\\src.c.obj  /out:cmTC_3f913.exe /implib:cmTC_3f913.lib /pdb:cmTC_3f913.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): "E:/Files/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe" -v cmTC_9e06b
+        [1/2] "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DHAVE_MFAPI_H  /DWIN32 /D_WINDOWS  -D_GNU_SOURCE=1 /Zi /Ob0 /Od  -MDd /showIncludes /FoCMakeFiles\\cmTC_9e06b.dir\\src.c.obj /FdCMakeFiles\\cmTC_9e06b.dir\\ /FS -c E:\\Github\\Vulkan-Learning\\graphics-SDL3\\out\\build\\x64-Debug\\CMakeFiles\\CMakeScratch\\TryCompile-m08wzf\\src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\\cmTC_9e06b.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests  -- "E:\\Files\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_9e06b.dir\\src.c.obj  /out:cmTC_9e06b.exe /implib:cmTC_9e06b.lib /pdb:cmTC_9e06b.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
 ...

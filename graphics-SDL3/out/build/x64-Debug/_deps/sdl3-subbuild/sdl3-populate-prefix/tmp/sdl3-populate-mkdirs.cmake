@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src"
-  "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-build"
-  "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix"
-  "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/tmp"
-  "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp"
-  "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src"
-  "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp"
+  "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src"
+  "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-build"
+  "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix"
+  "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/tmp"
+  "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp"
+  "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src"
+  "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-subbuild/sdl3-populate-prefix/src/sdl3-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

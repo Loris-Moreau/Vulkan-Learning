@@ -13,3 +13,8 @@ struct PositionTextureVertex
 	float x, y, z;
 	float u, v;
 };
+
+typedef struct FragMultiplyUniform
+{
+	float r, g, b, a;
+} fragMultiplyUniform;
