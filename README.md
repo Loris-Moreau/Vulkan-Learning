@@ -2,4 +2,4 @@
 
 
 ## Rotating Cube
-![](https://github.com/Loris-Moreau/Vulkan-Learning/tree/main/Showcase/RotatingCubeShowcase.gif ~~~~"Showcase")
+![](https://github.com/Loris-Moreau/Vulkan-Learning/blob/main/Showcase/RotatingCubeShowcase.gif "Showcase")
