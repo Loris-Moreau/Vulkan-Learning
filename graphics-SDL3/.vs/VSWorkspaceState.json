@@ -8,8 +8,8 @@
   "ExpandedNodes": [
     "",
     "\\Content",
-    "\\Content\\Images"
+    "\\Content\\Shaders\\Source"
   ],
-  "SelectedNode": "\\out",
+  "SelectedNode": "\\Scene08TextureQuadMoving.cpp",
   "PreviewInSolutionExplorer": false
 }

@@ -10,7 +10,7 @@ void Scene09Cube::Load(Renderer& renderer)
 	vertexShader = renderer.LoadShader(basePath, "TexturedQuadWithMatrix.vert", 0, 1, 0, 0);
 	fragmentShader = renderer.LoadShader(basePath, "TexturedQuadWithMultiplyColor.frag", 1, 1, 0, 0);
 
-	SDL_Surface* imageData = renderer.LoadBMPImage(basePath, "cube0.bmp", 4);
+	SDL_Surface* imageData = renderer.LoadBMPImage(basePath, "cube4.bmp", 4);
 	if (imageData == nullptr) 
 	{
 		SDL_Log("Could not load image data!");
@@ -82,7 +82,6 @@ void Scene09Cube::Load(Renderer& renderer)
 		.address_mode_w = SDL_GPU_SAMPLERADDRESSMODE_REPEAT,
 	});
 
-
 	// Create the vertex buffer
 	SDL_GPUBufferCreateInfo vertexBufferCreateInfo = 
 	{
@@ -128,6 +127,9 @@ void Scene09Cube::Load(Renderer& renderer)
 		(
 			renderer.MapTransferBuffer(transferBuffer, false)
 		);
+
+	// transferData[0] = PositionTextureVertex{ x, y, z, u, v };
+
 	transferData[0] = PositionTextureVertex{ 0, 0, 0, 0, 0 };
 	transferData[1] = PositionTextureVertex{ 0.5f, 0, 0, 1, 0 };
 	transferData[2] = PositionTextureVertex{ 0.5f, 0.5f, 0, 1, 1 };
@@ -248,7 +250,9 @@ void Scene09Cube::Load(Renderer& renderer)
 	renderer.UploadToBuffer(transferVertexBufferLocation, vertexBufferRegion, false);
 	renderer.UploadToBuffer(transferIndexBufferLocation, indexBufferRegion, false);
 	renderer.UploadToTexture(textureBufferLocation, textureBufferRegion, false);
+
 	renderer.EndUploadToBuffer(transferBuffer);
+
 	renderer.ReleaseTransferBuffer(textureTransferBuffer);
 	renderer.ReleaseSurface(imageData);
 }
@@ -262,6 +266,7 @@ bool Scene09Cube::Update(float dt)
 
 void Scene09Cube::Unload(Renderer& renderer) 
 {
+	// make sure you don't forget anything (Sampler, 2 Buffers, Texture & Pipeline)
 	renderer.ReleaseSampler(sampler);
 	renderer.ReleaseBuffer(vertexBuffer);
 	renderer.ReleaseBuffer(indexBuffer);
@@ -284,46 +289,16 @@ void Scene09Cube::Draw(Renderer& renderer)
 	SDL_GPUTextureSamplerBinding textureSamplerBinding{ .texture = texture, .sampler = sampler };
 	renderer.BindFragmentSamplers(0, textureSamplerBinding, 1);
 
-	// 1
+	// Cube
 	Mat4 matrixUniform =
-		Mat4::CreateRotationZ(time * 0.2f) *
-		Mat4::CreateRotationY(time * 0.2f) *
+		Mat4::CreateRotationY(time * 0.7f) * 
+		Mat4::CreateRotationZ(time * 0.7f) * 
 		Mat4::CreateTranslation(0, 0, 0);
-	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
-	FragMultiplyUniform fragMultiplyUniform0{ 1.0f, 1.0f + SDL_sinf(time) * 1.0f, 1.0f, 1.0f };
-	renderer.PushFragmentUniformData(0, &fragMultiplyUniform0,
-		sizeof(FragMultiplyUniform));
 
+	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
+	FragMultiplyUniform fragMultiplyUniform0{ 1.0f, 1.0f, 1.0f, 1.0f }; // RGBA
+	renderer.PushFragmentUniformData(0, &fragMultiplyUniform0, sizeof(FragMultiplyUniform));
 	renderer.DrawIndexedPrimitives(36, 1, 0, 0, 0);
 
-	// 2
-	matrixUniform =
-		Mat4::CreateRotationZ((2.0f * SDL_PI_F) - time) *
-		Mat4::CreateTranslation(10.5f, -0.5f, 0);
-	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
-	FragMultiplyUniform fragMultiplyUniform1{ 1.0f, 0 + SDL_cosf(time) * 0, 1.0f, 1.0f };
-	renderer.PushFragmentUniformData(0, &fragMultiplyUniform1,
-		sizeof(FragMultiplyUniform));
-	renderer.DrawIndexedPrimitives(36, 1, 0, 0, 0);
-
-	// 3
-	matrixUniform =
-		Mat4::CreateRotationZ(time) *
-		Mat4::CreateTranslation(10.5f, 0.5f, 0);
-	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
-	FragMultiplyUniform fragMultiplyUniform2{ 0, 1.0f + SDL_sinf(time) * 0, 1.0f, 1.0f };
-	renderer.PushFragmentUniformData(0, &fragMultiplyUniform2,
-		sizeof(FragMultiplyUniform));
-	renderer.DrawIndexedPrimitives(36, 1, 0, 0, 0);
-
-	// 4
-	matrixUniform =
-		Mat4::CreateRotationZ(time * 2.0f) *
-		Mat4::CreateTranslation(10.5f, 0.5f, 0);
-	renderer.PushVertexUniformData(0, &matrixUniform, sizeof(matrixUniform));
-	FragMultiplyUniform fragMultiplyUniform3{ 1.0f, 0.5f + SDL_cosf(time) * 1.0f, 1.0f, 1.0f };
-	renderer.PushFragmentUniformData(0, &fragMultiplyUniform3,
-		sizeof(FragMultiplyUniform));
-	renderer.DrawIndexedPrimitives(36, 1, 0, 0, 0);
 	renderer.End();
 }

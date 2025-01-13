@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scene09Cube.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Github\\Vulkan-Learning\\graphics-SDL3\\Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Renderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Github\\Vulkan-Learning\\graphics-SDL3\\VulkanIntro.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:VulkanIntro.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Github\\Vulkan-Learning\\graphics-SDL3\\PositionCTVertex.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PositionCTVertex.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Github\\Vulkan-Learning\\graphics-SDL3\\Scene09Cube.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scene09Cube.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Github\\Vulkan-Learning\\graphics-SDL3\\VulkanIntro.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:VulkanIntro.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,19 +31,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Renderer.cpp",
-              "DocumentMoniker": "E:\\Github\\Vulkan-Learning\\graphics-SDL3\\Renderer.cpp",
-              "RelativeDocumentMoniker": "Renderer.cpp",
-              "ToolTip": "E:\\Github\\Vulkan-Learning\\graphics-SDL3\\Renderer.cpp",
-              "RelativeToolTip": "Renderer.cpp",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAWwJMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-13T12:45:32.939Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "VulkanIntro.cpp",
               "DocumentMoniker": "E:\\Github\\Vulkan-Learning\\graphics-SDL3\\VulkanIntro.cpp",
               "RelativeDocumentMoniker": "VulkanIntro.cpp",
@@ -57,6 +44,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "PositionCTVertex.h",
+              "DocumentMoniker": "E:\\Github\\Vulkan-Learning\\graphics-SDL3\\PositionCTVertex.h",
+              "RelativeDocumentMoniker": "PositionCTVertex.h",
+              "ToolTip": "E:\\Github\\Vulkan-Learning\\graphics-SDL3\\PositionCTVertex.h",
+              "RelativeToolTip": "PositionCTVertex.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-13T13:11:47.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Scene09Cube.h",
               "DocumentMoniker": "E:\\Github\\Vulkan-Learning\\graphics-SDL3\\Scene09Cube.h",
               "RelativeDocumentMoniker": "Scene09Cube.h",
@@ -75,7 +75,7 @@
               "RelativeDocumentMoniker": "Scene09Cube.cpp",
               "ToolTip": "E:\\Github\\Vulkan-Learning\\graphics-SDL3\\Scene09Cube.cpp",
               "RelativeToolTip": "Scene09Cube.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAA4BAAAAAAAAAAAAACUBAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-13T12:45:19.832Z",
               "EditorCaption": ""
