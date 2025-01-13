@@ -10,7 +10,7 @@ void Scene09Cube::Load(Renderer& renderer)
 	vertexShader = renderer.LoadShader(basePath, "TexturedQuadWithMatrix.vert", 0, 1, 0, 0);
 	fragmentShader = renderer.LoadShader(basePath, "TexturedQuadWithMultiplyColor.frag", 1, 1, 0, 0);
 
-	SDL_Surface* imageData = renderer.LoadBMPImage(basePath, "White.bmp", 4);
+	SDL_Surface* imageData = renderer.LoadBMPImage(basePath, "cube0.bmp", 4);
 	if (imageData == nullptr) 
 	{
 		SDL_Log("Could not load image data!");
@@ -274,12 +274,14 @@ void Scene09Cube::Draw(Renderer& renderer)
 	renderer.Begin();
 
 	renderer.BindGraphicsPipeline(pipeline);
+
 	SDL_GPUBufferBinding vertexBindings{ .buffer = vertexBuffer, .offset = 0 };
 	renderer.BindVertexBuffers(0, vertexBindings, 1);
+
 	SDL_GPUBufferBinding indexBindings{ .buffer = indexBuffer, .offset = 0 };
 	renderer.BindIndexBuffer(indexBindings, SDL_GPU_INDEXELEMENTSIZE_16BIT);
-	SDL_GPUTextureSamplerBinding textureSamplerBinding{ .texture = texture, .sampler =
-	sampler };
+
+	SDL_GPUTextureSamplerBinding textureSamplerBinding{ .texture = texture, .sampler = sampler };
 	renderer.BindFragmentSamplers(0, textureSamplerBinding, 1);
 
 	// 1
