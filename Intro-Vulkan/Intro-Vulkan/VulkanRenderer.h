@@ -60,7 +60,28 @@ private:
 		VkDebugUtilsMessengerEXT* pDebugMessenger);
 
 	void destroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT debugMessenger, const VkAllocationCallbacks* pAllocator);
-	void populateDebugMessengerCreateInfo(vk::DebugUtilsMessengerCreateInfoEXT& createInfo);
+	void populateDebugMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& createInfo);
 	
 	void setupDebugMessenger();
+
+
+	
+	vk::SurfaceKHR surface;
+	vk::Queue presentationQueue;
+	
+	vk::SurfaceKHR createSurface();
+
+	bool checkDeviceExtensionSupport(vk::PhysicalDevice device);
+
+	
+	SwapchainDetails getSwapchainDetails(vk::PhysicalDevice device);
+	vk::SwapchainKHR swapchain;
+	void createSwapchain();
+	vk::SurfaceFormatKHR chooseBestSurfaceFormat(const vector<vk::SurfaceFormatKHR>& formats);
+	vk::PresentModeKHR chooseBestPresentationMode(const vector<vk::PresentModeKHR>& presentationModes);
+	vk::Extent2D chooseSwapExtent(const vk::SurfaceCapabilitiesKHR& surfaceCapabilities);
+	vk::Format swapchainImageFormat;
+	vk::Extent2D swapchainExtent;
+	vector<SwapchainImage> swapchainImages;
+	vk::ImageView createImageView(vk::Image image, vk::Format format, vk::ImageAspectFlagBits aspectFlags);
 };
