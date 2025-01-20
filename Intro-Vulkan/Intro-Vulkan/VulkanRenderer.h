@@ -84,4 +84,38 @@ private:
 	vk::Extent2D swapchainExtent;
 	vector<SwapchainImage> swapchainImages;
 	vk::ImageView createImageView(vk::Image image, vk::Format format, vk::ImageAspectFlagBits aspectFlags);
+
+	
+	void createGraphicsPipeline();
+	VkShaderModule createShaderModule(const vector<char>& code);
+	vk::PipelineLayout pipelineLayout;
+	
+	void createRenderPass();
+	vk::RenderPass renderPass;
+	
+	vk::Pipeline graphicsPipeline;
+
+	vector<vk::Framebuffer> swapchainFramebuffers;
+	void createFramebuffers();
+
+	vk::CommandPool graphicsCommandPool;
+	void createGraphicsCommandPool();
+
+	vector<vk::CommandBuffer> commandBuffers;
+	void createGraphicsCommandBuffers();
+	
+	void recordCommands();
+
+	void draw();
+	
+	vector<vk::Semaphore> imageAvailable;
+	vector<vk::Semaphore> renderFinished;
+	// Should be less than the number of swapchain images, which is 3 (could cause bugs)
+	const int MAX_FRAME_DRAWS = 2;
+
+	void createSynchronisation();
+
+	int currentFrame = 0;
+
+	vector<VkFence> drawFences;
 };

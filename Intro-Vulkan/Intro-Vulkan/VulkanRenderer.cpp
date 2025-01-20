@@ -14,12 +14,17 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 	{
 		createInstance();
 		setupDebugMessenger();
-		createSurface();
+		surface = createSurface();
 		getPhysicalDevice();
 		createLogicalDevice();
 		createSwapchain();
+		createRenderPass();
+		createGraphicsPipeline();
+		createFramebuffers();
+		createGraphicsCommandPool();
+		recordCommands();
+		createSynchronisation();
 	}
-	
 	catch (const std::runtime_error& e)
 	{
 		printf("ERROR: %s\n", e.what());
@@ -259,6 +264,27 @@ bool VulkanRenderer::checkValidationLayerSupport()
 
 void VulkanRenderer::clean()
 {
+	mainDevice.logicalDevice.waitIdle();
+	
+	for (size_t i = 0; i < MAX_FRAME_DRAWS; ++i)
+	{
+		mainDevice.logicalDevice.destroySemaphore(renderFinished[i]);
+		mainDevice.logicalDevice.destroySemaphore(imageAvailable[i]);
+		mainDevice.logicalDevice.destroyFence(drawFences[i]);
+	}
+	
+	mainDevice.logicalDevice.destroyCommandPool(graphicsCommandPool);
+	
+	for (auto framebuffer : swapchainFramebuffers)
+	{
+		mainDevice.logicalDevice.destroyFramebuffer(framebuffer);
+	}
+	
+	mainDevice.logicalDevice.destroyPipeline(graphicsPipeline);
+	mainDevice.logicalDevice.destroyPipelineLayout(pipelineLayout);
+	
+	mainDevice.logicalDevice.destroyRenderPass(renderPass);
+	
 	for (auto image : swapchainImages)
 	{
 		mainDevice.logicalDevice.destroyImageView(image.imageView);
@@ -572,3 +598,443 @@ vk::ImageView VulkanRenderer::createImageView(vk::Image image, vk::Format format
 	
 	return imageView;
 }
+
+void VulkanRenderer::createGraphicsPipeline()
+{
+	// Read shader code and format it through a shader module
+	auto vertexShaderCode = readShaderFile("shaders/vert.spv");
+	auto fragmentShaderCode = readShaderFile("shaders/frag.spv");
+	vk::ShaderModule vertexShaderModule = createShaderModule(vertexShaderCode);
+	vk::ShaderModule fragmentShaderModule = createShaderModule(fragmentShaderCode);
+
+	// -- SHADER STAGE CREATION INFO --
+	// Vertex stage creation info
+	vk::PipelineShaderStageCreateInfo vertexShaderCreateInfo{};
+	// Used to know which shader
+	vertexShaderCreateInfo.stage = vk::ShaderStageFlagBits::eVertex;
+	vertexShaderCreateInfo.module = vertexShaderModule;
+	// Pointer to the start function in the shader
+	vertexShaderCreateInfo.pName = "main";
+	// Fragment stage creation info
+	vk::PipelineShaderStageCreateInfo fragmentShaderCreateInfo{};
+	fragmentShaderCreateInfo.stage = vk::ShaderStageFlagBits::eFragment;
+	fragmentShaderCreateInfo.module = fragmentShaderModule;
+	fragmentShaderCreateInfo.pName = "main";
+	// Graphics pipeline requires an array of shader create info
+	vk::PipelineShaderStageCreateInfo shaderStages[] {
+
+		vertexShaderCreateInfo, fragmentShaderCreateInfo };
+
+	// Create pipeline
+	// -- VERTEX INPUT STAGE --
+	// TODO: Put in vertex description when resources created
+	vk::PipelineVertexInputStateCreateInfo vertexInputCreateInfo{};
+	vertexInputCreateInfo.vertexBindingDescriptionCount = 0;
+	// List of vertex binding desc. (data spacing, stride...)
+	vertexInputCreateInfo.pVertexBindingDescriptions = nullptr;
+	vertexInputCreateInfo.vertexAttributeDescriptionCount = 0;
+	// List of vertex attribute desc. (data format and where to bind to/from)
+	vertexInputCreateInfo.pVertexAttributeDescriptions = nullptr;
+
+	// -- INPUT ASSEMBLY --
+	vk::PipelineInputAssemblyStateCreateInfo inputAssemblyCreateInfo{};
+	// How to assemble vertices
+	inputAssemblyCreateInfo.topology = vk::PrimitiveTopology::eTriangleList;
+	// When you want to restart a primitive, e.g. with a strip
+	inputAssemblyCreateInfo.primitiveRestartEnable = VK_FALSE;
+
+	// -- VIEWPORT AND SCISSOR --
+	// Create a viewport info struct
+	vk::Viewport viewport{};
+	viewport.x = 0.0f; // X start coordinate
+	viewport.y = 0.0f; // Y start coordinate
+	viewport.width = (float)swapchainExtent.width; // Width of viewport
+	viewport.height = (float)swapchainExtent.height; // Height of viewport
+	viewport.minDepth = 0.0f; // Min framebuffer depth
+	viewport.maxDepth = 1.0f; // Max framebuffer depth
+	// Create a scissor info struct, everything outside is cut
+	vk::Rect2D scissor{};
+	scissor.offset = vk::Offset2D { 0, 0 };
+	scissor.extent = swapchainExtent;
+	vk::PipelineViewportStateCreateInfo viewportStateCreateInfo{};
+	viewportStateCreateInfo.viewportCount = 1;
+
+	viewportStateCreateInfo.pViewports = &viewport;
+	viewportStateCreateInfo.scissorCount = 1;
+	viewportStateCreateInfo.pScissors = &scissor;
+	// -- DYNAMIC STATE --
+	// This will be alterable, so you don't have to create an entire pipeline when you want to change
+	// parameters. We won't use this feature, this is an example.
+	/*
+	vector<vk::DynamicState> dynamicStateEnables;
+	// Viewport can be resized in the command buffer
+	// with vkCmdSetViewport(commandBuffer, 0, 1, &newViewport);
+	dynamicStateEnables.push_back(vk::DynamicState::eViewport);
+	// Scissors can be resized in the command buffer
+	// with vkCmdSetScissor(commandBuffer, 0, 1, &newScissor);
+	dynamicStateEnables.push_back(vk::DynamicState::eScissor);
+	vk::PipelineDynamicStateCreateInfo dynamicStateCreateInfo{};
+	dynamicStateCreateInfo.dynamicStateCount =
+	static_cast<uint32_t>(dynamicStateEnables.size());
+	dynamicStateCreateInfo.pDynamicStates = dynamicStateEnables.data();
+	*/
+
+	// -- RASTERIZER --
+	vk::PipelineRasterizationStateCreateInfo rasterizerCreateInfo{};
+	// Treat elements beyond the far plane like being on the far place,
+	// needs a GPU device feature
+	rasterizerCreateInfo.depthClampEnable = VK_FALSE;
+	// Whether to discard data and skip rasterizer. When you want
+	// a pipeline without framebuffer.
+	rasterizerCreateInfo.rasterizerDiscardEnable = VK_FALSE;
+	// How to handle filling points between vertices. Here, considers things inside
+	// the polygon as a fragment. VK_POLYGON_MODE_LINE will consider element inside
+	// polygones being empty (no fragment). May require a device feature.
+	rasterizerCreateInfo.polygonMode = vk::PolygonMode::eFill;
+	// How thick should line be when drawn
+	rasterizerCreateInfo.lineWidth = 1.0f;
+	// Culling. Do not draw back of polygons
+	rasterizerCreateInfo.cullMode = vk::CullModeFlagBits::eBack;
+
+	// Widing to know the front face of a polygon
+	rasterizerCreateInfo.frontFace = vk::FrontFace::eClockwise;
+	// Whether to add a depth offset to fragments. Good for stopping
+	// "shadow acne" in shadow mapping. Is set, need to set 3 other values.
+	rasterizerCreateInfo.depthBiasEnable = VK_FALSE;
+
+	// -- MULTISAMPLING --
+	// Not for textures, only for edges
+	vk::PipelineMultisampleStateCreateInfo multisamplingCreateInfo{};
+	// Enable multisample shading or not
+	multisamplingCreateInfo.sampleShadingEnable = VK_FALSE;
+	// Number of samples to use per fragment
+	multisamplingCreateInfo.rasterizationSamples = vk::SampleCountFlagBits::e1;
+	// -- BLENDING --
+	// How to blend a new color being written to the fragment, with the old value
+	vk::PipelineColorBlendStateCreateInfo colorBlendingCreateInfo{};
+	// Alternative to usual blending calculation
+	colorBlendingCreateInfo.logicOpEnable = VK_FALSE;
+	// Enable blending and choose colors to apply blending to
+	vk::PipelineColorBlendAttachmentState colorBlendAttachment{};
+	colorBlendAttachment.colorWriteMask = vk::ColorComponentFlagBits::eR |
+	vk::ColorComponentFlagBits::eG | vk::ColorComponentFlagBits::eB |
+	vk::ColorComponentFlagBits::eA;
+	colorBlendAttachment.blendEnable = VK_TRUE;
+	// Blending equation:
+	// (srcColorBlendFactor * new color) colorBlendOp (dstColorBlendFactor * old color)
+	colorBlendAttachment.srcColorBlendFactor = vk::BlendFactor::eSrcAlpha;
+	colorBlendAttachment.dstColorBlendFactor = vk::BlendFactor::eOneMinusSrcAlpha;
+	colorBlendAttachment.colorBlendOp = vk::BlendOp::eAdd;
+	// Replace the old alpha with the new one: (1 * new alpha) + (0 * old alpha)
+	colorBlendAttachment.srcAlphaBlendFactor = vk::BlendFactor::eOne;
+	colorBlendAttachment.dstAlphaBlendFactor = vk::BlendFactor::eZero;
+	colorBlendAttachment.alphaBlendOp = vk::BlendOp::eAdd;
+
+	colorBlendingCreateInfo.attachmentCount = 1;
+	colorBlendingCreateInfo.pAttachments = &colorBlendAttachment;
+
+	// -- PIPELINE LAYOUT --
+	// TODO: apply future descriptorset layout
+	vk::PipelineLayoutCreateInfo pipelineLayoutCreateInfo{};
+	pipelineLayoutCreateInfo.setLayoutCount = 0;
+	pipelineLayoutCreateInfo.pSetLayouts = nullptr;
+	pipelineLayoutCreateInfo.pushConstantRangeCount = 0;
+	pipelineLayoutCreateInfo.pPushConstantRanges = nullptr;
+	// Create pipeline layout
+	pipelineLayout = mainDevice.logicalDevice.createPipelineLayout(pipelineLayoutCreateInfo);
+
+	// -- DEPTH STENCIL TESTING --
+	// TODO: Set up depth stencil testing
+	// -- PASSES --
+	// Passes are composed of a sequence of subpasses that can pass data from one to another
+	// -- GRAPHICS PIPELINE CREATION --
+	vk::GraphicsPipelineCreateInfo graphicsPipelineCreateInfo{};
+	graphicsPipelineCreateInfo.stageCount = 2;
+	graphicsPipelineCreateInfo.pStages = shaderStages;
+	graphicsPipelineCreateInfo.pVertexInputState = &vertexInputCreateInfo;
+	graphicsPipelineCreateInfo.pInputAssemblyState = &inputAssemblyCreateInfo;
+	graphicsPipelineCreateInfo.pViewportState = &viewportStateCreateInfo;
+	graphicsPipelineCreateInfo.pDynamicState = nullptr;
+	graphicsPipelineCreateInfo.pRasterizationState = &rasterizerCreateInfo;
+	graphicsPipelineCreateInfo.pMultisampleState = &multisamplingCreateInfo;
+	graphicsPipelineCreateInfo.pColorBlendState = &colorBlendingCreateInfo;
+	graphicsPipelineCreateInfo.pDepthStencilState = nullptr;
+	graphicsPipelineCreateInfo.layout = pipelineLayout;
+	// Renderpass description the pipeline is compatible with.
+	// This pipeline will be used by the render pass.
+	graphicsPipelineCreateInfo.renderPass = renderPass;
+	// Subpass of render pass to use with pipeline. Usually one pipeline by subpass.
+	graphicsPipelineCreateInfo.subpass = 0;
+	// When you want to derivate a pipeline from an other pipeline OR
+	graphicsPipelineCreateInfo.basePipelineHandle = VK_NULL_HANDLE;
+	// Index of pipeline being created to derive from (in case of creating multiple at once)
+	graphicsPipelineCreateInfo.basePipelineIndex = -1;
+	// The handle is a cache when you want to save your pipeline to create an other later
+	auto result = mainDevice.logicalDevice.createGraphicsPipeline(
+	VK_NULL_HANDLE, graphicsPipelineCreateInfo);
+	// We could have used createGraphicsPipelines to create multiple pipelines at once.
+	if (result.result != vk::Result::eSuccess)
+	{
+		throw std::runtime_error("Cound not create a graphics pipeline");
+	}
+	graphicsPipeline = result.value;
+
+	// Destroy shader modules
+	mainDevice.logicalDevice.destroyShaderModule(fragmentShaderModule);
+	mainDevice.logicalDevice.destroyShaderModule(vertexShaderModule);
+}
+
+VkShaderModule VulkanRenderer::createShaderModule(const vector<char>& code)
+{
+	vk::ShaderModuleCreateInfo shaderModuleCreateInfo{};
+	shaderModuleCreateInfo.codeSize = code.size();
+	// Conversion between pointer types with reinterpret_cast
+
+	shaderModuleCreateInfo.pCode = reinterpret_cast<const uint32_t*>(code.data());
+	vk::ShaderModule shaderModule =
+	mainDevice.logicalDevice.createShaderModule(shaderModuleCreateInfo);
+	return shaderModule;
+}
+
+void VulkanRenderer::createRenderPass()
+{
+	vk::RenderPassCreateInfo renderPassCreateInfo{};
+	// Attachement description : describe color buffer output, depth buffer output...
+	// e.g. (location = 0) in the fragment shader is the first attachment
+	vk::AttachmentDescription colorAttachment{};
+	// Format to use for attachment
+	colorAttachment.format = swapchainImageFormat;
+	// Number of samples to write for multisampling
+	colorAttachment.samples = vk::SampleCountFlagBits::e1;
+	// What to do with attachement before renderer. Here, clear when we start the render pass.
+	colorAttachment.loadOp = vk::AttachmentLoadOp::eClear;
+	// What to do with attachement after renderer. Here, store the render pass.
+	colorAttachment.storeOp = vk::AttachmentStoreOp::eStore;
+	// What to do with stencil before renderer. Here, don't care, we don't use stencil.
+	colorAttachment.stencilLoadOp = vk::AttachmentLoadOp::eDontCare;
+	// What to do with stencil after renderer. Here, don't care, we don't use stencil.
+	colorAttachment.stencilStoreOp = vk::AttachmentStoreOp::eDontCare;
+	// Framebuffer images will be stored as an image, but image can have different layouts
+	// to give optimal use for certain operations
+	// Image data layout before render pass starts
+	colorAttachment.initialLayout = vk::ImageLayout::eUndefined;
+	// Image data layout after render pass
+	colorAttachment.finalLayout = vk::ImageLayout::ePresentSrcKHR;
+	renderPassCreateInfo.attachmentCount = 1;
+	renderPassCreateInfo.pAttachments = &colorAttachment;
+	// Attachment reference uses an attachment index that refers to index
+	// in the attachement list passed to renderPassCreateInfo
+	vk::AttachmentReference colorAttachmentReference{};
+	colorAttachmentReference.attachment = 0;
+	// Layout of the subpass (between initial and final layout)
+	colorAttachmentReference.layout = vk::ImageLayout::eColorAttachmentOptimal;
+	// Subpass description, will reference attachements
+	vk::SubpassDescription subpass{};
+
+	// Pipeline type the subpass will be bound to.
+	// Could be computed pipeline, or nvidia raytracing...
+	subpass.pipelineBindPoint = vk::PipelineBindPoint::eGraphics;
+	subpass.colorAttachmentCount = 1;
+	subpass.pColorAttachments = &colorAttachmentReference;
+	renderPassCreateInfo.subpassCount = 1;
+	renderPassCreateInfo.pSubpasses = &subpass;
+	// Subpass dependencies: transitions between subpasses + from the last subpass to what
+	// happens after. Need to determine when layout transitions occur using subpass
+	// dependencies. Will define implicitly layout transitions.
+	std::array<vk::SubpassDependency, 2> subpassDependencies;
+	// -- From layout undefined to color attachment optimal
+	// ---- Transition must happen after
+	// External: from outside the subpasses
+	subpassDependencies[0].srcSubpass = VK_SUBPASS_EXTERNAL;
+	// Which stage of the pipeline has to happen before
+	subpassDependencies[0].srcStageMask = vk::PipelineStageFlagBits::eBottomOfPipe;
+	subpassDependencies[0].srcAccessMask = vk::AccessFlagBits::eMemoryRead;
+	// ---- But must happen before
+	// Conversion should happen before the first subpass starts
+	subpassDependencies[0].dstSubpass = 0;
+	subpassDependencies[0].dstStageMask = vk::PipelineStageFlagBits::eColorAttachmentOutput;
+	// ...and before the color attachment attempts to read or write
+	subpassDependencies[0].dstAccessMask =
+	vk::AccessFlagBits::eMemoryRead | vk::AccessFlagBits::eMemoryWrite;
+	subpassDependencies[0].dependencyFlags = {}; // No dependency flag
+	// -- From layout color attachment optimal to image layout present
+	// ---- Transition must happen after
+	subpassDependencies[1].srcSubpass = 0;
+	subpassDependencies[1].srcStageMask = vk::PipelineStageFlagBits::eColorAttachmentOutput;
+	subpassDependencies[1].srcAccessMask =
+	vk::AccessFlagBits::eMemoryRead | vk::AccessFlagBits::eMemoryWrite;
+	// ---- But must happen before
+	subpassDependencies[1].dstSubpass = VK_SUBPASS_EXTERNAL;
+	subpassDependencies[1].dstStageMask = vk::PipelineStageFlagBits::eBottomOfPipe;
+	subpassDependencies[1].dstAccessMask = vk::AccessFlagBits::eMemoryRead;
+
+	subpassDependencies[1].dependencyFlags = vk::DependencyFlags();
+	renderPassCreateInfo.dependencyCount = static_cast<uint32_t>(subpassDependencies.size());
+	renderPassCreateInfo.pDependencies = subpassDependencies.data();
+	renderPass = mainDevice.logicalDevice.createRenderPass(renderPassCreateInfo);
+}
+
+void VulkanRenderer::createFramebuffers()
+{
+	// Create one framebuffer for each swapchain image
+	swapchainFramebuffers.resize(swapchainImages.size());
+	for (size_t i = 0; i < swapchainFramebuffers.size(); ++i)
+	{
+		// Setup attachments
+		std::array<vk::ImageView, 1> attachments{ swapchainImages[i].imageView };
+		// Create info
+		vk::FramebufferCreateInfo framebufferCreateInfo{};
+		// Render pass layout the framebuffer will be used with
+		framebufferCreateInfo.renderPass = renderPass;
+		framebufferCreateInfo.attachmentCount = static_cast<uint32_t>(attachments.size());
+		// List of attachments (1:1 with render pass, thanks to variable i)
+		framebufferCreateInfo.pAttachments = attachments.data();
+		framebufferCreateInfo.width = swapchainExtent.width;
+		framebufferCreateInfo.height = swapchainExtent.height;
+		// Framebuffer layers
+		framebufferCreateInfo.layers = 1;
+		swapchainFramebuffers[i] =
+		mainDevice.logicalDevice.createFramebuffer(framebufferCreateInfo);
+
+	}
+}
+
+void VulkanRenderer::createGraphicsCommandPool()
+{
+	QueueFamilyIndices queueFamilyIndices = getQueueFamilies(mainDevice.physicalDevice);
+	VkCommandPoolCreateInfo poolInfo{};
+	poolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+	
+	// Queue family type that buffers from this command pool will use
+	poolInfo.queueFamilyIndex = queueFamilyIndices.graphicsFamily;
+	graphicsCommandPool = mainDevice.logicalDevice.createCommandPool(poolInfo);
+}
+
+void VulkanRenderer::createGraphicsCommandBuffers()
+{
+	// Create one command buffer for each framebuffer
+	commandBuffers.resize(swapchainFramebuffers.size());
+	vk::CommandBufferAllocateInfo commandBufferAllocInfo{};
+	// We are using a pool
+	commandBufferAllocInfo.commandPool = graphicsCommandPool;
+	commandBufferAllocInfo.commandBufferCount = static_cast<uint32_t>(commandBuffers.size());
+	// Primary means the command buffer will submit directly to a queue.
+	// Secondary cannot be called by a queue, but by an other primary command
+	// buffer, via vkCmdExecuteCommands.
+	commandBufferAllocInfo.level = vk::CommandBufferLevel::ePrimary;
+	commandBuffers = mainDevice.logicalDevice.allocateCommandBuffers(commandBufferAllocInfo);
+}
+
+void VulkanRenderer::recordCommands()
+{
+	// How to begin each command buffer
+	vk::CommandBufferBeginInfo commandBufferBeginInfo{};
+	// Buffer can be resubmited when it has already been submited
+	//commandBufferBeginInfo.flags = vk::CommandBufferUsageFlagBits::eSimultaneousUse;
+	// Information about how to be a render pass (only for graphical apps)
+	vk::RenderPassBeginInfo renderPassBeginInfo{};
+	// Render pass to begin
+	renderPassBeginInfo.renderPass = renderPass;
+	// Start point of render pass in pixel
+	renderPassBeginInfo.renderArea.offset = vk::Offset2D { 0, 0 };
+	// Size of region to run render pass on
+	renderPassBeginInfo.renderArea.extent = swapchainExtent;
+	vk::ClearValue clearValues{};
+	std::array<float, 4> colors { 0.6f, 0.65f, 0.4f, 1.0f };
+	clearValues.color = vk::ClearColorValue{ colors };
+	renderPassBeginInfo.pClearValues = &clearValues;
+	renderPassBeginInfo.clearValueCount = 1;
+	for (size_t i = 0; i < commandBuffers.size(); ++i)
+	{
+		// Because 1-to-1 relationship
+		renderPassBeginInfo.framebuffer = swapchainFramebuffers[i];
+
+		// Start recording commands to command buffer
+		commandBuffers[i].begin(commandBufferBeginInfo);
+		// Begin render pass
+		// All draw commands inline (no secondary command buffers)
+		commandBuffers[i].beginRenderPass(
+		renderPassBeginInfo, vk::SubpassContents::eInline);
+		// Bind pipeline to be used in render pass,
+		// you could switch pipelines for different subpasses
+		commandBuffers[i].bindPipeline(
+		vk::PipelineBindPoint::eGraphics, graphicsPipeline);
+		// Execute pipeline
+		// Draw 3 vertices, 1 instance, with no offset. Instance allow you
+		// to draw several instances with one draw call.
+		commandBuffers[i].draw(3, 1, 0, 0);
+		// End render pass
+		commandBuffers[i].endRenderPass();
+		// Stop recording to command buffer
+		commandBuffers[i].end();
+	}
+}
+
+void VulkanRenderer::draw()
+{
+	// 0. Freeze code until the drawFences[currentFrame] is open
+	mainDevice.logicalDevice.waitForFences(drawFences[currentFrame], VK_TRUE,
+	std::numeric_limits<uint32_t>::max());
+	// When passing the fence, we close it behind us
+	mainDevice.logicalDevice.resetFences(drawFences[currentFrame]);
+
+	// 1. Get next available image to draw and set a semaphore to signal
+	// when we're finished with the image.
+	uint32_t imageToBeDrawnIndex = (mainDevice.logicalDevice.acquireNextImageKHR(
+	swapchain,
+	std::numeric_limits<uint32_t>::max(),
+	imageAvailable[currentFrame],
+	VK_NULL_HANDLE)
+	).value;
+
+	// 2. Submit command buffer to queue for execution, make sure it waits
+	// for the image to be signaled as available before drawing, and
+	// signals when it has finished rendering.
+	vk::SubmitInfo submitInfo{};
+	submitInfo.waitSemaphoreCount = 1;
+	submitInfo.pWaitSemaphores = &imageAvailable[currentFrame];
+	graphicsQueue.submit(submitInfo, drawFences[currentFrame]);
+	// Keep doing command buffer until imageAvailable is true
+	vk::PipelineStageFlags waitStages[]{ vk::PipelineStageFlagBits::eColorAttachmentOutput };
+	// Stages to check semaphores at
+	submitInfo.pWaitDstStageMask = waitStages;
+	submitInfo.commandBufferCount = 1;
+	// Command buffer to submit
+	submitInfo.pCommandBuffers = &commandBuffers[imageToBeDrawnIndex];
+	// Semaphores to signal when command buffer finishes
+	submitInfo.pSignalSemaphores = &renderFinished[currentFrame];
+	submitInfo.signalSemaphoreCount = 1;
+	graphicsQueue.submit(submitInfo, VK_NULL_HANDLE);
+	// 3. Present image to screen when it has signalled finished rendering
+	vk::PresentInfoKHR presentInfo{};
+	presentInfo.waitSemaphoreCount = 1;
+	presentInfo.pWaitSemaphores = &renderFinished[currentFrame];
+	presentInfo.swapchainCount = 1;
+	// Swapchains to present to
+	presentInfo.pSwapchains = &swapchain;
+	// Index of images in swapchains to present
+	presentInfo.pImageIndices = &imageToBeDrawnIndex;
+	presentationQueue.presentKHR(presentInfo);
+	
+	currentFrame = (currentFrame + 1) % MAX_FRAME_DRAWS;
+}
+
+void VulkanRenderer::createSynchronisation()
+{
+	imageAvailable.resize(MAX_FRAME_DRAWS);
+	renderFinished.resize(MAX_FRAME_DRAWS);
+	drawFences.resize(MAX_FRAME_DRAWS);
+	// Semaphore creation info
+	vk::SemaphoreCreateInfo semaphoreCreateInfo{};
+	// Fence creation info
+	vk::FenceCreateInfo fenceCreateInfo{};
+	// Fence starts open
+	fenceCreateInfo.flags = vk::FenceCreateFlagBits::eSignaled;
+	for (size_t i = 0; i < MAX_FRAME_DRAWS; ++i)
+	{
+		imageAvailable[i] = mainDevice.logicalDevice.createSemaphore(semaphoreCreateInfo);
+		renderFinished[i] = mainDevice.logicalDevice.createSemaphore(semaphoreCreateInfo);
+		drawFences[i] = mainDevice.logicalDevice.createFence(fenceCreateInfo);
+	}
+}
+
