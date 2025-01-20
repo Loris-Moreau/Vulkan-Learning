@@ -8,6 +8,7 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 	try
 	{
 		createInstance();
+		setupDebugMessenger();
 		getPhysicalDevice();
 	}
 	
@@ -232,6 +233,10 @@ bool VulkanRenderer::checkValidationLayerSupport()
 
 void VulkanRenderer::clean()
 {
+	if (enableValidationLayers)
+	{
+		destroyDebugUtilsMessengerEXT(instance, debugMessenger, nullptr);
+	}
 	mainDevice.logicalDevice.destroy();
 	instance.destroy();
 }
@@ -248,4 +253,48 @@ vector<const char*> VulkanRenderer::getRequiredExtensions()
 	}
 	
 	return extensions;
+}
+
+VkResult VulkanRenderer::createDebugUtilsMessengerEXT(VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator,
+	VkDebugUtilsMessengerEXT* pDebugMessenger)
+{
+	auto func = (PFN_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(instance, "vkCreateDebugUtilsMessengerEXT");
+	if (func != nullptr)
+	{
+		return func(instance, pCreateInfo, pAllocator, pDebugMessenger);
+	}
+	else
+	{
+		return VK_ERROR_EXTENSION_NOT_PRESENT;
+	}
+}
+
+void VulkanRenderer::destroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT debugMessenger, const VkAllocationCallbacks* pAllocator)
+{
+	auto func = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(instance, "vkDestroyDebugUtilsMessengerEXT");
+	if (func != nullptr)
+	{
+		func(instance, debugMessenger, pAllocator);
+	}
+}
+
+void VulkanRenderer::populateDebugMessengerCreateInfo(vk::DebugUtilsMessengerCreateInfoEXT& createInfo)
+{
+	createInfo.messageSeverity = vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning |
+	vk::DebugUtilsMessageSeverityFlagBitsEXT::eError;
+	createInfo.messageType = vk::DebugUtilsMessageTypeFlagBitsEXT::eGeneral |
+	vk::DebugUtilsMessageTypeFlagBitsEXT::eValidation |
+	vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance;
+	createInfo.pfnUserCallback = (vk::PFN_DebugUtilsMessengerCallbackEXT)debugCallback;
+}
+
+void VulkanRenderer::setupDebugMessenger()
+{
+	if (!enableValidationLayers) return;
+	vk::DebugUtilsMessengerCreateInfoEXT createInfo;
+	populateDebugMessengerCreateInfo(createInfo);
+	/*if (instance.createDebugUtilsMessengerEXT(createInfo, nullptr, &debugMessenger) != vk::Result::eSuccess)
+	{
+		throw std::runtime_error("Failed to set up debug messenger.");
+	}*/
 }

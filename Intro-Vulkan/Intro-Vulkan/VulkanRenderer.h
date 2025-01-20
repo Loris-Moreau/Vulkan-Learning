@@ -1,6 +1,8 @@
 #pragma once
 
 #define GLFW_INCLUDE_VULKAN
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdexcept>
 #include <vector>
 #include <GLFW/glfw3.h>
@@ -51,4 +53,14 @@ private:
 	bool checkValidationLayerSupport();
 
 	vector<const char*> getRequiredExtensions();
+
+	VkDebugUtilsMessengerEXT debugMessenger;
+
+	VkResult createDebugUtilsMessengerEXT(VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator,
+		VkDebugUtilsMessengerEXT* pDebugMessenger);
+
+	void destroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT debugMessenger, const VkAllocationCallbacks* pAllocator);
+	void populateDebugMessengerCreateInfo(vk::DebugUtilsMessengerCreateInfoEXT& createInfo);
+	
+	void setupDebugMessenger();
 };
