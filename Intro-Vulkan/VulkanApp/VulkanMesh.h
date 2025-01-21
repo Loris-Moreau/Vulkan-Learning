@@ -10,7 +10,7 @@ using std::vector;
 class VulkanMesh
 {
 public:
-	VulkanMesh::VulkanMesh(vk::PhysicalDevice physicalDeviceP,vk::Device deviceP,
+	VulkanMesh(vk::PhysicalDevice physicalDeviceP,vk::Device deviceP,
 		vk::Queue transferQueue, vk::CommandPool transferCommandPool, vector<Vertex>* vertices,
 		vector<uint32_t>* indices);
 	VulkanMesh() = default;
