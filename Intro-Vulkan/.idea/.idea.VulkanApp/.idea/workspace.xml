@@ -8,8 +8,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe21b1dd-7b2a-4276-81af-359df12e18f0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/unsuccessfulbuild" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/Main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanMesh.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanMesh.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanMesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanMesh.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/shader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/shader.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/vert.spv" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/vert.spv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.Build.CppClean.log" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.Build.CppClean.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.ilk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.read.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.write.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/Cl.items.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.command.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.read.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.secondary.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.write.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.idb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/x64/Debug/VulkanApp.pdb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +38,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../../../../../VulkanSDK/Include/vulkan/vulkan_structs.hpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -119,7 +142,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737452306518</updated>
       <workItem from="1737452308010" duration="807000" />
-      <workItem from="1737454136523" duration="3001000" />
+      <workItem from="1737454136523" duration="6236000" />
     </task>
     <servers />
   </component>

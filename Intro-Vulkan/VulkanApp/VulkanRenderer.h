@@ -10,9 +10,30 @@ using std::vector;
 using std::set;
 #include <array>
 using std::array;
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "VulkanMesh.h"
 #include "VulkanUtilities.h"
+
+struct
+{
+	vk::PhysicalDevice physicalDevice;
+	vk::Device logicalDevice;
+} mainDevice;
+
+struct MVP
+{
+	glm::mat4 projection;
+	glm::mat4 view;
+	glm::mat4 model;
+};
+
+struct ViewProjection
+{
+	glm::mat4 projection;
+	glm::mat4 view;
+};
 
 class VulkanRenderer
 {
@@ -30,19 +51,13 @@ public:
 	int init(GLFWwindow* windowP);
 	void draw();
 	void clean();
-
-
+	
 private:
 	GLFWwindow* window;
 	vk::Instance instance;
 	vk::Queue graphicsQueue;			// Handles to queue (no value stored)
 	VkDebugUtilsMessengerEXT debugMessenger;
 	
-	struct {
-		vk::PhysicalDevice physicalDevice;
-		vk::Device logicalDevice;
-	} mainDevice;
-
 	vk::SurfaceKHR surface;
 	vk::Queue presentationQueue;
 	vk::SwapchainKHR swapchain;
@@ -60,7 +75,8 @@ private:
 
 	vector<vk::Semaphore> imageAvailable;
 	vector<vk::Semaphore> renderFinished;
-	const int MAX_FRAME_DRAWS = 2;			// Should be less than the number of swapchain images, here 3 (could cause bugs)
+	// Should be less than the number of swap-chain images, here 3 (could cause bugs)
+	const int MAX_FRAME_DRAWS = 2;
 	int currentFrame = 0;
 	vector<vk::Fence> drawFences;
 
@@ -78,7 +94,7 @@ private:
 
 	// Devices
 	void getPhysicalDevice();
-	bool checkDeviceSuitable(vk::PhysicalDevice device);
+	bool checkDeviceSuitable(VkPhysicalDevice device);
 	QueueFamilyIndices getQueueFamilies(vk::PhysicalDevice device);
 	void createLogicalDevice();
 
@@ -109,5 +125,39 @@ private:
 	VulkanMesh firstMesh;
 
 	vector<VulkanMesh> meshes;
-};
 
+	MVP mvp;
+
+	vk::DescriptorSetLayout descriptorSetLayout;
+	void createDescriptorSetLayout();
+
+	vector<vk::Buffer> vpUniformBuffer;
+	vector<vk::DeviceMemory> vpUniformBufferMemory;
+	void createUniformBuffers();
+
+	vk::DescriptorPool descriptorPool;
+	void createDescriptorPool();
+
+	vector<vk::DescriptorSet> descriptorSets;
+	void createDescriptorSets();
+
+	void updateUniformBuffers(uint32_t imageIndex);
+
+public:
+	void updateModel(int modelId, glm::mat4 modelP);
+
+private:
+	ViewProjection viewProjection;
+	
+	VkDeviceSize minUniformBufferOffet;
+	size_t modelUniformAlignement;
+	//UboModel* modelTransferSpace;
+	Model* modelTransferSpace;
+
+	const int MAX_OBJECTS = 2;
+
+	void allocateDynamicBufferTransferSpace();
+
+	vector<vk::Buffer> modelUniformBufferDynamic;
+	vector<vk::DeviceMemory> modelUniformBufferMemoryDynamic;
+};

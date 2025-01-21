@@ -7,6 +7,11 @@
 #include <vector>
 using std::vector;
 
+struct Model
+{
+	glm::mat4 model;
+};
+
 class VulkanMesh
 {
 public:
@@ -22,6 +27,9 @@ public:
 	size_t getIndexCount();
 
 	vk::Buffer getIndexBuffer();
+	
+	Model getModel() const { return model; }
+	void setModel(const glm::mat4& modelP) { model.model = modelP; }
 	
 private:
 	size_t vertexCount;
@@ -39,4 +47,6 @@ private:
 	vk::DeviceMemory indexBufferMemory;
 	
 	void createIndexBuffer(vk::Queue transferQueue, vk::CommandPool transferCommandPool, vector<uint32_t>* indices);
+
+	Model model;
 };

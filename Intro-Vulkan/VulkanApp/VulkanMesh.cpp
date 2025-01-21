@@ -9,6 +9,7 @@ physicalDevice(physicalDeviceP), device(deviceP)
 {
 	createVertexBuffer(transferQueue, transferCommandPool, vertices);
 	createIndexBuffer(transferQueue, transferCommandPool, indices);
+	model.model = glm::mat4(1.0f);
 }
 
 size_t VulkanMesh::getVextexCount()

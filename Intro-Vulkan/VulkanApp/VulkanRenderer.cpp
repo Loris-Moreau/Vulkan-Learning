@@ -26,24 +26,39 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 		// Pipeline
 		createSwapchain();
 		createRenderPass();
+		createDescriptorSetLayout();
 		createGraphicsPipeline();
 		createFramebuffers();
 		createGraphicsCommandPool();
+		
 		// Objects
+		float aspectRatio = static_cast<float>(swapchainExtent.width) / static_cast<float>(swapchainExtent.height);
+
+		/*
+		mvp.projection = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
+		mvp.view = glm::lookAt(glm::vec3(3.0f, 1.0f, 2.0f), 
+		glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		mvp.model = glm::mat4(1.0f);
+		// In vulkan, y is downward, and for glm it is upward
+		mvp.projection[1][1] *= -1;
+		*/
+		viewProjection.view = glm::lookAt(glm::vec3(0.0f, 1.0f, 2.0f),
+			glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		
 		// -- Vertex data
 		vector<Vertex> meshVertices1
 		{
-			{{-0.1f, -0.4f, 0.0f}, {1.0f, 0.0f, 0.0f}}, // 0
-			{{-0.1f, 0.4f, 0.0f}, {0.0f, 1.0f, 0.0f}}, // 1
-			{{-0.9f, 0.4f, 0.0f}, {0.0f, 0.0f, 1.0f}}, // 2
-			{{-0.9f, -0.4f, 0.0f}, {1.0f, 1.0f, 0.0f}}, // 3
+			{{-0.4f, 0.4f, 0.0f}, {1.0f, 0.0f, 0.0f}}, // 0
+			{{-0.4f, -0.4f, 0.0f}, {0.0f, 1.0f, 0.0f}}, // 1
+			{{ 0.4f, -0.4f, 0.0f}, {0.0f, 0.0f, 1.0f}}, // 2
+			{{ 0.4f, 0.4f, 0.0f}, {1.0f, 1.0f, 0.0f}}, // 3
 		};
 		vector<Vertex> meshVertices2
 		{
-			{{ 0.9f, -0.4f, 0.0f}, {1.0f, 0.0f, 0.0f}}, // 0
-			{{ 0.9f, 0.4f, 0.0f}, {0.0f, 1.0f, 0.0f}}, // 1
-			{{ 0.1f, 0.4f, 0.0f}, {0.0f, 0.0f, 1.0f}}, // 2
-			{{ 0.1f, -0.4f, 0.0f}, {1.0f, 1.0f, 0.0f}}, // 3
+			{{-0.2f, 0.6f, 0.0f}, {1.0f, 0.0f, 0.0f}}, // 0
+			{{-0.2f, -0.6f, 0.0f}, {0.0f, 1.0f, 0.0f}}, // 1
+			{{ 0.2f, -0.6f, 0.0f}, {0.0f, 0.0f, 1.0f}}, // 2
+			{{ 0.2f, 0.6f, 0.0f}, {1.0f, 1.0f, 0.0f}}, // 3
 		};
 		// -- Index data
 		vector<uint32_t> meshIndices
@@ -51,15 +66,19 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 			0, 1, 2,
 			2, 3, 0
 		};
-		VulkanMesh firstMesh = VulkanMesh(mainDevice.physicalDevice,
-		mainDevice.logicalDevice,graphicsQueue, graphicsCommandPool,
-		&meshVertices1, &meshIndices);
-		VulkanMesh secondMesh = VulkanMesh(mainDevice.physicalDevice,
-		mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool,
-		&meshVertices2, &meshIndices);
+		VulkanMesh firstMesh = VulkanMesh(mainDevice.physicalDevice, mainDevice.logicalDevice,
+			graphicsQueue, graphicsCommandPool, &meshVertices1, &meshIndices);
+		VulkanMesh secondMesh =
+		VulkanMesh(mainDevice.physicalDevice, mainDevice.logicalDevice,
+			graphicsQueue, graphicsCommandPool, &meshVertices2, &meshIndices);
 		meshes.push_back(firstMesh);
 		meshes.push_back(secondMesh);
-
+		
+		// Data
+		allocateDynamicBufferTransferSpace(); 
+		createUniformBuffers();
+		createDescriptorPool();
+		createDescriptorSets();
 		// Commands
 		createGraphicsCommandBuffers();
 		recordCommands();
@@ -83,9 +102,9 @@ void VulkanRenderer::draw()
 
 	// 1. Get next available image to draw and set a semaphore to signal
 	// when we're finished with the image.
-	uint32_t imageToBeDrawnIndex = (mainDevice.logicalDevice.acquireNextImageKHR(swapchain, 
-		std::numeric_limits<uint32_t>::max(), imageAvailable[currentFrame], VK_NULL_HANDLE)).value;
-
+	uint32_t imageToBeDrawnIndex = (mainDevice.logicalDevice.acquireNextImageKHR(swapchain, std::numeric_limits<uint32_t>::max(), imageAvailable[currentFrame], VK_NULL_HANDLE)).value;
+	updateUniformBuffers(imageToBeDrawnIndex);
+	
 	// 2. Submit command buffer to queue for execution, make sure it waits 
 	// for the image to be signaled as available before drawing, and
 	// signals when it has finished rendering.
@@ -124,6 +143,25 @@ void VulkanRenderer::draw()
 void VulkanRenderer::clean()
 {
 	mainDevice.logicalDevice.waitIdle();
+	
+	_aligned_free(modelTransferSpace);
+	
+	mainDevice.logicalDevice.destroyDescriptorPool(descriptorPool);
+	mainDevice.logicalDevice.destroyDescriptorSetLayout(descriptorSetLayout);
+	
+	for (size_t i = 0; i < swapchainImages.size(); ++i)
+	{
+		mainDevice.logicalDevice.destroyBuffer(vpuniformBuffer[i]);
+		mainDevice.logicalDevice.freeMemory(vpUniformBufferMemory[i]);
+		mainDevice.logicalDevice.destroyBuffer(modelUniformBufferDynamic[i]);
+		mainDevice.logicalDevice.freeMemory(modelUniformBufferMemoryDynamic[i]);
+	}
+	
+	for (size_t i = 0; i < vpUniformBuffer.size(); ++i)
+	{
+		mainDevice.logicalDevice.destroyBuffer(vpuniformBuffer[i]);
+		mainDevice.logicalDevice.freeMemory(vpUniformBufferMemory[i]);
+	}
 	
 	for (auto& mesh : meshes)
 	{
@@ -315,21 +353,24 @@ void VulkanRenderer::getPhysicalDevice()
 			break;
 		}
 	}
+
+	// Get properties of our new device to know some values
+	vk::PhysicalDeviceProperties deviceProperties = mainDevice.physicalDevice.getProperties();
+	minUniformBufferOffet = deviceProperties.limits.minUniformBufferOffsetAlignment;
 }
 
-bool VulkanRenderer::checkDeviceSuitable(vk::PhysicalDevice device)
+bool VulkanRenderer::checkDeviceSuitable(VkPhysicalDevice device)
 {
 	// Information about the device itself (ID, name, type, vendor, etc.)
 	vk::PhysicalDeviceProperties deviceProperties = device.getProperties();
-
+	
 	// Information about what the device can do (geom shader, tesselation, wide lines...)
-	vk::PhysicalDeviceFeatures deviceFeatures = device.getFeatures();
-
-	// For now we do nothing with this info
-
+	vk::PhysicalDeviceFeatures deviceFeatures = device.getfeatures();
+	
+	// For now, we do nothing with this info
 	QueueFamilyIndices indices = getQueueFamilies(device);
 	bool extensionSupported = checkDeviceExtensionSupport(device);
-
+	
 	bool swapchainValid = false;
 	if (extensionSupported)
 	{
@@ -766,8 +807,8 @@ void VulkanRenderer::createGraphicsPipeline()
 	rasterizerCreateInfo.lineWidth = 1.0f;							
 	// Culling. Do not draw back of polygons
 	rasterizerCreateInfo.cullMode = vk::CullModeFlagBits::eBack;	
-	// Widing to know the front face of a polygon
-	rasterizerCreateInfo.frontFace = vk::FrontFace::eClockwise;	
+	// Winding to know the front face of a polygon
+	rasterizerCreateInfo.frontFace = vk::FrontFace::eCounterClockwise;
 	// Whether to add a depth offset to fragments. Good for stopping "shadow acne" in shadow mapping. 
 	// Is set, need to set 3 other values.
 	rasterizerCreateInfo.depthBiasEnable = VK_FALSE;				
@@ -807,13 +848,11 @@ void VulkanRenderer::createGraphicsPipeline()
 
 
 	// -- PIPELINE LAYOUT --
-	// TODO: apply future descriptorset layout
+	// TODO: apply future descriptors set layout
 	vk::PipelineLayoutCreateInfo pipelineLayoutCreateInfo{};
-	pipelineLayoutCreateInfo.setLayoutCount = 0;
-	pipelineLayoutCreateInfo.pSetLayouts = nullptr;
-	pipelineLayoutCreateInfo.pushConstantRangeCount = 0;
-	pipelineLayoutCreateInfo.pPushConstantRanges = nullptr;
-
+	pipelineLayoutCreateInfo.setLayoutCount = 1;
+	pipelineLayoutCreateInfo.pSetLayouts = &descriptorSetLayout;
+	
 	// Create pipeline layout
 	pipelineLayout = mainDevice.logicalDevice.createPipelineLayout(pipelineLayoutCreateInfo);
 
@@ -1048,13 +1087,14 @@ void VulkanRenderer::recordCommands()
 		// Draw all meshes
 		for (size_t j = 0; j < meshes.size(); ++j)
 		{
-			// Bind vertex buffer
-			vk::Buffer vertexBuffers[] = {meshes[j].getVertexBuffer()};
-			vk::DeviceSize offsets[] = {0};
-			commandBuffers[i].bindVertexBuffers(0, vertexBuffers, offsets);
 			// Bind index buffer
 			commandBuffers[i].bindIndexBuffer(
 			meshes[j].getIndexBuffer(), 0, vk::IndexType::eUint32);
+			// Dynamic offet amount
+			uint32_t dynamicOffset = static_cast<uint32_t>(modelUniformAlignement) * j;
+			// Bind descriptor sets
+			commandBuffers[i].bindDescriptorSets(vk::PipelineBindPoint::eGraphics,
+			pipelineLayout, 0, 1, &descriptorSets[i], 1, &dynamicOffset);
 			// Execute pipeline
 			commandBuffers[i].drawIndexed(
 			static_cast<uint32_t>(meshes[j].getIndexCount()), 1, 0, 0, 0);
@@ -1063,7 +1103,7 @@ void VulkanRenderer::recordCommands()
 		// End render pass
 		commandBuffers[i].endRenderPass();
 
-		// Stop recordind to command buffer
+		// Stop recording to command buffer
 		commandBuffers[i].end();
 	}
 }
@@ -1089,3 +1129,204 @@ void VulkanRenderer::createSynchronisation()
 		drawFences[i] = mainDevice.logicalDevice.createFence(fenceCreateInfo);
 	}
 }
+
+void VulkanRenderer::createDescriptorSetLayout()
+{
+	// ViewProjection binding information
+	vk::DescriptorSetLayoutBinding vpLayoutBinding;
+	// Binding number in shader
+	vpLayoutBinding.binding = 0;
+	// Type of descriptor (uniform, dynamic uniform, samples...)
+	vpLayoutBinding.descriptorType = vk::DescriptorType::eUniformBuffer;
+	// Number of descriptors for binding
+	vpLayoutBinding.descriptorCount = 1;
+	// Shader stage to bind to (here: vertex shader)
+	vpLayoutBinding.stageFlags = vk::ShaderStageFlagBits::eVertex;
+	// For textures : can make sample data un changeable
+	vpLayoutBinding.pImmutableSamplers = nullptr;
+	// Model
+	vk::DescriptorSetLayoutBinding modelLayoutBinding;
+	modelLayoutBinding.binding = 1;
+	modelLayoutBinding.descriptorType = vk::DescriptorType::eUniformBufferDynamic;
+	modelLayoutBinding.descriptorCount = 1;
+	modelLayoutBinding.stageFlags = vk::ShaderStageFlagBits::eVertex;
+	modelLayoutBinding.pImmutableSamplers = nullptr;
+	vector<vk::DescriptorSetLayoutBinding> layoutBindings
+	{
+		vpLayoutBinding, modelLayoutBinding
+	};
+	// Descriptor set layout with given binding
+	vk::DescriptorSetLayoutCreateInfo layoutCreateInfo{};
+	layoutCreateInfo.bindingCount = static_cast<uint32_t>(layoutBindings.size());
+	layoutCreateInfo.pBindings = layoutBindings.data();
+	// Create descriptor set layout
+	descriptorSetLayout = mainDevice.logicalDevice.createDescriptorSetLayout(layoutCreateInfo);
+}
+
+void VulkanRenderer::createUniformBuffers()
+{
+	// Buffer size will be size of all 3 variables
+	vk::DeviceSize vpBufferSize = sizeof(ViewProjection);
+	// Model buffer size
+	vk::DeviceSize modelBufferSize = modelUniformAlignement * MAX_OBJECTS;
+	// One uniform buffer for each image / each command buffer
+	vpUniformBuffer.resize(swapchainImages.size());
+	vpUniformBufferMemory.resize(swapchainImages.size());
+	modelUniformBufferDynamic.resize(swapchainImages.size());
+	modelUniformBufferMemoryDynamic.resize(swapchainImages.size());
+	// Create uniform buffers
+	for (size_t i = 0; i < swapchainImages.size(); ++i)
+	{
+		createBuffer(mainDevice.physicalDevice, mainDevice.logicalDevice, vpBufferSize,
+		vk::BufferUsageFlagBits::eUniformBuffer,
+		vk::MemoryPropertyFlagBits::eHostVisible
+		| vk::MemoryPropertyFlagBits::eHostCoherent,
+		&vpUniformBuffer[i], &vpUniformBufferMemory[i]);
+		createBuffer(mainDevice.physicalDevice, mainDevice.logicalDevice, modelBufferSize,
+		vk::BufferUsageFlagBits::eUniformBuffer,
+		vk::MemoryPropertyFlagBits::eHostVisible
+		| vk::MemoryPropertyFlagBits::eHostCoherent,
+		&modelUniformBufferDynamic[i], &modelUniformBufferMemoryDynamic[i]);
+
+	}
+}
+
+void VulkanRenderer::createDescriptorPool()
+{
+	// One descriptor in the pool for each image
+	// View projection pool
+	vk::DescriptorPoolSize vpPoolSize{};
+	vpPoolSize.descriptorCount = static_cast<uint32_t>(vpUniformBuffer.size());
+	// Model pool
+	vk::DescriptorPoolSize modelPoolSize{};
+	modelPoolSize.descriptorCount = static_cast<uint32_t>(modelUniformBufferDynamic.size());
+	vector<vk::DescriptorPoolSize> poolSizes{ vpPoolSize, modelPoolSize };
+	// One descriptor set that contains one descriptor
+	vk::DescriptorPoolCreateInfo poolCreateInfo{};
+	poolCreateInfo.maxSets = static_cast<uint32_t>(swapchainImages.size());
+	poolCreateInfo.poolSizeCount = static_cast<uint32_t>(poolSizes.size());
+	poolCreateInfo.pPoolSizes = poolSizes.data();
+	// Create pool
+	descriptorPool = mainDevice.logicalDevice.createDescriptorPool(poolCreateInfo);
+}
+
+void VulkanRenderer::createDescriptorSets()
+{
+	// One descriptor set for every image/buffer
+	descriptorSets.resize(swapchainImages.size());
+	// We want the same layout for the right number of descriptor sets
+	vector<vk::DescriptorSetLayout> setLayouts(swapchainImages.size(), descriptorSetLayout);
+	// Allocation from the pool
+	vk::DescriptorSetAllocateInfo setAllocInfo{};
+	setAllocInfo.descriptorPool = descriptorPool;
+	setAllocInfo.descriptorSetCount = static_cast<uint32_t>(swapchainImages.size());
+	setAllocInfo.pSetLayouts = setLayouts.data();
+	// Allocate multiple descriptor sets
+	mainDevice.logicalDevice.allocateDescriptorSets(&setAllocInfo, descriptorSets.data());
+	// We have a connection between descriptor set layouts and descriptor sets,
+	// but we don't know how link descriptor sets and the uniform buffers.
+	// Update all of descriptor set buffer bindings
+	for (size_t i = 0; i < vpUniformBuffer.size(); ++i)
+	{
+		// -- VIEW PROJECTION DESCRIPTOR --
+		// Description of the buffer and data offset
+		vk::DescriptorBufferInfo vpBufferInfo{};
+		// Buffer to get data from
+		vpBufferInfo.buffer = vpUniformBuffer[i];
+		// We bind the whole data
+		vpBufferInfo.offset = 0;
+		// Size of data
+		vpBufferInfo.range = sizeof(ViewProjection);
+		// Data about connection between binding and buffer
+		vk::WriteDescriptorSet vpSetWrite{};
+		// Descriptor sets to update
+		vpSetWrite.dstSet = descriptorSets[i];
+		// Binding to update (matches with shader binding)
+		vpSetWrite.dstBinding = 0;
+
+		// Index in array to update
+		vpSetWrite.dstArrayElement = 0;
+		vpSetWrite.descriptorType = vk::DescriptorType::eUniformBuffer;
+		// Amount of descriptor sets to update
+		vpSetWrite.descriptorCount = 1;
+		// Information about buffer data to bind
+		vpSetWrite.pBufferInfo = &vpBufferInfo;
+		// -- MODEL DESCRIPTOR --
+		// Description of the buffer and data offset
+		vk::DescriptorBufferInfo modelBufferInfo{};
+		modelBufferInfo.buffer = modelUniformBufferDynamic[i];
+		modelBufferInfo.offset = 0;
+		modelBufferInfo.range = modelUniformAlignement;
+		// Data about connection between binding and buffer
+		vk::WriteDescriptorSet modelSetWrite{};
+		modelSetWrite.dstSet = descriptorSets[i];
+		modelSetWrite.dstBinding = 1;
+		modelSetWrite.dstArrayElement = 0;
+		modelSetWrite.descriptorType = vk::DescriptorType::eUniformBufferDynamic;
+		modelSetWrite.descriptorCount = 1;
+		modelSetWrite.pBufferInfo = &modelBufferInfo;
+		// Descriptor set writes vector
+		vector<vk::WriteDescriptorSet> setWrites{ vpSetWrite, modelSetWrite };
+		// Update descriptor set with new buffer/binding info
+		mainDevice.logicalDevice.updateDescriptorSets(
+		static_cast<uint32_t>(setWrites.size()), setWrites.data(), 0, nullptr);
+
+	}
+}
+
+void VulkanRenderer::updateUniformBuffers(uint32_t imageIndex)
+{
+	// Copy view projection data
+	void* data;
+	mainDevice.logicalDevice.mapMemory(
+	vpUniformBufferMemory[imageIndex], {},
+	sizeof(ViewProjection), {}, &data);
+	memcpy(data, &viewProjection, sizeof(ViewProjection));
+	mainDevice.logicalDevice.unmapMemory(vpUniformBufferMemory[imageIndex]);
+	// Copy model data
+	for (size_t i = 0; i < meshes.size(); ++i)
+	{
+		// Get a pointer to model in modelTransferSpace
+		Model* model =
+		(Model*)((uint64_t)modelTransferSpace + i * modelUniformAlignement);
+		// Copy data at this adress
+		*model = meshes[i].getModel();
+	}
+	mainDevice.logicalDevice.mapMemory(
+	modelUniformBufferMemoryDynamic[imageIndex], {},
+	modelUniformAlignement * meshes.size(), {}, &data);
+	memcpy(data, &modelTransferSpace, modelUniformAlignement * meshes.size());
+	mainDevice.logicalDevice.unmapMemory(modelUniformBufferMemoryDynamic[imageIndex]);
+}
+
+void VulkanRenderer::updateModel(int modelId, glm::mat4 modelP)
+{
+	if (modelId >= meshes.size()) return;
+	meshes[modelId].setModel(modelP);
+}
+
+void VulkanRenderer::allocateDynamicBufferTransferSpace()
+{
+	// modelUniformAlignement = sizeof(Model) & ~(minUniformBufferOffet - 1);
+	// We take the size of Model, and we compare its size to a mask.
+	// ~(minUniformBufferOffet - 1) is the inverse of minUniformBufferOffet
+	// Example with a 16bits alignment coded on 8 bits:
+	// 00010000 - 1 == 00001111
+	// ~(00010000 - 1) == 11110000 which is our mask.
+	// If we imagine our UboModel is 64 bits (01000000)
+	// and the minUniformBufferOffet 16 bits (00010000),
+	// (01000000) & ~(00010000 - 1) == 01000000 & 11110000 == 01000000
+	// Our alignment will need to be 64 bits.
+	// However, this calculation is not perfect.
+	// Let's now imagine our UboModel is 66 bits : 01000010.
+	// The above calculation would give us a 64 bits alignment,
+	// whereas we would need 80 bits (01010000 = 64 + 16) alignment.
+	// We need to add to the size minUniformBufferOffet - 1 to shield against this effect
+	modelUniformAlignement =
+	(sizeof(Model) + minUniformBufferOffet - 1) & ~(minUniformBufferOffet - 1);
+	// We will now allocate memory for models.
+	modelTransferSpace = (Model*)_aligned_malloc(
+	modelUniformAlignement * MAX_OBJECTS, modelUniformAlignement
+	);
+}
+
