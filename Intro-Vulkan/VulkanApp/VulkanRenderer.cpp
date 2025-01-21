@@ -151,7 +151,7 @@ void VulkanRenderer::clean()
 	
 	for (size_t i = 0; i < swapchainImages.size(); ++i)
 	{
-		mainDevice.logicalDevice.destroyBuffer(vpuniformBuffer[i]);
+		mainDevice.logicalDevice.destroyBuffer(vpUniformBuffer[i]);
 		mainDevice.logicalDevice.freeMemory(vpUniformBufferMemory[i]);
 		mainDevice.logicalDevice.destroyBuffer(modelUniformBufferDynamic[i]);
 		mainDevice.logicalDevice.freeMemory(modelUniformBufferMemoryDynamic[i]);
@@ -159,7 +159,7 @@ void VulkanRenderer::clean()
 	
 	for (size_t i = 0; i < vpUniformBuffer.size(); ++i)
 	{
-		mainDevice.logicalDevice.destroyBuffer(vpuniformBuffer[i]);
+		mainDevice.logicalDevice.destroyBuffer(vpUniformBuffer[i]);
 		mainDevice.logicalDevice.freeMemory(vpUniformBufferMemory[i]);
 	}
 	
@@ -359,10 +359,10 @@ void VulkanRenderer::getPhysicalDevice()
 	minUniformBufferOffet = deviceProperties.limits.minUniformBufferOffsetAlignment;
 }
 
-bool VulkanRenderer::checkDeviceSuitable(VkPhysicalDevice device)
+bool VulkanRenderer::checkDeviceSuitable(vk::PhysicalDevice device)
 {
 	// Information about the device itself (ID, name, type, vendor, etc.)
-	vk::PhysicalDeviceProperties deviceProperties = device.getProperties();
+	vk::PhysicalDeviceProperties deviceProperties = device.getProperties()
 	
 	// Information about what the device can do (geom shader, tesselation, wide lines...)
 	vk::PhysicalDeviceFeatures deviceFeatures = device.getfeatures();

@@ -94,7 +94,7 @@ private:
 
 	// Devices
 	void getPhysicalDevice();
-	bool checkDeviceSuitable(VkPhysicalDevice device);
+	bool checkDeviceSuitable(vk::PhysicalDevice device);
 	QueueFamilyIndices getQueueFamilies(vk::PhysicalDevice device);
 	void createLogicalDevice();
 
@@ -130,7 +130,7 @@ private:
 
 	vk::DescriptorSetLayout descriptorSetLayout;
 	void createDescriptorSetLayout();
-
+	
 	vector<vk::Buffer> vpUniformBuffer;
 	vector<vk::DeviceMemory> vpUniformBufferMemory;
 	void createUniformBuffers();
