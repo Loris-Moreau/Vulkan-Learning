@@ -15,18 +15,39 @@ VulkanRenderer::~VulkanRenderer()
 int VulkanRenderer::init(GLFWwindow* windowP)
 {
 	window = windowP;
-	try 
+	try
 	{
+		// Device
 		createInstance();
 		setupDebugMessenger();
 		surface = createSurface();
 		getPhysicalDevice();
 		createLogicalDevice();
+		// Pipeline
 		createSwapchain();
 		createRenderPass();
 		createGraphicsPipeline();
 		createFramebuffers();
 		createGraphicsCommandPool();
+		// Objects
+		// -- Vertex data
+		vector<Vertex> meshVertices
+		{
+			{{ 0.4f, -0.4f, 0.0f}, {1.0f, 0.0f, 0.0f}}, // 0
+			{{ 0.4f, 0.4f, 0.0f}, {0.0f, 1.0f, 0.0f}}, // 1
+			{{-0.4f, 0.4f, 0.0f}, {0.0f, 0.0f, 1.0f}}, // 2
+			{{-0.4f, -0.4f, 0.0f}, {1.0f, 1.0f, 0.0f}}, // 3
+		};
+		// -- Index data
+		vector<uint32_t> meshIndices
+		{
+			0, 1, 2,
+			2, 3, 0
+		};
+		
+		firstMesh = VulkanMesh(mainDevice.physicalDevice, mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool, &meshVertices, &meshIndices);
+		// Commands
+
 		createGraphicsCommandBuffers();
 		recordCommands();
 		createSynchronisation();
@@ -91,6 +112,8 @@ void VulkanRenderer::clean()
 {
 	mainDevice.logicalDevice.waitIdle();
 
+	firstMesh.destroyBuffers();
+	
 	for (size_t i = 0; i < MAX_FRAME_DRAWS; ++i) 
 	{
 		mainDevice.logicalDevice.destroySemaphore(renderFinished[i]);
@@ -629,19 +652,45 @@ void VulkanRenderer::createGraphicsPipeline()
 	vk::PipelineShaderStageCreateInfo shaderStages[]{ vertexShaderCreateInfo, fragmentShaderCreateInfo };
 
 
-	// Create pipeline
+	// Vertex description
+	// -- Binding, data layout
+	vk::VertexInputBindingDescription bindingDescription{};
+	// Binding position. Can bind multiple streams of data.
+	bindingDescription.binding = 0;
+	// Size of a single vertex data object, like in OpenGL
+	bindingDescription.stride = sizeof(Vertex);
+	// How ot move between data after each vertex.
+	// vk::VertexInputRate::eVertex: move onto next vertex
+	// vk::VertexInputRate::eInstance: move to a vertex for the next instance.
+	// Draw each first vertex of each instance, then the next vertex etc.
+	bindingDescription.inputRate = vk::VertexInputRate::eVertex;
+	
+	// Different attributes
+	array<vk::VertexInputAttributeDescription, 2> attributeDescriptions;
+	// Position attributes
+	// -- Binding of first attribute. Relate to binding description.
+	attributeDescriptions[0].binding = 0;
+	// Location in shader
+	attributeDescriptions[0].location = 0;
+	// Format and size of the data(here: vec3)
+	attributeDescriptions[0].format = vk::Format::eR32G32B32Sfloat;
+	// Offset of data in vertex, like in OpenGL. The offset function automatically find it.
+	attributeDescriptions[0].offset = offsetof(Vertex, pos);
+	// Color attributes
+	attributeDescriptions[1].binding = 0;
+	attributeDescriptions[1].location = 1;
+	attributeDescriptions[1].format = vk::Format::eR32G32B32Sfloat;
+	attributeDescriptions[1].offset = offsetof(Vertex, col);
 	
 	// -- VERTEX INPUT STAGE --
-	// TODO: Put in vertex description when resources created
 	vk::PipelineVertexInputStateCreateInfo vertexInputCreateInfo{};
-	vertexInputCreateInfo.vertexBindingDescriptionCount = 0;
-	// List of vertex binding desc. (data spacing, stride...)
-	vertexInputCreateInfo.pVertexBindingDescriptions = nullptr;
-	vertexInputCreateInfo.vertexAttributeDescriptionCount = 0;
-	// List of vertex attribute desc. (data format and where to bind to/from)
-	vertexInputCreateInfo.pVertexAttributeDescriptions = nullptr;	
+	vertexInputCreateInfo.vertexBindingDescriptionCount = 1;
+	vertexInputCreateInfo.pVertexBindingDescriptions = &bindingDescription;
+	vertexInputCreateInfo.vertexAttributeDescriptionCount =
+	static_cast<uint32_t>(attributeDescriptions.size());
+	vertexInputCreateInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 
-
+	
 	// -- INPUT ASSEMBLY --
 	vk::PipelineInputAssemblyStateCreateInfo inputAssemblyCreateInfo{};
 	// How to assemble vertices
@@ -947,10 +996,10 @@ void VulkanRenderer::recordCommands()
 {
 	// How to begin each command buffer
 	vk::CommandBufferBeginInfo commandBufferBeginInfo{};
-	// Buffer can be resubmited when it has already been submited
+	// Buffer can be resubmitted when it has already been submitted
 	//commandBufferBeginInfo.flags = vk::CommandBufferUsageFlagBits::eSimultaneousUse;		
 
-	// Information about how to being a render pass (only for graphical apps)
+	// Information about how to be a render pass (only for graphical apps)
 	vk::RenderPassBeginInfo renderPassBeginInfo{};
 	// Render pass to begin
 	renderPassBeginInfo.renderPass = renderPass;
@@ -980,11 +1029,17 @@ void VulkanRenderer::recordCommands()
 
 		// Bind pipeline to be used in render pass, you could switch pipelines for different subpasses
 		commandBuffers[i].bindPipeline(vk::PipelineBindPoint::eGraphics, graphicsPipeline);
-
+		
+		// Bind vertex buffer
+		vk::Buffer vertexBuffers[] = { firstMesh.getVertexBuffer() };
+		vk::DeviceSize offsets[] = { 0 };
+		commandBuffers[i].bindVertexBuffers(0, vertexBuffers, offsets);
+		// Bind index buffer
+		commandBuffers[i].bindIndexBuffer(firstMesh.getIndexBuffer(),
+		0, vk::IndexType::eUint32);
 		// Execute pipeline
-		// Draw 3 vertices, 1 instance, with no offset. Instance allow you 
-		// to draw several instances with one draw call.
-		commandBuffers[i].draw(3, 1, 0, 0);
+		commandBuffers[i].drawIndexed(
+		static_cast<uint32_t>(firstMesh.getIndexCount()), 1, 0, 0, 0);
 
 		// End render pass
 		commandBuffers[i].endRenderPass();

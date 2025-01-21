@@ -1,16 +1,17 @@
 #pragma once
 
 #define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
-
 #include <stdexcept>
 #include <vector>
+#include <GLFW/glfw3.h>
+
 using std::vector;
 #include <set>
 using std::set;
 #include <array>
 using std::array;
 
+#include "VulkanMesh.h"
 #include "VulkanUtilities.h"
 
 class VulkanRenderer
@@ -104,5 +105,9 @@ private:
 
 	// Draw
 	void createSynchronisation();
+
+	VulkanMesh firstMesh;
+
+	vector<VulkanMesh> meshes;
 };
 

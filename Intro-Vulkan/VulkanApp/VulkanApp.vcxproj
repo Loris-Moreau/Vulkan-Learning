@@ -225,6 +225,7 @@
       <AdditionalIncludeDirectories>C:\Users\loris.moreau\Documents\GitHub\Vulkan-Learning\Intro-Vulkan\/../externals/GLM;C:\Users\loris.moreau\Documents\GitHub\Vulkan-Learning\Intro-Vulkan\/../externals/GLFW/include;C:\VulkanSDK\1.3.296.0\Include;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="VulkanMesh.cpp" />
     <ClCompile Include="VulkanRenderer.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -302,8 +303,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="VulkanMesh.h" />
     <ClInclude Include="VulkanRenderer.h" />
     <ClInclude Include="VulkanUtilities.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="shaders\compileShaders.bat" />
+    <Content Include="shaders\shader.frag" />
+    <Content Include="shaders\shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
