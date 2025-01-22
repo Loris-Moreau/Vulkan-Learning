@@ -167,7 +167,7 @@ private:
 	vector<vk::ImageView> textureImageViews;
 	vector<VkDeviceMemory> textureImageMemory;
 
-	int createTextureImage(const string& filename, uint32_t& mipLevels)
+	int createTextureImage(const string& filename, uint32_t& mipLevels);
 	int createTexture(const string& filename);
 
 	vk::Sampler textureSampler;

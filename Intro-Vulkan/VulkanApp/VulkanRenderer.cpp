@@ -1509,8 +1509,9 @@ int VulkanRenderer::createTextureImage(const string& filename, uint32_t& mipLeve
 	// Create image to hold final texture
 	vk::Image texImage;
 	vk::DeviceMemory texImageMemory;
-	texImage = createImage(width, height, mipLevels, vk::Format::eR8G8B8A8Unorm, vk::ImageTiling::eOptimal,vk::ImageUsageFlagBits::eTransferDst
-	vk::ImageUsageFlagBits::eSampled | vk::ImageUsageFlagBits::eTransferSrc, vk::MemoryPropertyFlagBits::eDeviceLocal, &texImageMemory);
+	texImage = createImage(width, height, mipLevels, vk::Format::eR8G8B8A8Unorm, vk::ImageTiling::eOptimal,
+		vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled | vk::ImageUsageFlagBits::eTransferSrc,
+		vk::MemoryPropertyFlagBits::eDeviceLocal, &texImageMemory);
 	
 	// -- COPY DATA TO IMAGE --
 	// Transition image to be DST for copy operations
