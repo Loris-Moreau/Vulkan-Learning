@@ -1,6 +1,7 @@
 #include "VulkanRenderer.h"
 
-const vector<const char*> VulkanRenderer::validationLayers {
+const vector<const char*> VulkanRenderer::validationLayers
+{
 	"VK_LAYER_KHRONOS_validation"
 };
 
@@ -42,14 +43,10 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 		createSynchronisation();
 
 		
-		// Texture
-		int catTexture = createTexture("cat.jpg");
-		
 		// Objects
 		float aspectRatio = static_cast<float>(swapchainExtent.width) / static_cast<float>(swapchainExtent.height);
 		viewProjection.projection = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
-		viewProjection.view = glm::lookAt(glm::vec3(0.0f, 1.0f, 2.0f),
-			glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		viewProjection.view = glm::lookAt(glm::vec3(10.0f, 10.0f, 20.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 		// In vulkan, y is downward, and for glm it is upward
 		viewProjection.projection[1][1] *= -1;
@@ -85,7 +82,12 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 		meshes.push_back(firstMesh);
 		meshes.push_back(secondMesh);
 
+		/*
+		// Default texture
+		createTexture("cat.jpg");
+		// Load model
 		createMeshModel("models/Futuristic combat jet.obj");
+		*/
 	}
 	catch (const std::runtime_error& e)
 	{
@@ -414,7 +416,7 @@ QueueFamilyIndices VulkanRenderer::getQueueFamilies(vk::PhysicalDevice device)
 		}
 
 		// Check if queue family support presentation
-		VkBool32 presentationSupport = false;
+		vk::Bool32 presentationSupport = false;
 		presentationSupport = device.getSurfaceSupportKHR(static_cast<uint32_t>(indices.graphicsFamily), surface);
 		if (queueFamily.queueCount > 0 && presentationSupport)
 		{
@@ -546,13 +548,13 @@ SwapchainDetails VulkanRenderer::getSwapchainDetails(vk::PhysicalDevice device)
 
 void VulkanRenderer::createSwapchain()
 {
-	// We will pick best settings for the swapchain
+	// We will pick the best settings for the swapchain
 	SwapchainDetails swapchainDetails = getSwapchainDetails(mainDevice.physicalDevice);
 	vk::SurfaceFormatKHR surfaceFormat = chooseBestSurfaceFormat(swapchainDetails.formats);
 	vk::PresentModeKHR presentationMode = chooseBestPresentationMode(swapchainDetails.presentationModes);
 	VkExtent2D extent = chooseSwapExtent(swapchainDetails.surfaceCapabilities);
 
-	// Setup the swap chain info
+	// Set up the swap chain info
 	vk::SwapchainCreateInfoKHR swapchainCreateInfo {};
 	swapchainCreateInfo.surface = surface;
 	swapchainCreateInfo.imageFormat = surfaceFormat.format;
@@ -612,10 +614,9 @@ void VulkanRenderer::createSwapchain()
 	{
 		SwapchainImage swapchainImage {};
 		swapchainImage.image = image;
-
+		
 		// Create image view
-		swapchainImage.imageView = createImageView(image, swapchainImageFormat, vk::ImageAspectFlagBits::eColor);
-
+		swapchainImage.imageView = createImageView(image, swapchainImageFormat, vk::ImageAspectFlagBits::eColor, 1);
 		swapchainImages.push_back(swapchainImage);
 	}
 }
@@ -680,7 +681,7 @@ vk::Extent2D VulkanRenderer::chooseSwapExtent(const vk::SurfaceCapabilitiesKHR& 
 	}
 }
 
-vk::ImageView VulkanRenderer::createImageView(vk::Image image, vk::Format format, vk::ImageAspectFlagBits aspectFlags)
+vk::ImageView VulkanRenderer::createImageView(vk::Image image, vk::Format format, vk::ImageAspectFlagBits aspectFlags, uint32_t mipLevels)
 {
 	vk::ImageViewCreateInfo viewCreateInfo {};
 	viewCreateInfo.image = image;
@@ -691,12 +692,17 @@ vk::ImageView VulkanRenderer::createImageView(vk::Image image, vk::Format format
 	viewCreateInfo.components.b = vk::ComponentSwizzle::eIdentity;
 	viewCreateInfo.components.a = vk::ComponentSwizzle::eIdentity;
 
-	// Subresources allow the view to view only a part of an image
-	viewCreateInfo.subresourceRange.aspectMask = aspectFlags;			// Here we want to see the image under the aspect of colors
-	viewCreateInfo.subresourceRange.baseMipLevel = 0;					// Start mipmap level to view from
-	viewCreateInfo.subresourceRange.levelCount = 1;						// Number of mipmap level to view
-	viewCreateInfo.subresourceRange.baseArrayLayer = 0;					// Start array level to view from
-	viewCreateInfo.subresourceRange.layerCount = 1;						// Number of array levels to view
+	// Subresource allow the view to view only a part of an image
+	// Here we want to see the image under the aspect of colors
+	viewCreateInfo.subresourceRange.aspectMask = aspectFlags;
+	// Start mipmap level to view from
+	viewCreateInfo.subresourceRange.baseMipLevel = 0;
+	// Number of mipmap level to view
+	viewCreateInfo.subresourceRange.levelCount = mipLevels;
+	// Start array level to view from
+	viewCreateInfo.subresourceRange.baseArrayLayer = 0;
+	// Number of array levels to view
+	viewCreateInfo.subresourceRange.layerCount = 1;	
 
 	// Create image view
 	vk::ImageView imageView = mainDevice.logicalDevice.createImageView(viewCreateInfo);
@@ -1159,34 +1165,41 @@ void VulkanRenderer::recordCommands(uint32_t currentImage)
 	// Bind pipeline to be used in render pass, you could switch pipelines for different subpasses
 	commandBuffers[currentImage].bindPipeline(vk::PipelineBindPoint::eGraphics, graphicsPipeline);
 
+	
 	// Draw all meshes
-	for (size_t j = 0; j < meshes.size(); ++j)
+	for (size_t j = 0; j < meshModels.size(); ++j)
 	{
-		// Bind vertex buffer
-		vk::Buffer vertexBuffers[] = { meshes[j].getVertexBuffer() };
-		vk::DeviceSize offsets[] = { 0 };
-		commandBuffers[currentImage].bindVertexBuffers(0, 1, vertexBuffers, offsets);
-
-		// Bind index buffer
-		commandBuffers[currentImage].bindIndexBuffer(
-			meshes[j].getIndexBuffer(), 0, vk::IndexType::eUint32);
-
 		// Push constants to given shader stage
-		Model model = meshes[j].getModel();
+		VulkanMeshModel model = meshModels[j];
+		glm::mat4 modelMatrix = model.getModel();
 		commandBuffers[currentImage].pushConstants(pipelineLayout,
-			vk::ShaderStageFlagBits::eVertex, 0, sizeof(Model), &model);
-
-		// Bind descriptor sets
-		array<vk::DescriptorSet, 2> descriptorSetsGroup
+		vk::ShaderStageFlagBits::eVertex, 0, sizeof(Model), &modelMatrix);
+		// We have one model matrix for each object, then several children meshes
+		for (size_t k = 0; k < model.getMeshCount(); ++k)
 		{
-			descriptorSets[currentImage], samplerDescriptorSets[meshes[j].getTexId()]
-		};
-		commandBuffers[currentImage].bindDescriptorSets(vk::PipelineBindPoint::eGraphics,
-		pipelineLayout, 0, static_cast<uint32_t>(descriptorSetsGroup.size()),
-		descriptorSetsGroup.data(), 0, nullptr);
-		
-		// Execute pipeline
-		commandBuffers[currentImage].drawIndexed(static_cast<uint32_t>(meshes[j].getIndexCount()), 1, 0, 0, 0);
+			// Bind vertex buffer
+			vk::Buffer vertexBuffers[] = { model.getMesh(k)->getVertexBuffer() };
+			vk::DeviceSize offsets[] = { 0 };
+			commandBuffers[currentImage].bindVertexBuffers(0, 1,
+			vertexBuffers, offsets);
+			// Bind index buffer
+			commandBuffers[currentImage].bindIndexBuffer(
+			model.getMesh(k)->getIndexBuffer(), 0, vk::IndexType::eUint32);
+			// Bind descriptor sets
+			array<vk::DescriptorSet, 2> descriptorSetsGroup{
+				descriptorSets[currentImage],
+				samplerDescriptorSets[model.getMesh(k)->getTexId()] };
+
+			commandBuffers[currentImage].bindDescriptorSets(
+			vk::PipelineBindPoint::eGraphics, pipelineLayout,
+			0, static_cast<uint32_t>(descriptorSetsGroup.size()),
+			descriptorSetsGroup.data(), 0, nullptr);
+			// Execute pipeline
+			commandBuffers[currentImage].drawIndexed(
+			static_cast<uint32_t>(model.getMesh(k)->getIndexCount()),
+			1, 0, 0, 0);
+
+		}
 	}
 
 	// End render pass
@@ -1376,9 +1389,8 @@ void VulkanRenderer::updateUniformBuffers(uint32_t imageIndex)
 
 void VulkanRenderer::updateModel(int modelId, glm::mat4 modelP)
 {
-	if (modelId >= meshes.size()) return;
-
-	meshes[modelId].setModel(modelP);
+	if (modelId >= meshModels.size()) return;
+	meshModels[modelId].setModel(modelP);
 }
 
 void VulkanRenderer::allocateDynamicBufferTransferSpace()
@@ -1414,53 +1426,6 @@ void VulkanRenderer::createPushConstantRange()
 	pushConstantRange.stageFlags = vk::ShaderStageFlagBits::eVertex;
 	pushConstantRange.offset = 0;
 	pushConstantRange.size = sizeof(Model);
-}
-
-vk::Image VulkanRenderer::createImage(uint32_t width, uint32_t height, vk::Format format, vk::ImageTiling tiling, 
-	vk::ImageUsageFlags useFlags, vk::MemoryPropertyFlags propFlags, vk::DeviceMemory* imageMemory)
-{
-	vk::ImageCreateInfo imageCreateInfo{};
-	imageCreateInfo.imageType = vk::ImageType::e2D;
-	imageCreateInfo.extent.width = width;
-	imageCreateInfo.extent.height = height;
-	// Depth is 1, no 3D aspect
-	imageCreateInfo.extent.depth = 1;
-	imageCreateInfo.mipLevels = 1;
-	// Number of levels in image array
-	imageCreateInfo.arrayLayers = 1;
-	imageCreateInfo.format = format;
-	// How image data should be "tiled" (arranged for optimal reading)
-	imageCreateInfo.tiling = tiling;
-	// Initial layout in the render pass
-	imageCreateInfo.initialLayout = vk::ImageLayout::eUndefined;
-	// Bit flags defining what image will be used for
-	imageCreateInfo.usage = useFlags;
-	// Number of samples for multi sampling
-	imageCreateInfo.samples = vk::SampleCountFlagBits::e1;
-	// Whether image can be shared between queues (no)
-	imageCreateInfo.sharingMode = vk::SharingMode::eExclusive;
-
-	// Create the header of the image
-	vk::Image image = mainDevice.logicalDevice.createImage(imageCreateInfo);
-
-	// Now we need to set up and allocate memory for the image
-	vk::MemoryRequirements memoryRequierements = mainDevice.logicalDevice.getImageMemoryRequirements(image);
-
-	vk::MemoryAllocateInfo memoryAllocInfo{};
-	memoryAllocInfo.allocationSize = memoryRequierements.size;
-	memoryAllocInfo.memoryTypeIndex = findMemoryTypeIndex(mainDevice.physicalDevice,
-		memoryRequierements.memoryTypeBits, propFlags);
-
-	auto result = mainDevice.logicalDevice.allocateMemory(&memoryAllocInfo, nullptr, imageMemory);
-	if (result != vk::Result::eSuccess)
-	{
-		throw std::runtime_error("Failed to allocate memory for an image.");
-	}
-
-	// Connect memory to image
-	mainDevice.logicalDevice.bindImageMemory(image, *imageMemory, 0);
-
-	return image;
 }
 
 vk::Format VulkanRenderer::chooseSupportedFormat(const vector<vk::Format>& formats, vk::ImageTiling tiling, vk::FormatFeatureFlags featureFlags) {
@@ -1501,11 +1466,7 @@ void VulkanRenderer::createDepthBufferImage()
 		vk::FormatFeatureFlagBits::eDepthStencilAttachment);
 
 	// Create image and image view
-	depthBufferImage = createImage(swapchainExtent.width,
-		swapchainExtent.height, depthFormat, vk::ImageTiling::eOptimal,
-		vk::ImageUsageFlagBits::eDepthStencilAttachment, vk::MemoryPropertyFlagBits::eDeviceLocal, &depthBufferImageMemory);
-
-	depthBufferImageView = createImageView(depthBufferImage, depthFormat, vk::ImageAspectFlagBits::eDepth);
+	depthBufferImageView = createImageView(depthBufferImage, depthFormat, vk::ImageAspectFlagBits::eDepth, 1);
 }
 
 stbi_uc* VulkanRenderer::loadTextureFile(const string& filename, int* width, int* height, vk::DeviceSize* imageSize)
@@ -1524,20 +1485,19 @@ stbi_uc* VulkanRenderer::loadTextureFile(const string& filename, int* width, int
 	return image;
 }
 
-int VulkanRenderer::createTextureImage(const string& filename)
+int VulkanRenderer::createTextureImage(const string& filename, uint32_t& mipLevels)
 {
 	// Load image file
 	int width, height;
 	vk::DeviceSize imageSize;
 	stbi_uc* imageData = loadTextureFile(filename, &width, &height, &imageSize);
+	mipLevels = static_cast<uint32_t>(std::floor(std::log2(std::max(width, height)))) + 1;
+	
 	// Create staging buffer to hold loaded data, ready to copy to device
 	vk::Buffer imageStagingBuffer;
 	vk::DeviceMemory imageStagingBufferMemory;
-	createBuffer(mainDevice.physicalDevice, mainDevice.logicalDevice,
-	imageSize, vk::BufferUsageFlagBits::eTransferSrc,
-	vk::MemoryPropertyFlagBits::eHostVisible
-	| vk::MemoryPropertyFlagBits::eHostCoherent,
-	&imageStagingBuffer, &imageStagingBufferMemory);
+	createBuffer(mainDevice.physicalDevice, mainDevice.logicalDevice, imageSize, vk::BufferUsageFlagBits::eTransferSrc,
+		vk::MemoryPropertyFlagBits::eHostVisible | vk::MemoryPropertyFlagBits::eHostCoherent, &imageStagingBuffer, &imageStagingBufferMemory);
 	// Copy image data to the staging buffer
 	void* data;
 	mainDevice.logicalDevice.mapMemory(imageStagingBufferMemory, {}, imageSize, {}, &data);
@@ -1545,24 +1505,30 @@ int VulkanRenderer::createTextureImage(const string& filename)
 	mainDevice.logicalDevice.unmapMemory(imageStagingBufferMemory);
 	// Free original image data
 	stbi_image_free(imageData);
+	
 	// Create image to hold final texture
 	vk::Image texImage;
 	vk::DeviceMemory texImageMemory;
-	texImage = createImage(width, height,
-	vk::Format::eR8G8B8A8Unorm, vk::ImageTiling::eOptimal,
-	vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled,
-	vk::MemoryPropertyFlagBits::eDeviceLocal, &texImageMemory);
+	texImage = createImage(width, height, mipLevels, vk::Format::eR8G8B8A8Unorm, vk::ImageTiling::eOptimal,vk::ImageUsageFlagBits::eTransferDst
+	vk::ImageUsageFlagBits::eSampled | vk::ImageUsageFlagBits::eTransferSrc, vk::MemoryPropertyFlagBits::eDeviceLocal, &texImageMemory);
+	
 	// -- COPY DATA TO IMAGE --
 	// Transition image to be DST for copy operations
 	transitionImageLayout(mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool,
-	texImage, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
+		texImage, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal, mipLevels);
 	// Copy image data
-	copyImageBuffer(mainDevice.logicalDevice, graphicsQueue,
-	graphicsCommandPool, imageStagingBuffer, texImage, width, height);
+	copyImageBuffer(mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool, imageStagingBuffer, texImage, width, height);
+
 	// -- READY FOR SHADER USE --
+	/*
 	transitionImageLayout(mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool,
 	texImage, vk::ImageLayout::eTransferDstOptimal,
-	vk::ImageLayout::eShaderReadOnlyOptimal);
+	vk::ImageLayout::eShaderReadOnlyOptimal, mipLevels);
+	*/
+	
+	// -- GENERATE MIPMAPS AND READY FOR SHADER USE --
+	generateMipmaps(mainDevice.logicalDevice, mainDevice.physicalDevice, graphicsQueue, graphicsCommandPool, texImage, vk::Format::eR8G8B8A8Srgb, width, height, mipLevels);
+	
 	// Add texture data to vector for reference
 	textureImages.push_back(texImage);
 	textureImageMemory.push_back(texImageMemory);
@@ -1576,13 +1542,60 @@ int VulkanRenderer::createTextureImage(const string& filename)
 
 int VulkanRenderer::createTexture(const string& filename)
 {
-	int textureImageLocation = createTextureImage(filename);
-	vk::ImageView imageView = createImageView(textureImages[textureImageLocation],
-	vk::Format::eR8G8B8A8Unorm, vk::ImageAspectFlagBits::eColor);
+	uint32_t mipLevels{ 0 };
+	int textureImageLocation = createTextureImage(filename, mipLevels);
+	vk::ImageView imageView = createImageView(textureImages[textureImageLocation], vk::Format::eR8G8B8A8Unorm, vk::ImageAspectFlagBits::eColor, mipLevels);
 	textureImageViews.push_back(imageView);
 	int descriptorLoc = createTextureDescriptor(imageView);
 	// Return location of set with texture
 	return descriptorLoc;
+}
+
+vk::Image VulkanRenderer::createImage(uint32_t width, uint32_t height, uint32_t mipLevels, vk::Format format, vk::ImageTiling tiling, vk::ImageUsageFlags useFlags,
+	vk::MemoryPropertyFlags propFlags, vk::DeviceMemory* imageMemory)
+{
+	vk::ImageCreateInfo imageCreateInfo{};
+	imageCreateInfo.imageType = vk::ImageType::e2D;
+	imageCreateInfo.extent.width = width;
+	imageCreateInfo.extent.height = height;
+	// Depth is 1, no 3D aspect
+	imageCreateInfo.extent.depth = 1;
+	imageCreateInfo.mipLevels = mipLevels;
+	// Number of levels in image array
+	imageCreateInfo.arrayLayers = 1;
+	imageCreateInfo.format = format;
+	// How image data should be "tiled" (arranged for optimal reading)
+	imageCreateInfo.tiling = tiling;
+	// Initial layout in the render pass
+	imageCreateInfo.initialLayout = vk::ImageLayout::eUndefined;
+	// Bit flags defining what image will be used for
+	imageCreateInfo.usage = useFlags;
+	// Number of samples for multi sampling
+	imageCreateInfo.samples = vk::SampleCountFlagBits::e1;
+	// Whether image can be shared between queues (no)
+	imageCreateInfo.sharingMode = vk::SharingMode::eExclusive;
+
+	// Create the header of the image
+	vk::Image image = mainDevice.logicalDevice.createImage(imageCreateInfo);
+
+	// Now we need to set up and allocate memory for the image
+	vk::MemoryRequirements memoryRequierements = mainDevice.logicalDevice.getImageMemoryRequirements(image);
+
+	vk::MemoryAllocateInfo memoryAllocInfo{};
+	memoryAllocInfo.allocationSize = memoryRequierements.size;
+	memoryAllocInfo.memoryTypeIndex = findMemoryTypeIndex(mainDevice.physicalDevice,
+		memoryRequierements.memoryTypeBits, propFlags);
+
+	auto result = mainDevice.logicalDevice.allocateMemory(&memoryAllocInfo, nullptr, imageMemory);
+	if (result != vk::Result::eSuccess)
+	{
+		throw std::runtime_error("Failed to allocate memory for an image.");
+	}
+
+	// Connect memory to image
+	mainDevice.logicalDevice.bindImageMemory(image, *imageMemory, 0);
+
+	return image;
 }
 
 void VulkanRenderer::createTextureSampler()
@@ -1651,7 +1664,7 @@ int VulkanRenderer::createTextureDescriptor(vk::ImageView textureImageView)
 	return samplerDescriptorSets.size() - 1;
 }
 
-void VulkanRenderer::createMeshModel(string filename)
+int VulkanRenderer::createMeshModel(string filename)
 {
 	// Import model scene
 	Assimp::Importer importer;
@@ -1687,5 +1700,6 @@ void VulkanRenderer::createMeshModel(string filename)
 	graphicsQueue, graphicsCommandPool, scene->mRootNode, scene, matToTex);
 	auto meshModel = VulkanMeshModel(modelMeshes);
 	meshModels.push_back(meshModel);
-}
 
+	return meshModels.size() - 1;
+}
