@@ -1,5 +1,6 @@
 #define GLFW_INCLUDE_VULKAN
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
+#define STB_IMAGE_IMPLEMENTATION
 
 #include <stdexcept>
 #include <string>
@@ -8,6 +9,19 @@
 using std::string;
 
 #include "VulkanRenderer.h"
+
+
+#define DWORD unsigned int
+#if defined(WIN32) || defined(_WIN32)
+extern "C" { __declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001; }
+extern "C" {
+	__declspec(dllexport) DWORD AmdPowerXpressRequestHighPerformance = 0x00000001; }
+
+#else
+extern "C" { int NvOptimusEnablement = 1; }
+extern "C" { int AmdPowerXpressRequestHighPerformance = 1; }
+#endif
+
 
 GLFWwindow* window = nullptr;
 VulkanRenderer vulkanRenderer;

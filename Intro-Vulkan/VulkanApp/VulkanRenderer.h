@@ -11,6 +11,7 @@ using std::set;
 #include <array>
 using std::array;
 
+#include "stb_image.h"
 #include "VulkanMesh.h"
 #include "VulkanUtilities.h"
 
@@ -154,5 +155,20 @@ private:
 
 	// Draw
 	void createSynchronisation();
-};
 
+	stbi_uc* loadTextureFile(const string& filename, int* width, int* height, vk::DeviceSize* imageSize);
+
+	vector<VkImage> textureImages;
+	vector<vk::ImageView> textureImageViews;
+	vector<VkDeviceMemory> textureImageMemory;
+
+	int createTextureImage(const string& filename);
+	int createTexture(const string& filename);
+
+	vk::Sampler textureSampler;
+	void createTextureSampler();
+
+	vk::DescriptorPool samplerDescriptorPool;
+
+	vk::DescriptorSetLayout samplerDescriptorSetLayout;
+};

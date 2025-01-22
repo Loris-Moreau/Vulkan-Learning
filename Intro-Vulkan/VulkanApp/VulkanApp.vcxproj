@@ -303,6 +303,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="VulkanMesh.h" />
     <ClInclude Include="VulkanRenderer.h" />
     <ClInclude Include="VulkanUtilities.h" />

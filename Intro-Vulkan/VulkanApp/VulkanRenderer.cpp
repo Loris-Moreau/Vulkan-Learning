@@ -30,10 +30,12 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 		createDepthBufferImage();
 		createFramebuffers();
 		createGraphicsCommandPool();
-
+		
+		// Texture
+		int catTexture = createTexture("cat.jpg");
+		
 		// Objects
-		float aspectRatio = static_cast<float>(swapchainExtent.width) /
-			static_cast<float>(swapchainExtent.height);
+		float aspectRatio = static_cast<float>(swapchainExtent.width) / static_cast<float>(swapchainExtent.height);
 		viewProjection.projection = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
 		viewProjection.view = glm::lookAt(glm::vec3(0.0f, 1.0f, 2.0f),
 			glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -42,14 +44,16 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 		viewProjection.projection[1][1] *= -1;
 
 		// -- Vertex data
-		vector<Vertex> meshVertices1{
+		vector<Vertex> meshVertices1
+		{
 			{{-0.4f,  0.4f, 0.0f}, {1.0f, 0.0f, 0.0f}},	// 0
 			{{-0.4f, -0.4f, 0.0f}, {0.0f, 1.0f, 0.0f}},	// 1
 			{{ 0.4f, -0.4f, 0.0f}, {0.0f, 0.0f, 1.0f}},	// 2
 			{{ 0.4f,  0.4f, 0.0f}, {1.0f, 1.0f, 0.0f}},	// 3
 		};
 
-		vector<Vertex> meshVertices2{
+		vector<Vertex> meshVertices2
+		{
 			{{-0.2f,  0.6f, 0.0f}, {1.0f, 0.0f, 0.0f}},	// 0
 			{{-0.2f, -0.6f, 0.0f}, {0.0f, 1.0f, 0.0f}},	// 1
 			{{ 0.2f, -0.6f, 0.0f}, {0.0f, 0.0f, 1.0f}},	// 2
@@ -57,7 +61,8 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 		};
 
 		// -- Index data
-		vector<uint32_t> meshIndices{
+		vector<uint32_t> meshIndices
+		{
 			0, 1, 2,
 			2, 3, 0
 		};
@@ -78,6 +83,7 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 
 		// Commands
 		createGraphicsCommandBuffers();
+		createTextureSampler();
 		createSynchronisation();
 	}
 	catch (const std::runtime_error& e)
@@ -143,11 +149,23 @@ void VulkanRenderer::clean()
 {
 	mainDevice.logicalDevice.waitIdle();
 
+	mainDevice.logicalDevice.destroySampler(textureSampler);
+	
+	for (auto i = 0; i < textureImages.size(); ++i)
+	{
+		mainDevice.logicalDevice.destroyImageView(textureImageViews[i], nullptr);
+		mainDevice.logicalDevice.destroyImage(textureImages[i], nullptr);
+		mainDevice.logicalDevice.freeMemory(textureImageMemory[i], nullptr);
+	}
+	
 	mainDevice.logicalDevice.destroyImageView(depthBufferImageView);
 	mainDevice.logicalDevice.destroyImage(depthBufferImage);
+	
 	mainDevice.logicalDevice.freeMemory(depthBufferImageMemory);
+	
 	mainDevice.logicalDevice.destroyDescriptorPool(descriptorPool);
 	mainDevice.logicalDevice.destroyDescriptorSetLayout(descriptorSetLayout);
+	
 	for (size_t i = 0; i < swapchainImages.size(); ++i)
 	{
 		mainDevice.logicalDevice.destroyBuffer(vpUniformBuffer[i]);
@@ -368,7 +386,7 @@ bool VulkanRenderer::checkDeviceSuitable(vk::PhysicalDevice device)
 		swapchainValid = !swapchainDetails.presentationModes.empty() && !swapchainDetails.formats.empty();
 	}
 
-	return indices.isValid() && extensionSupported && swapchainValid;
+	return indices.isValid() && extensionSupported && swapchainValid && deviceFeatures.samplerAnisotropy;
 }
 
 QueueFamilyIndices VulkanRenderer::getQueueFamilies(vk::PhysicalDevice device)
@@ -434,7 +452,8 @@ void VulkanRenderer::createLogicalDevice()
 	deviceCreateInfo.ppEnabledExtensionNames = deviceExtensions.data();
 	// -- Validation layers are deprecated since Vulkan 1.1
 	// Features
-	vk::PhysicalDeviceFeatures deviceFeatures {};				// For now, no device features (tessellation etc.)
+	vk::PhysicalDeviceFeatures deviceFeatures {};
+	deviceFeatures.samplerAnisotropy = true;
 	deviceCreateInfo.pEnabledFeatures = &deviceFeatures;
 
 	// Create the logical device for the given physical device
@@ -1224,7 +1243,6 @@ void VulkanRenderer::createUniformBuffers()
 void VulkanRenderer::createDescriptorPool()
 {
 	// One descriptor in the pool for each image
-
 	// View projection pool
 	vk::DescriptorPoolSize vpPoolSize{};
 	vpPoolSize.descriptorCount = static_cast<uint32_t>(vpUniformBuffer.size());
@@ -1239,6 +1257,19 @@ void VulkanRenderer::createDescriptorPool()
 
 	// Create pool
 	descriptorPool = mainDevice.logicalDevice.createDescriptorPool(poolCreateInfo);
+
+	// -- SAMPLER DESCRIPTOR POOL --
+	// Texture sampler pool
+	vk::DescriptorPoolSize samplerPoolSize{};
+	// We assume one texture by object.
+	samplerPoolSize.descriptorCount = MAX_OBJECTS;
+	vk::DescriptorPoolCreateInfo samplerPoolCreateInfo{};
+	// The maximum for this is actually very high
+	samplerPoolCreateInfo.maxSets = MAX_OBJECTS;
+	samplerPoolCreateInfo.poolSizeCount = 1;
+	samplerPoolCreateInfo.pPoolSizes = &samplerPoolSize;
+	samplerDescriptorPool =
+	mainDevice.logicalDevice.createDescriptorPool(samplerPoolCreateInfo);
 }
 
 void VulkanRenderer::createDescriptorSets()
@@ -1432,4 +1463,110 @@ void VulkanRenderer::createDepthBufferImage()
 		vk::ImageUsageFlagBits::eDepthStencilAttachment, vk::MemoryPropertyFlagBits::eDeviceLocal, &depthBufferImageMemory);
 
 	depthBufferImageView = createImageView(depthBufferImage, depthFormat, vk::ImageAspectFlagBits::eDepth);
+}
+
+stbi_uc* VulkanRenderer::loadTextureFile(const string& filename, int* width, int* height, vk::DeviceSize* imageSize)
+{
+	// Number of channel image uses
+	int channels;
+	// Load pixel data for image
+	string path = "textures/" + filename;
+	stbi_uc* image = stbi_load(path.c_str(), width, height, &channels, STBI_rgb_alpha);
+	if (!image)
+	{
+		throw std::runtime_error("Failed to load texture file: " + path);
+	}
+	// RGBA has 4 channels
+	*imageSize = *width * *height * 4;
+	return image;
+}
+
+int VulkanRenderer::createTextureImage(const string& filename)
+{
+	// Load image file
+	int width, height;
+	vk::DeviceSize imageSize;
+	stbi_uc* imageData = loadTextureFile(filename, &width, &height, &imageSize);
+	// Create staging buffer to hold loaded data, ready to copy to device
+	vk::Buffer imageStagingBuffer;
+	vk::DeviceMemory imageStagingBufferMemory;
+	createBuffer(mainDevice.physicalDevice, mainDevice.logicalDevice,
+	imageSize, vk::BufferUsageFlagBits::eTransferSrc,
+	vk::MemoryPropertyFlagBits::eHostVisible
+	| vk::MemoryPropertyFlagBits::eHostCoherent,
+	&imageStagingBuffer, &imageStagingBufferMemory);
+	// Copy image data to the staging buffer
+	void* data;
+	mainDevice.logicalDevice.mapMemory(imageStagingBufferMemory, {}, imageSize, {}, &data);
+	memcpy(data, imageData, static_cast<size_t>(imageSize));
+	mainDevice.logicalDevice.unmapMemory(imageStagingBufferMemory);
+	// Free original image data
+	stbi_image_free(imageData);
+	// Create image to hold final texture
+	vk::Image texImage;
+	vk::DeviceMemory texImageMemory;
+	texImage = createImage(width, height,
+	vk::Format::eR8G8B8A8Unorm, vk::ImageTiling::eOptimal,
+	vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled,
+	vk::MemoryPropertyFlagBits::eDeviceLocal, &texImageMemory);
+	// -- COPY DATA TO IMAGE --
+	// Transition image to be DST for copy operations
+	transitionImageLayout(mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool,
+	texImage, vk::ImageLayout::eUndefined, vk::ImageLayout::eTransferDstOptimal);
+	// Copy image data
+	copyImageBuffer(mainDevice.logicalDevice, graphicsQueue,
+	graphicsCommandPool, imageStagingBuffer, texImage, width, height);
+	// -- READY FOR SHADER USE --
+	transitionImageLayout(mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool,
+	texImage, vk::ImageLayout::eTransferDstOptimal,
+	vk::ImageLayout::eShaderReadOnlyOptimal);
+	// Add texture data to vector for reference
+	textureImages.push_back(texImage);
+	textureImageMemory.push_back(texImageMemory);
+	// Destroy staging buffers
+	mainDevice.logicalDevice.destroyBuffer(imageStagingBuffer, nullptr);
+	mainDevice.logicalDevice.freeMemory(imageStagingBufferMemory, nullptr);
+
+	// Return index of new texture image
+	return textureImages.size() - 1;
+}
+
+int VulkanRenderer::createTexture(const string& filename)
+{
+	int textureImageLocation = createTextureImage(filename);
+	vk::ImageView imageView = createImageView(textureImages[textureImageLocation],
+	vk::Format::eR8G8B8A8Unorm, vk::ImageAspectFlagBits::eColor);
+	textureImageViews.push_back(imageView);
+	// TODO : Create Descriptor sets
+	return 0;
+}
+
+void VulkanRenderer::createTextureSampler()
+{
+	vk::SamplerCreateInfo samplerCreateInfo{};
+	// How to render when image is magnified on screen
+	samplerCreateInfo.magFilter = vk::Filter::eLinear;
+	// How to render when image is minified on screen
+	samplerCreateInfo.minFilter = vk::Filter::eLinear;
+	// Texture wrap in the U direction
+	samplerCreateInfo.addressModeU = vk::SamplerAddressMode::eRepeat;
+	// Texture wrap in the V direction
+	samplerCreateInfo.addressModeV = vk::SamplerAddressMode::eRepeat;
+	// Texture wrap in the W direction
+	samplerCreateInfo.addressModeW = vk::SamplerAddressMode::eRepeat;
+	// When no repeat, texture become black beyond border
+	samplerCreateInfo.borderColor = vk::BorderColor::eIntOpaqueBlack;
+	// Coordinates ARE normalized. When true, coords are between 0 and image size
+	samplerCreateInfo.unnormalizedCoordinates = false;
+	// Fade between two mipmaps is linear
+	samplerCreateInfo.mipmapMode = vk::SamplerMipmapMode::eLinear;
+	// Add a bias to the mimmap level
+	samplerCreateInfo.mipLodBias = 0.0f;
+	samplerCreateInfo.minLod = 0.0f;
+	samplerCreateInfo.maxLod = 0.0f;
+	// Overcome blur when a texture is stretched because of perspective with angle
+	samplerCreateInfo.anisotropyEnable = true;
+	// Anisotropy number of samples
+	samplerCreateInfo.maxAnisotropy = 16;
+	textureSampler = mainDevice.logicalDevice.createSampler(samplerCreateInfo);
 }
