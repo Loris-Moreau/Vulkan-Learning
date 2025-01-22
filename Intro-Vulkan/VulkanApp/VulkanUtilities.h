@@ -38,7 +38,7 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
 	const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, 
 	void* pUserData) 
 {
-	std::cerr << "validation layer: " << pCallbackData->pMessage << std::endl;
+	std::cerr << "validation layer: " << pCallbackData->pMessage << '\n';
 	return VK_FALSE;
 }
 
@@ -74,7 +74,7 @@ static vector<char> readShaderFile(const string& filename)
 	file.seekg(0);								// Move in file to start of the file
 
 	// Reading and closing
-	file.read(fileBuffer.data(), fileSize);
+	file.read(fileBuffer.data(), (std::streamsize)fileSize);
 	file.close();
 	return fileBuffer;
 }

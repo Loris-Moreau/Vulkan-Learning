@@ -1,13 +1,13 @@
 #pragma once
 #define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
-
 #include <vector>
+#include <GLFW/glfw3.h>
 using std::vector;
 
 #include "VulkanUtilities.h"
 
-struct Model {
+struct Model
+{
 	glm::mat4 model;
 };
 

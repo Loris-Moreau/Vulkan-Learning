@@ -1,20 +1,18 @@
 #pragma once
 #define GLFW_INCLUDE_VULKAN
-#include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 #include <stdexcept>
 #include <vector>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 using std::vector;
 #include <set>
 using std::set;
 #include <array>
 using std::array;
 
-#include "VulkanUtilities.h"
 #include "VulkanMesh.h"
+#include "VulkanUtilities.h"
 
 struct ViewProjection
 {
