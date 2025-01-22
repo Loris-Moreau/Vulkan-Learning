@@ -1,33 +1,20 @@
 #pragma once
-
 #define GLFW_INCLUDE_VULKAN
-#include <stdexcept>
-#include <vector>
 #include <GLFW/glfw3.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+#include <stdexcept>
+#include <vector>
 using std::vector;
 #include <set>
 using std::set;
 #include <array>
 using std::array;
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 
-#include "VulkanMesh.h"
 #include "VulkanUtilities.h"
-
-struct
-{
-	vk::PhysicalDevice physicalDevice;
-	vk::Device logicalDevice;
-} mainDevice;
-
-struct MVP
-{
-	glm::mat4 projection;
-	glm::mat4 view;
-	glm::mat4 model;
-};
+#include "VulkanMesh.h"
 
 struct ViewProjection
 {
@@ -51,13 +38,20 @@ public:
 	int init(GLFWwindow* windowP);
 	void draw();
 	void clean();
-	
+
+	void updateModel(int modelId, glm::mat4 modelP);
+
 private:
 	GLFWwindow* window;
 	vk::Instance instance;
 	vk::Queue graphicsQueue;			// Handles to queue (no value stored)
 	VkDebugUtilsMessengerEXT debugMessenger;
 	
+	struct {
+		vk::PhysicalDevice physicalDevice;
+		vk::Device logicalDevice;
+	} mainDevice;
+
 	vk::SurfaceKHR surface;
 	vk::Queue presentationQueue;
 	vk::SwapchainKHR swapchain;
@@ -75,10 +69,32 @@ private:
 
 	vector<vk::Semaphore> imageAvailable;
 	vector<vk::Semaphore> renderFinished;
-	// Should be less than the number of swap-chain images, here 3 (could cause bugs)
-	const int MAX_FRAME_DRAWS = 2;
+	const int MAX_FRAME_DRAWS = 2;			// Should be less than the number of swapchain images, here 3 (could cause bugs)
 	int currentFrame = 0;
 	vector<vk::Fence> drawFences;
+
+	vector<VulkanMesh> meshes;
+
+	vk::DescriptorSetLayout descriptorSetLayout;
+	vector<vk::Buffer> vpUniformBuffer;
+	vector<vk::DeviceMemory> vpUniformBufferMemory;
+	vk::DescriptorPool descriptorPool;
+	vector<vk::DescriptorSet> descriptorSets;
+	
+	
+	ViewProjection viewProjection;
+	vk::DeviceSize minUniformBufferOffet;
+	size_t modelUniformAlignement;
+	Model* modelTransferSpace;
+	const int MAX_OBJECTS = 2;
+	vector<vk::Buffer> modelUniformBufferDynamic;
+	vector<vk::DeviceMemory> modelUniformBufferMemoryDynamic;
+
+	vk::PushConstantRange pushConstantRange;
+
+	vk::Image depthBufferImage;
+	vk::DeviceMemory depthBufferImageMemory;
+	vk::ImageView depthBufferImageView;
 
 	// Instance
 	void createInstance();
@@ -117,47 +133,28 @@ private:
 	void createFramebuffers();
 	void createGraphicsCommandPool();
 	void createGraphicsCommandBuffers();
-	void recordCommands();
+	void recordCommands(uint32_t currentImage);
+
+	// Descriptor sets
+	void createDescriptorSetLayout();
+	void createUniformBuffers();
+	void createDescriptorPool();
+	void createDescriptorSets();
+	void updateUniformBuffers(uint32_t imageIndex);
+
+	// Data alignment and dynamic buffers
+	void allocateDynamicBufferTransferSpace();
+
+	// Push constants
+	void createPushConstantRange();
+
+	// Depth
+	void createDepthBufferImage();
+	vk::Image createImage(uint32_t width, uint32_t height, vk::Format format, vk::ImageTiling tiling,
+		vk::ImageUsageFlags useFlags, vk::MemoryPropertyFlags propFlags, vk::DeviceMemory* imageMemory);
+	vk::Format chooseSupportedFormat(const vector<vk::Format>& formats, vk::ImageTiling tiling, vk::FormatFeatureFlags featureFlags);
 
 	// Draw
 	void createSynchronisation();
-
-	VulkanMesh firstMesh;
-
-	vector<VulkanMesh> meshes;
-
-	MVP mvp;
-
-	vk::DescriptorSetLayout descriptorSetLayout;
-	void createDescriptorSetLayout();
-	
-	vector<vk::Buffer> vpUniformBuffer;
-	vector<vk::DeviceMemory> vpUniformBufferMemory;
-	void createUniformBuffers();
-
-	vk::DescriptorPool descriptorPool;
-	void createDescriptorPool();
-
-	vector<vk::DescriptorSet> descriptorSets;
-	void createDescriptorSets();
-
-	void updateUniformBuffers(uint32_t imageIndex);
-
-public:
-	void updateModel(int modelId, glm::mat4 modelP);
-
-private:
-	ViewProjection viewProjection;
-	
-	VkDeviceSize minUniformBufferOffet;
-	size_t modelUniformAlignement;
-	//UboModel* modelTransferSpace;
-	Model* modelTransferSpace;
-
-	const int MAX_OBJECTS = 2;
-
-	void allocateDynamicBufferTransferSpace();
-
-	vector<vk::Buffer> modelUniformBufferDynamic;
-	vector<vk::DeviceMemory> modelUniformBufferMemoryDynamic;
 };
+
