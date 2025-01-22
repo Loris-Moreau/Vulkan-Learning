@@ -10,14 +10,7 @@
     <list default="true" id="fe21b1dd-7b2a-4276-81af-359df12e18f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.ilk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.idb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/VulkanApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/VulkanApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanUtilities.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanUtilities.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +22,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro-Vulkan/VulkanApp/VulkanRenderer.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro-Vulkan/VulkanApp/VulkanUtilities.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../../VulkanSDK/Include/vulkan/vulkan_core.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../../VulkanSDK/Include/vulkan/vulkan_structs.hpp" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -135,7 +129,7 @@
       <workItem from="1737454136523" duration="6869000" />
       <workItem from="1737533212985" duration="4642000" />
       <workItem from="1737538168682" duration="1476000" />
-      <workItem from="1737540933928" duration="4614000" />
+      <workItem from="1737540933928" duration="5392000" />
     </task>
     <servers />
   </component>

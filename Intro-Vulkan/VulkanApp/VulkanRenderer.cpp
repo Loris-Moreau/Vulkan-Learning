@@ -477,8 +477,9 @@ void VulkanRenderer::createLogicalDevice()
 	deviceCreateInfo.ppEnabledExtensionNames = deviceExtensions.data();
 	// -- Validation layers are deprecated since Vulkan 1.1
 	// Features
-	vk::PhysicalDeviceFeatures deviceFeatures {};
+	vk::PhysicalDeviceFeatures deviceFeatures{};
 	deviceFeatures.samplerAnisotropy = true;
+	deviceFeatures.sampleRateShading = true;
 	deviceCreateInfo.pEnabledFeatures = &deviceFeatures;
 
 	// Create the logical device for the given physical device
@@ -868,8 +869,10 @@ void VulkanRenderer::createGraphicsPipeline()
 	// -- MULTISAMPLING --	
 	// Not for textures, only for edges
 	vk::PipelineMultisampleStateCreateInfo multisamplingCreateInfo{};
-	// Enable multisample shading or not
-	multisamplingCreateInfo.sampleShadingEnable = VK_FALSE;	
+	// Enable sample shading in the pipeline
+	multisamplingCreateInfo.sampleShadingEnable = true;
+	// Min fraction for sample shading; closer to one is smoother
+	multisamplingCreateInfo.minSampleShading = 0.2f;
 	// Number of samples to use per fragment
 	multisamplingCreateInfo.rasterizationSamples = msaaSamples;
 

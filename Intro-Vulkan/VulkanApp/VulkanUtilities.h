@@ -340,14 +340,14 @@ static void transitionImageLayout(vk::Device device, vk::Queue queue, vk::Comman
 static void generateMipmaps(vk::Device device, vk::PhysicalDevice physicalDevice, vk::Queue queue, vk::CommandPool commandPool, vk::Image image,
 	vk::Format imageFormat, int32_t texWidth, int32_t texHeight, uint32_t mipLevels)
 {
-	// Check if image format supports linear blitzing. We create a texture image with
+	// Check if image format supports linear blitting!". We create a texture image with
 	// the optimal tiling format, so we need to check optimalTilingFeatures.
 	vk::FormatProperties formatProperties = physicalDevice.getFormatProperties(imageFormat);
 	if (!(formatProperties.optimalTilingFeatures
 	& vk::FormatFeatureFlagBits::eSampledImageFilterLinear))
 	{
 		throw std::runtime_error(
-		"texture image format does not support linear blitzing!"
+		"texture image format does not support linear blitting!"
 		);
 	}
 	vk::CommandBuffer commandBuffer = beginCommandBuffer(device, commandPool);
