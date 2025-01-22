@@ -154,8 +154,8 @@ private:
 
 	// Depth
 	void createDepthBufferImage();
-	vk::Image createImage(uint32_t width, uint32_t height, uint32_t mipLevels, vk::Format format, vk::ImageTiling tiling, vk::ImageUsageFlags useFlags,
-		vk::MemoryPropertyFlags propFlags, vk::DeviceMemory* imageMemory);
+	vk::Image createImage(uint32_t width, uint32_t height, uint32_t mipLevels, vk::SampleCountFlagBits numSamples, vk::Format format, vk::ImageTiling tiling,
+		vk::ImageUsageFlags useFlags, vk::MemoryPropertyFlags propFlags, vk::DeviceMemory* imageMemory);
 	vk::Format chooseSupportedFormat(const vector<vk::Format>& formats, vk::ImageTiling tiling, vk::FormatFeatureFlags featureFlags);
 
 	// Draw
@@ -186,5 +186,11 @@ public:
 	int createMeshModel(string filename);
 	
 private:
-	
+	vk::SampleCountFlagBits msaaSamples{ vk::SampleCountFlagBits::e1 };
+
+	vk::Image colorImage;
+	vk::DeviceMemory colorImageMemory;
+	vk::ImageView colorImageView;
+
+	void createColorBufferImage();
 };
