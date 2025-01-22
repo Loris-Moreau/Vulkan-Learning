@@ -8,30 +8,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe21b1dd-7b2a-4276-81af-359df12e18f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/VulkanApp/shaders/shader.frag.spv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VulkanApp/shaders/shader.vert.spv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/x64/Debug/VulkanApp.exp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/VulkanApp/FileContentIndex/5d288983-87be-4bd5-ad81-4c2c0502c429.vsidx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/VulkanApp/FileContentIndex/c76a169c-c839-4a9e-a54f-0772cbf1194c.vsidx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/VulkanApp/v17/fileList.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vs/VulkanApp/v17/ipch/AutoPCH/15da8e8c129707e4/VULKANRENDERER.ipch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/VulkanMeshModel.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/VulkanMeshModel.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link-cvtres.read.1.tlog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link-cvtres.write.1.tlog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link-rc.read.1.tlog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link-rc.write.1.tlog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.read.2.tlog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.read.3.tlog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.read.4.tlog" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/unsuccessfulbuild" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/Main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/VulkanApp/FileContentIndex/94c34b85-3a25-48e8-b3cb-c65b6ccae28e.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/VulkanApp/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/VulkanApp/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/VulkanApp/v17/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/VulkanApp/v17/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/VulkanApp/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/VulkanApp/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/VulkanApp/v17/ipch/AutoPCH/d3a88897c6bda610/MAIN.ipch" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/VulkanApp/v17/ipch/AutoPCH/d3a88897c6bda610/MAIN.ipch" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanMesh.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanMesh.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanMesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanMesh.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj.filters" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj.filters" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanUtilities.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanUtilities.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/compileShaders.bat" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/compileShaders.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/frag.spv" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/frag.spv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/shader1.frag" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/shader.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/shader1.frag.spv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/shader1.vert" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/shader.vert" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/shader1.vert.spv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/vert.spv" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/vert.spv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.Build.CppClean.log" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.Build.CppClean.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.ilk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.read.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/Cl.items.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.secondary.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.secondary.1.tlog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.write.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/x64/Debug/VulkanApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/VulkanApp.pdb" afterDir="false" />
@@ -149,7 +159,8 @@
       <updated>1737452306518</updated>
       <workItem from="1737452308010" duration="807000" />
       <workItem from="1737454136523" duration="6869000" />
-      <workItem from="1737533212985" duration="4576000" />
+      <workItem from="1737533212985" duration="4642000" />
+      <workItem from="1737538168682" duration="1054000" />
     </task>
     <servers />
   </component>

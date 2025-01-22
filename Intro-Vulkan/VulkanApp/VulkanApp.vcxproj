@@ -79,8 +79,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)externals\GLM;$(SolutionDir)externals\GLFW\include;C:\VulkanSDK\Include;$(IncludePath)</IncludePath>
-    <ExecutablePath>$(SolutionDir)externals\GLM;$(SolutionDir)externals\GLFW\include;C:\VulkanSDK\Include;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(SolutionDir)externals\assimp-5.0.1\include;$(SolutionDir)externals\GLM;$(SolutionDir)externals\GLFW\include;C:\VulkanSDK\Include;$(IncludePath)</IncludePath>
+    <ExecutablePath>$(SolutionDir)externals\assimp-5.0.1\include;$(SolutionDir)externals\GLM;$(SolutionDir)externals\GLFW\include;C:\VulkanSDK\Include;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -123,14 +123,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)externals\GLM;$(SolutionDir)externals\GLFW\\include;C:\VulkanSDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)externals\assimp-5.0.1\include;$(SolutionDir)externals\GLM;$(SolutionDir)externals\GLFW\\include;C:\VulkanSDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)externals\GLFW\lib-vc2022;C:\VulkanSDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>vulkan-1.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)externals\assimp-5.0.1\lib;$(SolutionDir)externals\GLFW\lib-vc2022;C:\VulkanSDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>vulkan-1.lib;glfw3.lib;assimp-vc142-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -226,6 +226,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="VulkanMesh.cpp" />
+    <ClCompile Include="VulkanMeshModel.cpp" />
     <ClCompile Include="VulkanRenderer.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -305,6 +306,7 @@
   <ItemGroup>
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="VulkanMesh.h" />
+    <ClInclude Include="VulkanMeshModel.h" />
     <ClInclude Include="VulkanRenderer.h" />
     <ClInclude Include="VulkanUtilities.h" />
   </ItemGroup>

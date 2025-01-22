@@ -38,8 +38,7 @@
               "RelativeToolTip": "VulkanApp\\VulkanUtilities.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-21T09:53:54.755Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-21T09:53:54.755Z"
             },
             {
               "$type": "Document",
@@ -49,7 +48,7 @@
               "RelativeDocumentMoniker": "VulkanApp\\VulkanRenderer.h",
               "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanRenderer.h",
               "RelativeToolTip": "VulkanApp\\VulkanRenderer.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAXAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-21T09:53:54.084Z",
               "EditorCaption": ""
@@ -64,8 +63,7 @@
               "RelativeToolTip": "VulkanApp\\VulkanRenderer.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-21T09:53:53.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-21T09:53:53.497Z"
             },
             {
               "$type": "Document",
@@ -77,8 +75,7 @@
               "RelativeToolTip": "VulkanApp\\Main.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-21T09:53:52.915Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-21T09:53:52.915Z"
             }
           ]
         }

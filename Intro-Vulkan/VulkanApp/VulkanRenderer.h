@@ -11,8 +11,13 @@ using std::set;
 #include <array>
 using std::array;
 
+#include <assimp/Importer.hpp>
+#include <assimp/postprocess.h>
+#include <assimp/scene.h>
+
 #include "stb_image.h"
 #include "VulkanMesh.h"
+#include "VulkanMeshModel.h"
 #include "VulkanUtilities.h"
 
 struct ViewProjection
@@ -85,7 +90,7 @@ private:
 	vk::DeviceSize minUniformBufferOffet;
 	size_t modelUniformAlignement;
 	Model* modelTransferSpace;
-	const int MAX_OBJECTS = 2;
+	const int MAX_OBJECTS = 20;
 	vector<vk::Buffer> modelUniformBufferDynamic;
 	vector<vk::DeviceMemory> modelUniformBufferMemoryDynamic;
 
@@ -174,5 +179,7 @@ private:
 
 	vector<vk::DescriptorSet> samplerDescriptorSets;
 	int createTextureDescriptor(vk::ImageView textureImageView);
-	
+
+	vector<VulkanMeshModel> meshModels;
+	void createMeshModel(string filename);
 };

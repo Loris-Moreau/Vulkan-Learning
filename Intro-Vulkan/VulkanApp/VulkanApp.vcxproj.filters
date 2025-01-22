@@ -3,9 +3,12 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="VulkanRenderer.cpp" />
+    <ClCompile Include="VulkanMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VulkanUtilities.h" />
     <ClInclude Include="VulkanRenderer.h" />
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="VulkanMesh.h" />
   </ItemGroup>
 </Project>

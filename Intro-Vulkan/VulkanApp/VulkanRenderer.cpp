@@ -84,6 +84,8 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 		
 		meshes.push_back(firstMesh);
 		meshes.push_back(secondMesh);
+
+		createMeshModel("models/Futuristic combat jet.obj");
 	}
 	catch (const std::runtime_error& e)
 	{
@@ -147,6 +149,11 @@ void VulkanRenderer::draw()
 void VulkanRenderer::clean()
 {
 	mainDevice.logicalDevice.waitIdle();
+	
+	for (auto& model : meshModels)
+	{
+		model.destroyMeshModel();
+	}
 	
 	mainDevice.logicalDevice.destroyDescriptorPool(samplerDescriptorPool, nullptr);
 	mainDevice.logicalDevice.destroyDescriptorSetLayout(samplerDescriptorSetLayout, nullptr);
@@ -759,8 +766,8 @@ void VulkanRenderer::createGraphicsPipeline()
 	// Texture attributes
 	attributeDescriptions[2].binding = 0;
 	attributeDescriptions[2].location = 2;
-	//attributeDescriptions[1].format = vk::Format::eR32G32Sfloat;
-	attributeDescriptions[0].format = VkFormat::VK_FORMAT_R32G32_SFLOAT;
+	attributeDescriptions[1].format = vk::Format::eR32G32Sfloat;
+	//attributeDescriptions[0].format = VkFormat::VK_FORMAT_R32G32_SFLOAT;
 	attributeDescriptions[2].offset = offsetof(Vertex, tex);
 
 	
@@ -1643,3 +1650,42 @@ int VulkanRenderer::createTextureDescriptor(vk::ImageView textureImageView)
 	samplerDescriptorSets.push_back(descriptorSet);
 	return samplerDescriptorSets.size() - 1;
 }
+
+void VulkanRenderer::createMeshModel(string filename)
+{
+	// Import model scene
+	Assimp::Importer importer;
+	// We want the model to be in triangles, to flip vertically texels uvs,
+	// and optimize the use of vertices
+	const aiScene* scene = importer.ReadFile(filename, aiProcess_Triangulate |
+	aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
+	if (!scene)
+	{
+		throw std::runtime_error("Failed to load mesh model: " + filename);
+	}
+	// Load materials with one-to-one relationship with texture ids
+	vector<string> textureNames = VulkanMeshModel::loadMaterials(scene);
+	// Conversion to material list ID to descriptor array ids (we don't keep empty files)
+	vector<int> matToTex(textureNames.size());
+	// Loop over texture names and create textures for them
+	for (size_t i = 0; i < textureNames.size(); ++i)
+	{
+		if (textureNames[i].empty())
+		{
+			// Texture 0 will be reserved for a default texture
+			matToTex[i] = 0;
+		}
+		else
+		{
+			// Return the texture's id
+			matToTex[i] = createTexture(textureNames[i]);
+		}
+	}
+	// Load in all our meshes
+	vector<VulkanMesh> modelMeshes =
+	VulkanMeshModel::loadNode(mainDevice.physicalDevice, mainDevice.logicalDevice,
+	graphicsQueue, graphicsCommandPool, scene->mRootNode, scene, matToTex);
+	auto meshModel = VulkanMeshModel(modelMeshes);
+	meshModels.push_back(meshModel);
+}
+
