@@ -14,9 +14,8 @@ struct Model
 class VulkanMesh
 {
 public:
-	VulkanMesh(vk::PhysicalDevice physicalDeviceP, vk::Device deviceP,
-		vk::Queue transferQueue, vk::CommandPool transferCommandPool, 
-		vector<Vertex>* vertices, vector<uint32_t>* indices);
+	VulkanMesh(vk::PhysicalDevice physicalDeviceP, vk::Device deviceP, vk::Queue transferQueue, vk::CommandPool transferCommandPool,
+		vector<Vertex>* vertices, vector<uint32_t>* indices, int texIdP);
 	VulkanMesh() = default;
 	~VulkanMesh() = default;
 
@@ -47,4 +46,11 @@ private:
 	void createVertexBuffer(vk::Queue transferQueue, vk::CommandPool transferCommandPool, vector<Vertex>* vertices);
 	void createIndexBuffer(vk::Queue transferQueue, vk::CommandPool transferCommandPool, vector<uint32_t>* indices);
 	uint32_t findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, uint32_t allowedTypes, vk::MemoryPropertyFlags properties);
+
+public:
+	int getTexId() const { return texId; }
+	
+private:
+	int texId;
+	
 };

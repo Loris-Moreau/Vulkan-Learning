@@ -1,10 +1,9 @@
 #pragma once
-#include <iostream>
 #include <fstream>
-#include <vulkan/vulkan.hpp>
-#include <glm/glm.hpp>
-
+#include <iostream>
 #include <vector>
+#include <glm/glm.hpp>
+#include <vulkan/vulkan.hpp>
 using std::vector;
 #include <string>
 using std::string;
@@ -13,6 +12,7 @@ struct Vertex
 {
 	glm::vec3 pos;
 	glm::vec3 col;
+	glm::vec2 tex;
 };
 
 const vector<const char*> deviceExtensions

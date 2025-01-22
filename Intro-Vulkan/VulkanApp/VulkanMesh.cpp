@@ -1,8 +1,7 @@
 #include "VulkanMesh.h"
 
-VulkanMesh::VulkanMesh(vk::PhysicalDevice physicalDeviceP,vk::Device deviceP, 
-	vk::Queue transferQueue, vk::CommandPool transferCommandPool, 
-	vector<Vertex>* vertices, vector<uint32_t>* indices)
+VulkanMesh::VulkanMesh(vk::PhysicalDevice physicalDeviceP, vk::Device deviceP, vk::Queue transferQueue, vk::CommandPool transferCommandPool, vector<Vertex>* vertices,
+	vector<uint32_t>* indices, int texIdP)
 	:
 	vertexCount(vertices->size()), indexCount(indices->size()), 
 	physicalDevice(physicalDeviceP), device(deviceP)
@@ -76,8 +75,7 @@ void VulkanMesh::createVertexBuffer(vk::Queue transferQueue, vk::CommandPool tra
 	device.freeMemory(stagingBufferMemory, nullptr);
 }
 
-void VulkanMesh::createIndexBuffer(vk::Queue transferQueue,
-	vk::CommandPool transferCommandPool, vector<uint32_t>* indices)
+void VulkanMesh::createIndexBuffer(vk::Queue transferQueue, vk::CommandPool transferCommandPool, vector<uint32_t>* indices)
 {
 	vk::DeviceSize bufferSize = sizeof(uint32_t) * indices->size();
 
@@ -105,8 +103,7 @@ void VulkanMesh::createIndexBuffer(vk::Queue transferQueue,
 	device.freeMemory(stagingBufferMemory);
 }
 
-uint32_t VulkanMesh::findMemoryTypeIndex(vk::PhysicalDevice physicalDevice,
-	uint32_t allowedTypes, vk::MemoryPropertyFlags properties)
+uint32_t VulkanMesh::findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, uint32_t allowedTypes, vk::MemoryPropertyFlags properties)
 {
 	// Get properties of physical device
 	vk::PhysicalDeviceMemoryProperties memoryProperties = physicalDevice.getMemoryProperties();

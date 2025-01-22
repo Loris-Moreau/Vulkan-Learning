@@ -8,29 +8,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe21b1dd-7b2a-4276-81af-359df12e18f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/VulkanApp/stb_image.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/models/Futuristic combat jet.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/shaders/compileShaders.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/shaders/frag.spv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/shaders/shader1.frag" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/shaders/shader1.frag.spv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/shaders/shader1.vert" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/shaders/shader1.vert.spv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/shaders/vert.spv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/textures/Aircraft C.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/textures/Aircraft N.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/textures/Aircraft S.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/textures/REF 1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/textures/cat.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/shaders/shader.frag.spv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VulkanApp/shaders/shader.vert.spv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/x64/Debug/VulkanApp.exp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/Main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanMesh.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanMesh.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanMesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanMesh.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanUtilities.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanUtilities.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/compileShaders.bat" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/compileShaders.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/frag.spv" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/frag.spv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/shader1.frag" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/shader.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/shader1.frag.spv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/shader1.vert" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/shader.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/shader1.vert.spv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/shaders/vert.spv" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/shaders/vert.spv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.command.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.write.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.secondary.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.secondary.1.tlog" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.idb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/x64/Debug/VulkanApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/VulkanApp.pdb" afterDir="false" />
@@ -44,6 +45,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../../../../../VulkanSDK/Include/vulkan/vulkan_core.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../../VulkanSDK/Include/vulkan/vulkan_structs.hpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -147,7 +149,7 @@
       <updated>1737452306518</updated>
       <workItem from="1737452308010" duration="807000" />
       <workItem from="1737454136523" duration="6869000" />
-      <workItem from="1737533212985" duration="2404000" />
+      <workItem from="1737533212985" duration="4576000" />
     </task>
     <servers />
   </component>

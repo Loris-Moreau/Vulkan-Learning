@@ -310,8 +310,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="shaders\compileShaders.bat" />
-    <Content Include="shaders\shader1.frag" />
-    <Content Include="shaders\shader1.vert" />
+    <Content Include="shaders\shader.frag" />
+    <Content Include="shaders\shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

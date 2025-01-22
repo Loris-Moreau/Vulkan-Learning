@@ -171,4 +171,8 @@ private:
 	vk::DescriptorPool samplerDescriptorPool;
 
 	vk::DescriptorSetLayout samplerDescriptorSetLayout;
+
+	vector<vk::DescriptorSet> samplerDescriptorSets;
+	int createTextureDescriptor(vk::ImageView textureImageView);
+	
 };
