@@ -1,24 +1,26 @@
 #pragma once
 #define GLFW_INCLUDE_VULKAN
+#include <glfw3.h>
+
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
+
 #include <stdexcept>
 #include <vector>
-#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 using std::vector;
 #include <set>
 using std::set;
 #include <array>
+#include "stb_image.h"
 using std::array;
 
+// Assimp
 #include <assimp/Importer.hpp>
-#include <assimp/postprocess.h>
 #include <assimp/scene.h>
-
-#include "stb_image.h"
-#include "VulkanMesh.h"
+#include <assimp/postprocess.h>
 #include "VulkanMeshModel.h"
 #include "VulkanUtilities.h"
+#include "VulkanMesh.h"
 
 struct ViewProjection
 {
@@ -44,6 +46,8 @@ public:
 	void clean();
 
 	void updateModel(int modelId, glm::mat4 modelP);
+	int createMeshModel(const std::string& filename);
+	void createColorBufferImage();
 
 private:
 	GLFWwindow* window;
@@ -99,6 +103,19 @@ private:
 	vk::Image depthBufferImage;
 	vk::DeviceMemory depthBufferImageMemory;
 	vk::ImageView depthBufferImageView;
+	vector<VkImage> textureImages;
+	vector<vk::ImageView> textureImageViews;
+	vector<VkDeviceMemory> textureImageMemory;
+	vk::Sampler textureSampler;
+	vk::DescriptorPool samplerDescriptorPool;
+	vk::DescriptorSetLayout samplerDescriptorSetLayout;
+	vector<vk::DescriptorSet> samplerDescriptorSets;
+	vector<VulkanMeshModel> meshModels;
+	vk::SampleCountFlagBits msaaSamples{ vk::SampleCountFlagBits::e1 };
+
+	vk::Image colorImage;
+	vk::DeviceMemory colorImageMemory;
+	vk::ImageView colorImageView;
 
 	// Instance
 	void createInstance();
@@ -154,43 +171,17 @@ private:
 
 	// Depth
 	void createDepthBufferImage();
+	stbi_uc* loadTextureFile(const std::string& filename, int* width, int* height, vk::DeviceSize* imageSize);
+	int createTextureImage(const std::string& filename, uint32_t& mipLevels);
+	int createTexture(const std::string& filename);
+	
 	vk::Image createImage(uint32_t width, uint32_t height, uint32_t mipLevels, vk::SampleCountFlagBits numSamples, vk::Format format, vk::ImageTiling tiling,
 		vk::ImageUsageFlags useFlags, vk::MemoryPropertyFlags propFlags, vk::DeviceMemory* imageMemory);
 	vk::Format chooseSupportedFormat(const vector<vk::Format>& formats, vk::ImageTiling tiling, vk::FormatFeatureFlags featureFlags);
+	void createTextureSampler();
+	int createTextureDescriptor(vk::ImageView textureImageView);
 
 	// Draw
 	void createSynchronisation();
 
-	stbi_uc* loadTextureFile(const string& filename, int* width, int* height, vk::DeviceSize* imageSize);
-
-	vector<VkImage> textureImages;
-	vector<vk::ImageView> textureImageViews;
-	vector<VkDeviceMemory> textureImageMemory;
-
-	int createTextureImage(const string& filename, uint32_t& mipLevels);
-	int createTexture(const string& filename);
-
-	vk::Sampler textureSampler;
-	void createTextureSampler();
-
-	vk::DescriptorPool samplerDescriptorPool;
-
-	vk::DescriptorSetLayout samplerDescriptorSetLayout;
-
-	vector<vk::DescriptorSet> samplerDescriptorSets;
-	int createTextureDescriptor(vk::ImageView textureImageView);
-
-	vector<VulkanMeshModel> meshModels;
-
-public:
-	int createMeshModel(string filename);
-	
-private:
-	vk::SampleCountFlagBits msaaSamples{ vk::SampleCountFlagBits::e1 };
-
-	vk::Image colorImage;
-	vk::DeviceMemory colorImageMemory;
-	vk::ImageView colorImageView;
-
-	void createColorBufferImage();
 };

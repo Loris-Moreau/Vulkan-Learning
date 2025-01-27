@@ -1,7 +1,8 @@
 #pragma once
 #define GLFW_INCLUDE_VULKAN
+#include <glfw3.h>
+
 #include <vector>
-#include <GLFW/glfw3.h>
 using std::vector;
 
 #include "VulkanUtilities.h"
@@ -30,6 +31,8 @@ public:
 
 	void destroyBuffers();
 
+	int getTexId() const { return texId; }
+
 private:
 	size_t vertexCount{0};
 	size_t indexCount{0};
@@ -42,15 +45,9 @@ private:
 	vk::DeviceMemory vertexBufferMemory;
 	vk::Buffer indexBuffer;
 	vk::DeviceMemory indexBufferMemory;
+	int texId;
 
 	void createVertexBuffer(vk::Queue transferQueue, vk::CommandPool transferCommandPool, vector<Vertex>* vertices);
 	void createIndexBuffer(vk::Queue transferQueue, vk::CommandPool transferCommandPool, vector<uint32_t>* indices);
 	uint32_t findMemoryTypeIndex(vk::PhysicalDevice physicalDevice, uint32_t allowedTypes, vk::MemoryPropertyFlags properties);
-
-public:
-	int getTexId() const { return texId; }
-	
-private:
-	int texId;
-	
 };

@@ -1,11 +1,11 @@
 ﻿#pragma once
-
-#include <vector>
+#include <glm.hpp>
 #include <assimp/scene.h>
-#include <glm/glm.hpp>
-using std::vector;
-
+#include <vector>
 #include "VulkanMesh.h"
+#include <string>
+using std::string;
+using std::vector;
 
 class VulkanMeshModel
 {
@@ -30,5 +30,4 @@ public:
 private:
 	vector<VulkanMesh> meshes;
 	glm::mat4 model;
-
 };

@@ -52,43 +52,6 @@ int VulkanRenderer::init(GLFWwindow* windowP)
 		// In vulkan, y is downward, and for glm it is upward
 		viewProjection.projection[1][1] *= -1;
 
-		// -- Vertex data
-		vector<Vertex> meshVertices1
-		{
-			{{-0.4f, 0.4f, 0.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}}, // 0
-			{{-0.4f, -0.4f, 0.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}}, // 1
-			{{ 0.4f, -0.4f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f}}, // 2
-			{{ 0.4f, 0.4f, 0.0f}, {1.0f, 1.0f, 0.0f}, {0.0f, 1.0f}}, // 3
-		};
-		vector<Vertex> meshVertices2
-		{
-			{{-0.4f, 0.4f, 0.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}}, // 0
-			{{-0.4f, -0.4f, 0.0f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}}, // 1
-			{{ 0.4f, -0.4f, 0.0f}, {0.0f, 0.0f, 1.0f}, {0.0f, 0.0f}}, // 2
-			{{ 0.4f, 0.4f, 0.0f}, {1.0f, 1.0f, 0.0f}, {0.0f, 1.0f}}, // 3
-		};
-
-		// -- Index data
-		vector<uint32_t> meshIndices
-		{
-			0, 1, 2,
-			2, 3, 0
-		};
-
-		VulkanMesh firstMesh = VulkanMesh(mainDevice.physicalDevice, mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool,
-			&meshVertices1, &meshIndices, createTexture("cat.jpg"));
-		VulkanMesh secondMesh = VulkanMesh(mainDevice.physicalDevice, mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool,
-			&meshVertices2, &meshIndices, createTexture("cat.jpg"));
-		
-		meshes.push_back(firstMesh);
-		meshes.push_back(secondMesh);
-
-		/*
-		// Default texture
-		createTexture("cat.jpg");
-		// Load model
-		createMeshModel("models/Futuristic combat jet.obj");
-		*/
 	}
 	catch (const std::runtime_error& e)
 	{
@@ -153,27 +116,20 @@ void VulkanRenderer::clean()
 {
 	mainDevice.logicalDevice.waitIdle();
 	
-	mainDevice.logicalDevice.destroyImageView(colorImageView);
-	mainDevice.logicalDevice.destroyImage(colorImage);
-	mainDevice.logicalDevice.freeMemory(colorImageMemory);
-	
-	for (auto& model : meshModels)
-	{
-		model.destroyMeshModel();
-	}
-	
-	mainDevice.logicalDevice.destroyDescriptorPool(samplerDescriptorPool, nullptr);
-	mainDevice.logicalDevice.destroyDescriptorSetLayout(samplerDescriptorSetLayout, nullptr);
-	
-	mainDevice.logicalDevice.destroySampler(textureSampler);
-	
 	for (auto i = 0; i < textureImages.size(); ++i)
 	{
 		mainDevice.logicalDevice.destroyImageView(textureImageViews[i], nullptr);
 		mainDevice.logicalDevice.destroyImage(textureImages[i], nullptr);
 		mainDevice.logicalDevice.freeMemory(textureImageMemory[i], nullptr);
 	}
+	mainDevice.logicalDevice.destroyImageView(colorImageView);
+	mainDevice.logicalDevice.destroyImage(colorImage);
+	mainDevice.logicalDevice.freeMemory(colorImageMemory);
 	
+	mainDevice.logicalDevice.destroyDescriptorPool(samplerDescriptorPool, nullptr);
+	mainDevice.logicalDevice.destroyDescriptorSetLayout(samplerDescriptorSetLayout, nullptr);
+	
+	mainDevice.logicalDevice.destroySampler(textureSampler);
 	mainDevice.logicalDevice.destroyImageView(depthBufferImageView);
 	mainDevice.logicalDevice.destroyImage(depthBufferImage);
 	
@@ -190,6 +146,10 @@ void VulkanRenderer::clean()
 	for (auto& mesh : meshes)
 	{
 		mesh.destroyBuffers();
+	}
+	for (auto& model : meshModels)
+	{
+		model.destroyMeshModel();
 	}
 	for (size_t i = 0; i < MAX_FRAME_DRAWS; ++i) 
 	{
@@ -430,7 +390,7 @@ QueueFamilyIndices VulkanRenderer::getQueueFamilies(vk::PhysicalDevice device)
 		}
 
 		// Check if queue family support presentation
-		vk::Bool32 presentationSupport = false;
+		VkBool32 presentationSupport = false;
 		presentationSupport = device.getSurfaceSupportKHR(static_cast<uint32_t>(indices.graphicsFamily), surface);
 		if (queueFamily.queueCount > 0 && presentationSupport)
 		{
@@ -707,17 +667,12 @@ vk::ImageView VulkanRenderer::createImageView(vk::Image image, vk::Format format
 	viewCreateInfo.components.b = vk::ComponentSwizzle::eIdentity;
 	viewCreateInfo.components.a = vk::ComponentSwizzle::eIdentity;
 
-	// Subresource allow the view to view only a part of an image
-	// Here we want to see the image under the aspect of colors
-	viewCreateInfo.subresourceRange.aspectMask = aspectFlags;
-	// Start mipmap level to view from
-	viewCreateInfo.subresourceRange.baseMipLevel = 0;
-	// Number of mipmap level to view
-	viewCreateInfo.subresourceRange.levelCount = mipLevels;
-	// Start array level to view from
-	viewCreateInfo.subresourceRange.baseArrayLayer = 0;
-	// Number of array levels to view
-	viewCreateInfo.subresourceRange.layerCount = 1;	
+	// Subresources allow the view to view only a part of an image
+	viewCreateInfo.subresourceRange.aspectMask = aspectFlags;			// Here we want to see the image under the aspect of colors
+	viewCreateInfo.subresourceRange.baseMipLevel = 0;					// Start mipmap level to view from
+	viewCreateInfo.subresourceRange.levelCount = mipLevels;						// Number of mipmap level to view
+	viewCreateInfo.subresourceRange.baseArrayLayer = 0;					// Start array level to view from
+	viewCreateInfo.subresourceRange.layerCount = 1;						// Number of array levels to view
 
 	// Create image view
 	vk::ImageView imageView = mainDevice.logicalDevice.createImageView(viewCreateInfo);
@@ -763,7 +718,7 @@ void VulkanRenderer::createGraphicsPipeline()
 	// Draw each first vertex of each instance, then the next vertex etc.
 	bindingDescription.inputRate = vk::VertexInputRate::eVertex;
 
-	/// Different attributes
+	// Different attributes
 	array<vk::VertexInputAttributeDescription, 3> attributeDescriptions;
 
 	// Position attributes
@@ -773,24 +728,20 @@ void VulkanRenderer::createGraphicsPipeline()
 	attributeDescriptions[0].location = 0;
 	// Format and size of the data(here: vec3)
 	attributeDescriptions[0].format = vk::Format::eR32G32B32Sfloat;
-	//attributeDescriptions[0].format = VkFormat::VK_FORMAT_R32G32B32_SFLOAT;
 	// Offset of data in vertex, like in OpenGL. The offset function automatically find it.
 	attributeDescriptions[0].offset = offsetof(Vertex, pos);
 
+	// Texture attributes
+	attributeDescriptions[2].binding = 0;
+	attributeDescriptions[2].location = 2;
+	attributeDescriptions[2].format = vk::Format::eR32G32Sfloat;
+	attributeDescriptions[2].offset = offsetof(Vertex, tex);
+	
 	// Color attributes
 	attributeDescriptions[1].binding = 0;
 	attributeDescriptions[1].location = 1;
 	attributeDescriptions[1].format = vk::Format::eR32G32B32Sfloat;
-	//attributeDescriptions[0].format = VkFormat::VK_FORMAT_R32G32B32_SFLOAT;
 	attributeDescriptions[1].offset = offsetof(Vertex, col);
-	
-	// Texture attributes
-	attributeDescriptions[2].binding = 0;
-	attributeDescriptions[2].location = 2;
-	attributeDescriptions[1].format = vk::Format::eR32G32Sfloat;
-	//attributeDescriptions[0].format = VkFormat::VK_FORMAT_R32G32_SFLOAT;
-	attributeDescriptions[2].offset = offsetof(Vertex, tex);
-
 	
 	// -- VERTEX INPUT STAGE --
 	vk::PipelineVertexInputStateCreateInfo vertexInputCreateInfo{};
@@ -859,7 +810,7 @@ void VulkanRenderer::createGraphicsPipeline()
 	rasterizerCreateInfo.lineWidth = 1.0f;							
 	// Culling. Do not draw back of polygons
 	rasterizerCreateInfo.cullMode = vk::CullModeFlagBits::eBack;	
-	// Wanting to know the front face of a polygon
+	// Widing to know the front face of a polygon
 	rasterizerCreateInfo.frontFace = vk::FrontFace::eCounterClockwise;	
 	// Whether to add a depth offset to fragments. Good for stopping "shadow acne" in shadow mapping. 
 	// Is set, need to set 3 other values.
@@ -869,12 +820,11 @@ void VulkanRenderer::createGraphicsPipeline()
 	// -- MULTISAMPLING --	
 	// Not for textures, only for edges
 	vk::PipelineMultisampleStateCreateInfo multisamplingCreateInfo{};
-	// Enable sample shading in the pipeline
-	multisamplingCreateInfo.sampleShadingEnable = true;
-	// Min fraction for sample shading; closer to one is smoother
-	multisamplingCreateInfo.minSampleShading = 0.2f;
+	// Enable multisample shading or not
+	multisamplingCreateInfo.sampleShadingEnable = VK_TRUE;	
 	// Number of samples to use per fragment
 	multisamplingCreateInfo.rasterizationSamples = msaaSamples;
+	multisamplingCreateInfo.minSampleShading = 0.2f;
 
 	// -- BLENDING --		
 	// How to blend a new color being written to the fragment, with the old value
@@ -1048,14 +998,21 @@ void VulkanRenderer::createRenderPass()
 	
 	// -- REFERENCES --
 	// Attachment reference uses an attachment index that refers to index
-	// in the attachment list passed to renderPassCreateInfo
-	vk::AttachmentReference colorAttachmentResolveReference{};
-	colorAttachmentResolveReference.attachment = 2;
-	colorAttachmentResolveReference.layout = vk::ImageLayout::eColorAttachmentOptimal;
+	// in the attachement list passed to renderPassCreateInfo
+	vk::AttachmentReference colorAttachmentReference{};
+	colorAttachmentReference.attachment = 0;
+	// Layout of the subpass (between initial and final layout)
+	colorAttachmentReference.layout = vk::ImageLayout::eColorAttachmentOptimal;
+
+	
 
 	vk::AttachmentReference depthAttachmentReference{};
 	depthAttachmentReference.attachment = 1;
 	depthAttachmentReference.layout = vk::ImageLayout::eDepthStencilAttachmentOptimal;
+
+	vk::AttachmentReference colorAttachmentResolveReference{};
+	colorAttachmentResolveReference.attachment = 2;
+	colorAttachmentResolveReference.layout = vk::ImageLayout::eColorAttachmentOptimal;
 
 	// -- SUBPASSES --
 	// Subpass description, will reference attachments
@@ -1064,8 +1021,9 @@ void VulkanRenderer::createRenderPass()
 	// Could be computed pipeline, or nvidia raytracing...
 	subpass.pipelineBindPoint = vk::PipelineBindPoint::eGraphics;
 	subpass.colorAttachmentCount = 1;
-	subpass.pColorAttachments = &colorAttachmentResolveReference;
+	subpass.pColorAttachments = &colorAttachmentReference;
 	subpass.pDepthStencilAttachment = &depthAttachmentReference;
+	subpass.pResolveAttachments = &colorAttachmentResolveReference;
 
 	renderPassCreateInfo.subpassCount = 1;
 	renderPassCreateInfo.pSubpasses = &subpass;
@@ -1102,7 +1060,6 @@ void VulkanRenderer::createRenderPass()
 	renderPassCreateInfo.pDependencies = subpassDependencies.data();
 
 	renderPass = mainDevice.logicalDevice.createRenderPass(renderPassCreateInfo);
-	subpass.pResolveAttachments = &colorAttachmentResolveReference;
 }
 
 void VulkanRenderer::createFramebuffers()
@@ -1168,7 +1125,7 @@ void VulkanRenderer::recordCommands(uint32_t currentImage)
 	// Buffer can be resubmited when it has already been submited
 	//commandBufferBeginInfo.flags = vk::CommandBufferUsageFlagBits::eSimultaneousUse;		
 
-	// Information about how to be a render pass (only for graphical apps)
+	// Information about being a render pass (only for graphical apps)
 	vk::RenderPassBeginInfo renderPassBeginInfo{};
 	// Render pass to begin
 	renderPassBeginInfo.renderPass = renderPass;
@@ -1262,6 +1219,36 @@ void VulkanRenderer::createSynchronisation()
 		renderFinished[i] = mainDevice.logicalDevice.createSemaphore(semaphoreCreateInfo);
 		drawFences[i] = mainDevice.logicalDevice.createFence(fenceCreateInfo);
 	}
+}
+
+void VulkanRenderer::createTextureSampler()
+{
+	vk::SamplerCreateInfo samplerCreateInfo{};
+	// How to render when image is magnified on screen
+	samplerCreateInfo.magFilter = vk::Filter::eLinear;
+	// How to render when image is minified on screen
+	samplerCreateInfo.minFilter = vk::Filter::eLinear;
+	// Texture wrap in the U direction
+	samplerCreateInfo.addressModeU = vk::SamplerAddressMode::eRepeat;
+	// Texture wrap in the V direction
+	samplerCreateInfo.addressModeV = vk::SamplerAddressMode::eRepeat;
+	// Texture wrap in the W direction
+	samplerCreateInfo.addressModeW = vk::SamplerAddressMode::eRepeat;
+	// When no repeat, texture become black beyond border
+	samplerCreateInfo.borderColor = vk::BorderColor::eIntOpaqueBlack;
+	// Coordinates ARE normalized. When true, coords are between 0 and image size
+	samplerCreateInfo.unnormalizedCoordinates = false;
+	// Fade between two mipmaps is linear
+	samplerCreateInfo.mipmapMode = vk::SamplerMipmapMode::eLinear;
+	// Add a bias to the mimmap level
+	samplerCreateInfo.mipLodBias = 0.0f;
+	samplerCreateInfo.minLod = 0.0f;
+	samplerCreateInfo.maxLod = 10.0f;
+	// Overcome blur when a texture is stretched because of perspective with angle
+	samplerCreateInfo.anisotropyEnable = true;
+	// Anisotropy number of samples
+	samplerCreateInfo.maxAnisotropy = 16;
+	textureSampler = mainDevice.logicalDevice.createSampler(samplerCreateInfo);
 }
 
 void VulkanRenderer::createDescriptorSetLayout()
@@ -1461,6 +1448,55 @@ void VulkanRenderer::createPushConstantRange()
 	pushConstantRange.size = sizeof(Model);
 }
 
+vk::Image VulkanRenderer::createImage(uint32_t width, uint32_t height, uint32_t mipLevels,
+										vk::SampleCountFlagBits numSamples, vk::Format format, vk::ImageTiling tiling,
+										vk::ImageUsageFlags useFlags, vk::MemoryPropertyFlags propFlags,
+										vk::DeviceMemory* imageMemory)
+{
+	vk::ImageCreateInfo imageCreateInfo{};
+	imageCreateInfo.imageType = vk::ImageType::e2D;
+	imageCreateInfo.extent.width = width;
+	imageCreateInfo.extent.height = height;
+	// Depth is 1, no 3D aspect
+	imageCreateInfo.extent.depth = 1;
+	imageCreateInfo.mipLevels = mipLevels;
+	// Number of levels in image array
+	imageCreateInfo.arrayLayers = 1;
+	imageCreateInfo.format = format;
+	// How image data should be "tiled" (arranged for optimal reading)
+	imageCreateInfo.tiling = tiling;
+	// Initial layout in the render pass
+	imageCreateInfo.initialLayout = vk::ImageLayout::eUndefined;
+	// Bit flags defining what image will be used for
+	imageCreateInfo.usage = useFlags;
+	// Number of samples for multi sampling
+	imageCreateInfo.samples = numSamples;
+	// Whether image can be shared between queues (no)
+	imageCreateInfo.sharingMode = vk::SharingMode::eExclusive;
+
+	// Create the header of the image
+	vk::Image image = mainDevice.logicalDevice.createImage(imageCreateInfo);
+
+	// Now we need to setup and allocate memory for the image
+	vk::MemoryRequirements memoryRequierements = mainDevice.logicalDevice.getImageMemoryRequirements(image);
+
+	vk::MemoryAllocateInfo memoryAllocInfo{};
+	memoryAllocInfo.allocationSize = memoryRequierements.size;
+	memoryAllocInfo.memoryTypeIndex = findMemoryTypeIndex(mainDevice.physicalDevice,
+		memoryRequierements.memoryTypeBits, propFlags);
+
+	auto result = mainDevice.logicalDevice.allocateMemory(&memoryAllocInfo, nullptr, imageMemory);
+	if (result != vk::Result::eSuccess)
+	{
+		throw std::runtime_error("Failed to allocate memory for an image.");
+	}
+
+	// Connect memory to image
+	mainDevice.logicalDevice.bindImageMemory(image, *imageMemory, 0);
+
+	return image;
+}
+
 vk::Format VulkanRenderer::chooseSupportedFormat(const vector<vk::Format>& formats, vk::ImageTiling tiling, vk::FormatFeatureFlags featureFlags) {
 	// Loop through the options and find a compatible format
 	for (vk::Format format : formats)
@@ -1502,6 +1538,8 @@ void VulkanRenderer::createDepthBufferImage()
 	// Create image and image view
 	depthBufferImage = createImage(swapchainExtent.width, swapchainExtent.height, 1, msaaSamples, depthFormat, vk::ImageTiling::eOptimal,
 		vk::ImageUsageFlagBits::eDepthStencilAttachment, vk::MemoryPropertyFlagBits::eDeviceLocal, &depthBufferImageMemory);
+
+	depthBufferImageView = createImageView(depthBufferImage, depthFormat, vk::ImageAspectFlagBits::eDepth, 1);
 }
 
 stbi_uc* VulkanRenderer::loadTextureFile(const string& filename, int* width, int* height, vk::DeviceSize* imageSize)
@@ -1544,14 +1582,7 @@ int VulkanRenderer::createTextureImage(const string& filename, uint32_t& mipLeve
 	// Create image to hold final texture
 	vk::Image texImage;
 	vk::DeviceMemory texImageMemory;
-	
-	texImage = createImage
-	(
-		width,
-		height,
-		mipLevels,
-		msaaSamples,
-		vk::Format::eR8G8B8A8Unorm,
+	texImage = createImage(width, height, mipLevels, vk::SampleCountFlagBits::e1, vk::Format::eR8G8B8A8Unorm,
 		vk::ImageTiling::eOptimal,
 		vk::ImageUsageFlagBits::eTransferDst | vk::ImageUsageFlagBits::eSampled | vk::ImageUsageFlagBits::eTransferSrc,
 		vk::MemoryPropertyFlagBits::eDeviceLocal,
@@ -1565,8 +1596,8 @@ int VulkanRenderer::createTextureImage(const string& filename, uint32_t& mipLeve
 	// Copy image data
 	copyImageBuffer(mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool, imageStagingBuffer, texImage, width, height);
 
-	// -- READY FOR SHADER USE --
 	/*
+	// -- READY FOR SHADER USE --
 	transitionImageLayout(mainDevice.logicalDevice, graphicsQueue, graphicsCommandPool,
 	texImage, vk::ImageLayout::eTransferDstOptimal,
 	vk::ImageLayout::eShaderReadOnlyOptimal, mipLevels);
@@ -1595,83 +1626,6 @@ int VulkanRenderer::createTexture(const string& filename)
 	int descriptorLoc = createTextureDescriptor(imageView);
 	// Return location of set with texture
 	return descriptorLoc;
-}
-
-vk::Image VulkanRenderer::createImage(uint32_t width, uint32_t height, uint32_t mipLevels, vk::SampleCountFlagBits numSamples, vk::Format format, vk::ImageTiling tiling,
-	vk::ImageUsageFlags useFlags, vk::MemoryPropertyFlags propFlags, vk::DeviceMemory* imageMemory)
-{
-	vk::ImageCreateInfo imageCreateInfo{};
-	imageCreateInfo.imageType = vk::ImageType::e2D;
-	imageCreateInfo.extent.width = width;
-	imageCreateInfo.extent.height = height;
-	// Depth is 1, no 3D aspect
-	imageCreateInfo.extent.depth = 1;
-	imageCreateInfo.mipLevels = mipLevels;
-	// Number of levels in image array
-	imageCreateInfo.arrayLayers = 1;
-	imageCreateInfo.format = format;
-	// How image data should be "tiled" (arranged for optimal reading)
-	imageCreateInfo.tiling = tiling;
-	// Initial layout in the render pass
-	imageCreateInfo.initialLayout = vk::ImageLayout::eUndefined;
-	// Bit flags defining what image will be used for
-	imageCreateInfo.usage = useFlags;
-	// Number of samples for multi sampling
-	imageCreateInfo.samples = numSamples;
-	// Whether image can be shared between queues (no)
-	imageCreateInfo.sharingMode = vk::SharingMode::eExclusive;
-
-	// Create the header of the image
-	vk::Image image = mainDevice.logicalDevice.createImage(imageCreateInfo);
-
-	// Now we need to set up and allocate memory for the image
-	vk::MemoryRequirements memoryRequierements = mainDevice.logicalDevice.getImageMemoryRequirements(image);
-
-	vk::MemoryAllocateInfo memoryAllocInfo{};
-	memoryAllocInfo.allocationSize = memoryRequierements.size;
-	memoryAllocInfo.memoryTypeIndex = findMemoryTypeIndex(mainDevice.physicalDevice,
-		memoryRequierements.memoryTypeBits, propFlags);
-
-	auto result = mainDevice.logicalDevice.allocateMemory(&memoryAllocInfo, nullptr, imageMemory);
-	if (result != vk::Result::eSuccess)
-	{
-		throw std::runtime_error("Failed to allocate memory for an image.");
-	}
-
-	// Connect memory to image
-	mainDevice.logicalDevice.bindImageMemory(image, *imageMemory, 0);
-
-	return image;
-}
-
-void VulkanRenderer::createTextureSampler()
-{
-	vk::SamplerCreateInfo samplerCreateInfo{};
-	// How to render when image is magnified on screen
-	samplerCreateInfo.magFilter = vk::Filter::eLinear;
-	// How to render when image is minified on screen
-	samplerCreateInfo.minFilter = vk::Filter::eLinear;
-	// Texture wrap in the U direction
-	samplerCreateInfo.addressModeU = vk::SamplerAddressMode::eRepeat;
-	// Texture wrap in the V direction
-	samplerCreateInfo.addressModeV = vk::SamplerAddressMode::eRepeat;
-	// Texture wrap in the W direction
-	samplerCreateInfo.addressModeW = vk::SamplerAddressMode::eRepeat;
-	// When no repeat, texture become black beyond border
-	samplerCreateInfo.borderColor = vk::BorderColor::eIntOpaqueBlack;
-	// Coordinates ARE normalized. When true, coords are between 0 and image size
-	samplerCreateInfo.unnormalizedCoordinates = false;
-	// Fade between two mipmaps is linear
-	samplerCreateInfo.mipmapMode = vk::SamplerMipmapMode::eLinear;
-	// Add a bias to the mimmap level
-	samplerCreateInfo.mipLodBias = 0.0f;
-	samplerCreateInfo.minLod = 0.0f;
-	samplerCreateInfo.maxLod = 10.0f;
-	// Overcome blur when a texture is stretched because of perspective with angle
-	samplerCreateInfo.anisotropyEnable = true;
-	// Anisotropy number of samples
-	samplerCreateInfo.maxAnisotropy = 16;
-	textureSampler = mainDevice.logicalDevice.createSampler(samplerCreateInfo);
 }
 
 int VulkanRenderer::createTextureDescriptor(vk::ImageView textureImageView)
@@ -1710,7 +1664,7 @@ int VulkanRenderer::createTextureDescriptor(vk::ImageView textureImageView)
 	return samplerDescriptorSets.size() - 1;
 }
 
-int VulkanRenderer::createMeshModel(string filename)
+int VulkanRenderer::createMeshModel(const string& filename)
 {
 	// Import model scene
 	Assimp::Importer importer;
@@ -1722,7 +1676,7 @@ int VulkanRenderer::createMeshModel(string filename)
 	{
 		throw std::runtime_error("Failed to load mesh model: " + filename);
 	}
-	// Load materials with one-to-one relationship with texture ids
+	// Load materials with one to one relationship with texture ids
 	vector<string> textureNames = VulkanMeshModel::loadMaterials(scene);
 	// Conversion to material list ID to descriptor array ids (we don't keep empty files)
 	vector<int> matToTex(textureNames.size());

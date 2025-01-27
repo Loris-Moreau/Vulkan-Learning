@@ -1,15 +1,5 @@
 #define GLFW_INCLUDE_VULKAN
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
-#define STB_IMAGE_IMPLEMENTATION
-
-#include <stdexcept>
-#include <string>
-#include <vector>
-#include <GLFW/glfw3.h>
-using std::string;
-
-#include "VulkanRenderer.h"
-
 
 #define DWORD unsigned int
 #if defined(WIN32) || defined(_WIN32)
@@ -22,6 +12,17 @@ extern "C" { int NvOptimusEnablement = 1; }
 extern "C" { int AmdPowerXpressRequestHighPerformance = 1; }
 #endif
 
+#define STB_IMAGE_IMPLEMENTATION
+
+
+#include <glfw3.h>
+#include <stdexcept>
+#include <vector>
+
+#include <string>
+using std::string;
+
+#include "VulkanRenderer.h"
 
 GLFWwindow* window = nullptr;
 VulkanRenderer vulkanRenderer;
@@ -67,9 +68,16 @@ int main()
 		if (angle > 360.0f) { angle -= 360.0f; }
 		
 		glm::mat4 rotationModelMatrix(1.0f);
-		rotationModelMatrix = glm::translate(rotationModelMatrix, glm::vec3(-0.0f, 0.0f, -1.0f));
-		rotationModelMatrix = glm::rotate(rotationModelMatrix, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+		rotationModelMatrix = glm::translate(rotationModelMatrix,
+		glm::vec3(0.0f, -3.0f, 0.0f));
+		rotationModelMatrix = glm::rotate(rotationModelMatrix, glm::radians(-90.0f),
+		glm::vec3(1.0f, 0.0f, 0.0f));
 		
+		rotationModelMatrix = glm::rotate(rotationModelMatrix, glm::radians(angle),
+		glm::vec3(0.0f, 0.0f, 1.0f));
+
+		rotationModelMatrix = glm::scale(rotationModelMatrix,
+		glm::vec3(0.2f, 0.2f, 0.2f));
 		vulkanRenderer.updateModel(modelId, rotationModelMatrix);
 		
 		vulkanRenderer.draw();
