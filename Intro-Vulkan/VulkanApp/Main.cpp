@@ -15,7 +15,7 @@ extern "C" { int AmdPowerXpressRequestHighPerformance = 1; }
 #define STB_IMAGE_IMPLEMENTATION
 
 
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 #include <stdexcept>
 #include <vector>
 
@@ -54,7 +54,7 @@ int main()
 	float lastTime = 0.0f;
 	
 	// Load model
-	int modelId = vulkanRenderer.createMeshModel("models/Futuristic combat jet.obj");
+	int modelId = vulkanRenderer.createMeshModel("../resources/models/Futuristic combat jet.obj");
 	
 	while (!glfwWindowShouldClose(window))
 	{

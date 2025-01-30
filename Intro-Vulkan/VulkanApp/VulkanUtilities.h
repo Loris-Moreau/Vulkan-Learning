@@ -1,12 +1,14 @@
 #pragma once
 #include <fstream>
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 #include <vulkan/vk_platform.h>
 #include <vulkan/vulkan.hpp>
-#include <glm.hpp>
+#include <glm/glm.hpp>
 #include <iostream>
 #include <vector>
 #include <string>
+
+using namespace std;
 
 struct Vertex
 {

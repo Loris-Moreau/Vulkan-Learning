@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|solutionrelative:VulkanApp\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanRenderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|solutionrelative:VulkanApp\\VulkanRenderer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -15,8 +19,12 @@
       "RelativeMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|solutionrelative:VulkanApp\\VulkanUtilities.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|solutionrelative:VulkanApp\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanMesh.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|solutionrelative:VulkanApp\\VulkanMesh.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanMeshModel.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{1BC28BCB-BA8F-4824-91CB-04F93543F1B0}|VulkanApp\\VulkanApp.vcxproj|solutionrelative:VulkanApp\\VulkanMeshModel.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,57 +34,85 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "VulkanMeshModel.h",
+              "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanMeshModel.h",
+              "RelativeDocumentMoniker": "VulkanApp\\VulkanMeshModel.h",
+              "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanMeshModel.h",
+              "RelativeToolTip": "VulkanApp\\VulkanMeshModel.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-30T16:04:52.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "VulkanMesh.h",
+              "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanMesh.h",
+              "RelativeDocumentMoniker": "VulkanApp\\VulkanMesh.h",
+              "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanMesh.h",
+              "RelativeToolTip": "VulkanApp\\VulkanMesh.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-30T16:02:03.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "VulkanUtilities.h",
               "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanUtilities.h",
               "RelativeDocumentMoniker": "VulkanApp\\VulkanUtilities.h",
               "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanUtilities.h",
               "RelativeToolTip": "VulkanApp\\VulkanUtilities.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-21T09:53:54.755Z"
+              "WhenOpened": "2025-01-21T09:53:54.755Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "VulkanRenderer.h",
               "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanRenderer.h",
               "RelativeDocumentMoniker": "VulkanApp\\VulkanRenderer.h",
               "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanRenderer.h",
               "RelativeToolTip": "VulkanApp\\VulkanRenderer.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAXAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-01-21T09:53:54.084Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "VulkanRenderer.cpp",
               "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanRenderer.cpp",
               "RelativeDocumentMoniker": "VulkanApp\\VulkanRenderer.cpp",
               "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\VulkanRenderer.cpp",
               "RelativeToolTip": "VulkanApp\\VulkanRenderer.cpp",
-              "ViewState": "AQIAADkAAAAAAAAAAAAAAFgAAAACAAAA",
+              "ViewState": "AQIAAHkGAAAAAAAAAAAnwIwGAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-21T09:53:53.497Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Main.cpp",
               "DocumentMoniker": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\Main.cpp",
               "RelativeDocumentMoniker": "VulkanApp\\Main.cpp",
               "ToolTip": "C:\\Users\\loris.moreau\\Documents\\GitHub\\Vulkan-Learning\\Intro-Vulkan\\VulkanApp\\Main.cpp",
               "RelativeToolTip": "VulkanApp\\Main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAACkAAAAAAAAAAAAIwDgAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-21T09:53:52.915Z"
+              "WhenOpened": "2025-01-21T09:53:52.915Z",
+              "EditorCaption": ""
             }
           ]
         }

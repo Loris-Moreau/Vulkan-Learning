@@ -1,5 +1,6 @@
-﻿  VulkanRenderer.cpp
-C:\Users\loris.moreau\Documents\GitHub\Vulkan-Learning\Intro-Vulkan\VulkanApp\VulkanRenderer.cpp(1572,30): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\loris.moreau\Documents\GitHub\Vulkan-Learning\Intro-Vulkan\VulkanApp\VulkanRenderer.cpp(1649,38): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\loris.moreau\Documents\GitHub\Vulkan-Learning\Intro-Vulkan\VulkanApp\VulkanUtilities.h(102,1): warning C4715: 'findMemoryTypeIndex': not all control paths return a value
-LINK : fatal error LNK1104: cannot open file 'assimp-vc142-mt.lib'
+﻿  Main.cpp
+C:\Users\loris.moreau\Documents\GitHub\Vulkan-Learning\Intro-Vulkan\VulkanApp\Main.cpp(63,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\loris.moreau\Documents\GitHub\Vulkan-Learning\Intro-Vulkan\VulkanApp\Main.cpp(67,17): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+     Creating library C:\Users\loris.moreau\Documents\GitHub\Vulkan-Learning\Intro-Vulkan\x64\Debug\VulkanApp.lib and object C:\Users\loris.moreau\Documents\GitHub\Vulkan-Learning\Intro-Vulkan\x64\Debug\VulkanApp.exp
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  VulkanApp.vcxproj -> C:\Users\loris.moreau\Documents\GitHub\Vulkan-Learning\Intro-Vulkan\x64\Debug\VulkanApp.exe

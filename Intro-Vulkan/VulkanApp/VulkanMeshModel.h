@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include <glm.hpp>
+#include <glm/glm.hpp>
 #include <assimp/scene.h>
 #include <vector>
 #include "VulkanMesh.h"
