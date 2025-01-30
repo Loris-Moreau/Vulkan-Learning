@@ -1676,7 +1676,7 @@ int VulkanRenderer::createMeshModel(const string& filename)
 	{
 		throw std::runtime_error("Failed to load mesh model: " + filename);
 	}
-	// Load materials with one to one relationship with texture ids
+	// Load materials with one-to-one relationship with texture ids
 	vector<string> textureNames = VulkanMeshModel::loadMaterials(scene);
 	// Conversion to material list ID to descriptor array ids (we don't keep empty files)
 	vector<int> matToTex(textureNames.size());

@@ -8,15 +8,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe21b1dd-7b2a-4276-81af-359df12e18f0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VulkanApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/Main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanMesh.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanMesh.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanMesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanMesh.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanMeshModel.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanMeshModel.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanRenderer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VulkanApp/VulkanUtilities.h" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/VulkanUtilities.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.ilk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.command.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/CL.write.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/VulkanApp.tlog/link.read.1.tlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.idb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/VulkanApp/x64/Debug/vc143.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/x64/Debug/VulkanApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/VulkanApp.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,13 +62,21 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\loris.moreau\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\loris.moreau\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\loris.moreau\\AppData\\Local\\Symbols\\src"
+    ]
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="VulkanApp" type="CppProject" factoryName="C++ Project">
-      <configuration_1 setup="1">
+      <configuration_1>
         <option name="CONFIGURATION" value="Debug" />
         <option name="PLATFORM" value="x64" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
         <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
         <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
@@ -76,11 +84,11 @@
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="0" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" />
       </configuration_1>
-      <configuration_2 setup="1">
+      <configuration_2>
         <option name="CONFIGURATION" value="Debug" />
         <option name="PLATFORM" value="x86" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
         <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
         <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
@@ -88,11 +96,11 @@
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="0" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" />
       </configuration_2>
-      <configuration_3 setup="1">
+      <configuration_3>
         <option name="CONFIGURATION" value="Release" />
         <option name="PLATFORM" value="x64" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
         <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
         <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
@@ -100,11 +108,11 @@
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="0" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" />
       </configuration_3>
-      <configuration_4 setup="1">
+      <configuration_4>
         <option name="CONFIGURATION" value="Release" />
         <option name="PLATFORM" value="x86" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
         <option name="EXE_PATH" value="$(LocalDebuggerCommand)" />
         <option name="PROGRAM_PARAMETERS" value="$(LocalDebuggerCommandArguments)" />
@@ -112,10 +120,8 @@
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="0" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="AUTO_DETECT" />
-        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" />
       </configuration_4>
       <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" />
-      <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/VulkanApp/VulkanApp.vcxproj" />
       <option name="AUTO_SELECT_PRIORITY" value="0" />
       <method v="2">
         <option name="Build" />
@@ -136,6 +142,7 @@
       <workItem from="1737538168682" duration="1476000" />
       <workItem from="1737540933928" duration="5392000" />
       <workItem from="1737991106405" duration="743000" />
+      <workItem from="1738253378338" duration="123000" />
     </task>
     <servers />
   </component>
