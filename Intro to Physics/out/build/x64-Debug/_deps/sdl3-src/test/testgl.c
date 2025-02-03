@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -33,7 +33,7 @@ static SDL_GLContext context;
 static GL_Context ctx;
 static bool suspend_when_occluded;
 
-static int LoadContext(GL_Context *data)
+static bool LoadContext(GL_Context *data)
 {
 #ifdef SDL_VIDEO_DRIVER_UIKIT
 #define __SDL_NOGETPROCADDR__
@@ -55,7 +55,7 @@ static int LoadContext(GL_Context *data)
 
 #include "../src/render/opengl/SDL_glfuncs.h"
 #undef SDL_PROC
-    return 0;
+    return true;
 }
 
 /* Call this instead of exit(), so we can clean up SDL: atexit() is evil. */
@@ -263,6 +263,9 @@ int main(int argc, char *argv[])
     state->gl_green_size = 5;
     state->gl_blue_size = 5;
     state->gl_depth_size = 16;
+    /* For release_behavior to work, at least on Windows, you'll most likely need to set state->gl_major_version = 3 */
+    /* state->gl_major_version = 3; */
+    state->gl_release_behavior = 0;
     state->gl_double_buffer = 1;
     if (fsaa) {
         state->gl_multisamplebuffers = 1;
@@ -284,7 +287,7 @@ int main(int argc, char *argv[])
     }
 
     /* Important: call this *after* creating the context */
-    if (LoadContext(&ctx) < 0) {
+    if (!LoadContext(&ctx)) {
         SDL_Log("Could not load GL functions\n");
         quit(2);
         return 0;
@@ -330,6 +333,11 @@ int main(int argc, char *argv[])
         SDL_Log("SDL_GL_DEPTH_SIZE: requested %d, got %d\n", 16, value);
     } else {
         SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to get SDL_GL_DEPTH_SIZE: %s\n", SDL_GetError());
+    }
+    if (SDL_GL_GetAttribute(SDL_GL_CONTEXT_RELEASE_BEHAVIOR, &value)) {
+        SDL_Log("SDL_GL_CONTEXT_RELEASE_BEHAVIOR: requested %d, got %d\n", 0, value);
+    } else {
+        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Failed to get SDL_GL_CONTEXT_RELEASE_BEHAVIOR: %s\n", SDL_GetError());
     }
     if (fsaa) {
         if (SDL_GL_GetAttribute(SDL_GL_MULTISAMPLEBUFFERS, &value)) {

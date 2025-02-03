@@ -1,8 +1,8 @@
-# Install script for directory: E:/Github/Vulkan-Learning/graphics-SDL3
+# Install script for directory: C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro to Physics
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "E:/Github/Vulkan-Learning/graphics-SDL3/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro to Physics/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -32,14 +32,29 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "CMAKE_OBJDUMP-NOTFOUND")
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro to Physics/out/build/x64-Debug/_deps/sdl3-build/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-build/cmake_install.cmake")
+  include("C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro to Physics/out/build/x64-Debug/gplatform/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro to Physics/out/build/x64-Debug/gmath/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro to Physics/out/build/x64-Debug/gphysics/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro to Physics/out/build/x64-Debug/gdraw/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -50,5 +65,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro to Physics/out/build/x64-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

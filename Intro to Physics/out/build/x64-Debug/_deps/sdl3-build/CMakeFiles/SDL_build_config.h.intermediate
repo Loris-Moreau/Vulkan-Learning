@@ -1,6 +1,6 @@
 /*
   Simple DirectMedia Layer
-  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -31,18 +31,16 @@
 /* General platform specific identifiers */
 #include <SDL3/SDL_platform_defines.h>
 
-/* C datatypes */
-/* Define SIZEOF_VOIDP for 64/32 architectures */
-#if defined(__LP64__) || defined(_LP64) || defined(_WIN64)
-#define SIZEOF_VOIDP 8
-#else
-#define SIZEOF_VOIDP 4
-#endif
-
 /* #undef HAVE_GCC_ATOMICS */
 /* #undef HAVE_GCC_SYNC_LOCK_TEST_AND_SET */
 
-#define SDL_DISABLE_ALLOCA
+#define SDL_DISABLE_ALLOCA 1
+
+/* Useful headers */
+#define HAVE_FLOAT_H 1
+#define HAVE_STDARG_H 1
+#define HAVE_STDDEF_H 1
+#define HAVE_STDINT_H 1
 
 /* Comment this if you want to build without any C library requirements */
 #define HAVE_LIBC 1
@@ -50,7 +48,6 @@
 
 /* Useful headers */
 /* #undef HAVE_ALLOCA_H */
-#define HAVE_FLOAT_H 1
 /* #undef HAVE_ICONV_H */
 #define HAVE_INTTYPES_H 1
 #define HAVE_LIMITS_H 1
@@ -58,10 +55,6 @@
 #define HAVE_MATH_H 1
 #define HAVE_MEMORY_H 1
 #define HAVE_SIGNAL_H 1
-#define HAVE_STDARG_H 1
-#define HAVE_STDBOOL_H 1
-#define HAVE_STDDEF_H 1
-#define HAVE_STDINT_H 1
 #define HAVE_STDIO_H 1
 #define HAVE_STDLIB_H 1
 /* #undef HAVE_STRINGS_H */
@@ -73,10 +66,7 @@
 /* C library functions */
 /* #undef HAVE_DLOPEN */
 #define HAVE_MALLOC 1
-#define HAVE_CALLOC 1
-#define HAVE_REALLOC 1
 /* #undef HAVE_FDATASYNC */
-#define HAVE_FREE 1
 #define HAVE_GETENV 1
 /* #undef HAVE_GETHOSTNAME */
 /* #undef HAVE_SETENV */
@@ -92,8 +82,6 @@
 #define HAVE_WCSNLEN 1
 /* #undef HAVE_WCSLCPY */
 /* #undef HAVE_WCSLCAT */
-#define HAVE__WCSDUP 1
-#define HAVE_WCSDUP 1
 #define HAVE_WCSSTR 1
 #define HAVE_WCSCMP 1
 #define HAVE_WCSNCMP 1
@@ -104,8 +92,6 @@
 /* #undef HAVE_STRLCAT */
 #define HAVE_STRPBRK 1
 #define HAVE__STRREV 1
-/* #undef HAVE__STRUPR */
-/* #undef HAVE__STRLWR */
 /* #undef HAVE_INDEX */
 /* #undef HAVE_RINDEX */
 #define HAVE_STRCHR 1
@@ -128,8 +114,6 @@
 #define HAVE_ATOF 1
 #define HAVE_STRCMP 1
 #define HAVE_STRNCMP 1
-/* #undef HAVE_STRCASESTR */
-#define HAVE_SSCANF 1
 #define HAVE_VSSCANF 1
 #define HAVE_VSNPRINTF 1
 #define HAVE_ACOS 1
@@ -144,6 +128,7 @@
 #define HAVE_CEILF 1
 #define HAVE_COPYSIGN 1
 #define HAVE_COPYSIGNF 1
+#define HAVE__COPYSIGN 1
 #define HAVE_COS 1
 #define HAVE_COSF 1
 #define HAVE_EXP 1
@@ -182,6 +167,7 @@
 #define HAVE_TANF 1
 #define HAVE_TRUNC 1
 #define HAVE_TRUNCF 1
+#define HAVE__FSEEKI64 1
 /* #undef HAVE_FOPEN64 */
 /* #undef HAVE_FSEEKO */
 /* #undef HAVE_FSEEKO64 */
@@ -209,18 +195,11 @@
 /* #undef HAVE_POLL */
 #define HAVE__EXIT 1
 
-#else
-#define HAVE_STDARG_H 1
-#define HAVE_STDDEF_H 1
-#define HAVE_STDINT_H 1
-#define HAVE_FLOAT_H 1
 #endif /* HAVE_LIBC */
 
 /* #undef HAVE_DBUS_DBUS_H */
 /* #undef HAVE_FCITX */
 /* #undef HAVE_IBUS_IBUS_H */
-/* #undef HAVE_SYS_INOTIFY_H */
-/* #undef HAVE_INOTIFY_INIT */
 /* #undef HAVE_INOTIFY_INIT1 */
 /* #undef HAVE_INOTIFY */
 /* #undef HAVE_LIBUSB */
@@ -229,8 +208,8 @@
 /* #undef HAVE_LINUX_INPUT_H */
 /* #undef HAVE_LIBUDEV_H */
 /* #undef HAVE_LIBDECOR_H */
+/* #undef HAVE_LIBURING_H */
 
-#define HAVE_D3D11_H 1
 #define HAVE_DDRAW_H 1
 #define HAVE_DSOUND_H 1
 #define HAVE_DINPUT_H 1
@@ -241,31 +220,31 @@
 #define HAVE_DXGI1_6_H 1
 
 #define HAVE_MMDEVICEAPI_H 1
-#define HAVE_AUDIOCLIENT_H 1
 #define HAVE_TPCSHRD_H 1
-#define HAVE_SENSORSAPI_H 1
 #define HAVE_ROAPI_H 1
 #define HAVE_SHELLSCALINGAPI_H 1
 
 /* #undef USE_POSIX_SPAWN */
 
 /* SDL internal assertion support */
-#if 0
-/* #undef SDL_DEFAULT_ASSERT_LEVEL */
+/* #undef SDL_DEFAULT_ASSERT_LEVEL_CONFIGURED */
+#ifdef SDL_DEFAULT_ASSERT_LEVEL_CONFIGURED
+#define SDL_DEFAULT_ASSERT_LEVEL 
 #endif
 
 /* Allow disabling of major subsystems */
 /* #undef SDL_AUDIO_DISABLED */
+/* #undef SDL_VIDEO_DISABLED */
+/* #undef SDL_GPU_DISABLED */
+/* #undef SDL_RENDER_DISABLED */
+/* #undef SDL_CAMERA_DISABLED */
 /* #undef SDL_JOYSTICK_DISABLED */
 /* #undef SDL_HAPTIC_DISABLED */
 /* #undef SDL_HIDAPI_DISABLED */
-/* #undef SDL_SENSOR_DISABLED */
-/* #undef SDL_RENDER_DISABLED */
-/* #undef SDL_THREADS_DISABLED */
-/* #undef SDL_VIDEO_DISABLED */
 /* #undef SDL_POWER_DISABLED */
-/* #undef SDL_CAMERA_DISABLED */
-/* #undef SDL_GPU_DISABLED */
+/* #undef SDL_SENSOR_DISABLED */
+/* #undef SDL_DIALOG_DISABLED */
+/* #undef SDL_THREADS_DISABLED */
 
 /* Enable various audio drivers */
 /* #undef SDL_AUDIO_DRIVER_ALSA */
@@ -344,7 +323,6 @@
 /* Enable various shared object loading systems */
 /* #undef SDL_LOADSO_DLOPEN */
 /* #undef SDL_LOADSO_DUMMY */
-/* #undef SDL_LOADSO_LDG */
 #define SDL_LOADSO_WINDOWS 1
 
 /* Enable various threading systems */
@@ -369,7 +347,6 @@
 
 /* Enable various timer systems */
 /* #undef SDL_TIMER_HAIKU */
-/* #undef SDL_TIMER_DUMMY */
 /* #undef SDL_TIMER_UNIX */
 #define SDL_TIMER_WINDOWS 1
 /* #undef SDL_TIMER_VITA */
@@ -423,6 +400,7 @@
 /* #undef SDL_VIDEO_DRIVER_X11_XRANDR */
 /* #undef SDL_VIDEO_DRIVER_X11_XSCRNSAVER */
 /* #undef SDL_VIDEO_DRIVER_X11_XSHAPE */
+/* #undef SDL_VIDEO_DRIVER_X11_XSYNC */
 /* #undef SDL_VIDEO_DRIVER_QNX */
 
 #define SDL_VIDEO_RENDER_D3D 1
@@ -441,13 +419,10 @@
 #define SDL_VIDEO_OPENGL 1
 /* #undef SDL_VIDEO_OPENGL_ES */
 #define SDL_VIDEO_OPENGL_ES2 1
-/* #undef SDL_VIDEO_OPENGL_BGL */
 /* #undef SDL_VIDEO_OPENGL_CGL */
 /* #undef SDL_VIDEO_OPENGL_GLX */
 #define SDL_VIDEO_OPENGL_WGL 1
 #define SDL_VIDEO_OPENGL_EGL 1
-/* #undef SDL_VIDEO_OPENGL_OSMESA */
-/* #undef SDL_VIDEO_OPENGL_OSMESA_DYNAMIC */
 
 /* Enable Vulkan support */
 #define SDL_VIDEO_VULKAN 1
@@ -489,7 +464,6 @@
 /* #undef SDL_FILESYSTEM_N3DS */
 
 /* Enable system storage support */
-#define SDL_STORAGE_GENERIC 1
 #define SDL_STORAGE_STEAM 1
 
 /* Enable system FSops support */
@@ -499,7 +473,7 @@
 
 /* Enable camera subsystem */
 #define SDL_CAMERA_DRIVER_DUMMY 1
-/* !!! FIXME: for later cmakedefine SDL_CAMERA_DRIVER_DISK  */
+/* !!! FIXME: for later cmakedefine SDL_CAMERA_DRIVER_DISK 1 */
 /* #undef SDL_CAMERA_DRIVER_V4L2 */
 /* #undef SDL_CAMERA_DRIVER_COREMEDIA */
 /* #undef SDL_CAMERA_DRIVER_ANDROID */
@@ -512,12 +486,6 @@
 /* Enable dialog subsystem */
 /* #undef SDL_DIALOG_DUMMY */
 
-/* Enable misc subsystem */
-/* #undef SDL_MISC_DUMMY */
-
-/* Enable locale subsystem */
-/* #undef SDL_LOCALE_DUMMY */
-
 /* Enable assembly routines */
 /* #undef SDL_ALTIVEC_BLITTERS */
 
@@ -526,6 +494,8 @@
 
 /* Enable ime support */
 /* #undef SDL_USE_IME */
+/* #undef SDL_DISABLE_WINDOWS_IME */
+/* #undef SDL_GDK_TEXTINPUT */
 
 /* Platform specific definitions */
 /* #undef SDL_IPHONE_KEYBOARD */
@@ -552,12 +522,11 @@ typedef unsigned __int32 uint32_t;
 typedef signed __int64 int64_t;
 typedef unsigned __int64 uint64_t;
 #ifndef _UINTPTR_T_DEFINED
-#ifdef  _WIN64
+#ifdef _WIN64
 typedef unsigned __int64 uintptr_t;
 #else
 typedef unsigned int uintptr_t;
 #endif
-#define _UINTPTR_T_DEFINED
 #endif
 #endif /* Visual Studio 2008 */
 #endif /* !_STDINT_H_ && !HAVE_STDINT_H */

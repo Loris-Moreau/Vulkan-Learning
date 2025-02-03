@@ -1,8 +1,8 @@
-# Install script for directory: E:/Github/Vulkan-Learning/graphics-SDL3/out/build/x64-Debug/_deps/sdl3-src
+# Install script for directory: C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro to Physics/out/build/x64-Debug/_deps/sdl3-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "E:/Github/Vulkan-Learning/graphics-SDL3/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/loris.moreau/Documents/GitHub/Vulkan-Learning/Intro to Physics/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -30,10 +30,5 @@ endif()
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
-endif()
-
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "CMAKE_OBJDUMP-NOTFOUND")
 endif()
 

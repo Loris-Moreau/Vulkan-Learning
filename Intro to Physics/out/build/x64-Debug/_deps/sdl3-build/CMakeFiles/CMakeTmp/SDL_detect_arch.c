@@ -63,8 +63,8 @@ const char *arch_X86 = "INFO<X86=" ARCH_X86 ">";
 const char *arch_X64 = "INFO<X64=" ARCH_X64 ">";
 
 int main(int argc, char *argv[]) {
-  (void)argv;
   int result = 0;
+  (void)argv;
 
   result += arch_EMSCRIPTEN[argc];
   result += arch_ARM32[argc];

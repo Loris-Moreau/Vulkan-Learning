@@ -6,10 +6,8 @@
     ]
   },
   "ExpandedNodes": [
-    "",
-    "\\Content",
-    "\\Content\\Shaders\\Source"
+    ""
   ],
-  "SelectedNode": "\\Scene08TextureQuadMoving.cpp",
+  "SelectedNode": "\\gdraw",
   "PreviewInSolutionExplorer": false
 }
