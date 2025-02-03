@@ -21,8 +21,9 @@ Scene::~Scene
 */
 Scene::~Scene()
 {
-	for ( int i = 0; i < bodies.size(); i++ ) {
-		delete bodies[ i ].shape;
+	for (auto& bodie : bodies)
+	{
+		delete bodie.shape;
 	}
 	bodies.clear();
 }
@@ -34,8 +35,9 @@ Scene::Reset
 */
 void Scene::Reset()
 {
-	for ( int i = 0; i < bodies.size(); i++ ) {
-		delete bodies[ i ].shape;
+	for (auto& bodie : bodies)
+	{
+		delete bodie.shape;
 	}
 	bodies.clear();
 
@@ -55,6 +57,8 @@ void Scene::Initialize()
 	body.shape = new ShapeSphere(1.0f);
 	body.inverseMass = 1.0f;
 	body.elasticity = 0.5f;
+	body.friction = 0.5f;
+	body.linearVelocity = Vec3(1, 0, 0);
 	bodies.push_back(body);
 	
 	Body earth;
@@ -62,7 +66,8 @@ void Scene::Initialize()
 	earth.orientation = Quat(0, 0, 0, 1);
 	earth.shape = new ShapeSphere(1000.0f);
 	earth.inverseMass = 0.0f;
-	earth.elasticity = 1.0f;
+	earth.elasticity = 0.99f;
+	earth.friction = 0.5f;
 	bodies.push_back(earth);
 }
 
@@ -73,9 +78,8 @@ Scene::Update
 */
 void Scene::Update( const float dt_sec )
 {
-	for (int i = 0; i < bodies.size(); ++i)
+	for (auto& body : bodies)
 	{
-		Body& body = bodies[i];
 		float mass = 1.0f / body.inverseMass;
 		// Gravity needs to be an impulse I
 		// I == dp, so F == dp/dt <=> dp = F * dt
@@ -105,8 +109,8 @@ void Scene::Update( const float dt_sec )
 		}
 	}
 	// Position update
-	for (int i = 0; i < bodies.size(); ++i)
+	for (auto& bodie : bodies)
 	{
-		bodies[i].position += bodies[i].linearVelocity * dt_sec;
+		bodie.Update(dt_sec);
 	}
 }
