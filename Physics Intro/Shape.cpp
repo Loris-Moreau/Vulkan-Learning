@@ -11,7 +11,6 @@ Mat3 ShapeSphere::InertiaTensor() const
 	return tensor;
 }
 
-/*
 Bounds ShapeSphere::GetBounds(const Vec3& pos, const Quat& orient) const
 {
 	Bounds tmp;
@@ -29,4 +28,3 @@ Bounds ShapeSphere::GetBounds() const
 	
 	return tmp;
 }
-*/

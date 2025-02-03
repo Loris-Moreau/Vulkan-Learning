@@ -17,8 +17,8 @@ public:
 	virtual ShapeType GetType() const = 0;
 	virtual Vec3 GetCenterOfMass() const { return centerOfMass; }
 
-	virtual Bounds GetBounds(const Vec3& pos, const Quat& orient) const;
-	virtual Bounds GetBounds() const;
+	virtual Bounds GetBounds(const Vec3& pos, const Quat& orient) const = 0;
+	virtual Bounds GetBounds() const = 0;
 	
 protected:
 	Vec3 centerOfMass;
@@ -36,26 +36,8 @@ public:
 	
 	ShapeType GetType() const override { return ShapeType::SHAPE_SPHERE; }
 	
-	//Bounds GetBounds(const Vec3& pos, const Quat& orient) const override;
-	//Bounds GetBounds() const override;
-	
-	Bounds GetBounds(const Vec3& pos, const Quat& orient) const override
-	{
-		Bounds tmp;
-		tmp.mins = Vec3(-radius) + pos;
-		tmp.maxs = Vec3(radius) + pos;
-	
-		return tmp;
-	}
-
-	Bounds GetBounds() const override
-	{
-		Bounds tmp;
-		tmp.mins = Vec3(-radius);
-		tmp.maxs = Vec3(radius);
-	
-		return tmp;
-	}
+	Bounds GetBounds(const Vec3& pos, const Quat& orient) const override;
+	Bounds GetBounds() const override;
 
 	float radius;
 };

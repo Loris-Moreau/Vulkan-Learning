@@ -5,10 +5,10 @@
 #include "model.h"
 #include "Samplers.h"
 
-#include "../application.h"
-#include <assert.h>
-#include <stdio.h>
+#include <cassert>
+#include <cstdio>
 #include <vector>
+#include "../application.h"
 
 FrameBuffer	g_offscreenFrameBuffer;
 Pipeline	g_skyPipeline;
