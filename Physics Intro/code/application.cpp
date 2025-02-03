@@ -93,6 +93,8 @@ void Application::Initialize() {
 
 	m_isPaused = true;
 	m_stepFrame = false;
+	
+	m_escPressed = false;
 }
 
 /*
@@ -436,6 +438,20 @@ void Application::Keyboard( int key, int scancode, int action, int modifiers ) {
 	}
 	if ( GLFW_KEY_Y == key && ( GLFW_PRESS == action || GLFW_REPEAT == action ) ) {
 		m_stepFrame = m_isPaused && !m_stepFrame;
+	}
+	
+	if ( GLFW_KEY_ESCAPE == key && ( GLFW_PRESS == action || GLFW_REPEAT == action ) )
+	{
+		m_escPressed = !m_escPressed;
+		
+		if(m_escPressed)
+		{
+			glfwSetInputMode( glfwWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL );
+		}
+		else
+		{
+			glfwSetInputMode( glfwWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
+		}
 	}
 }
 

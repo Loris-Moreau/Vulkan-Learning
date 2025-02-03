@@ -18,7 +18,8 @@ Scene
 Scene::~Scene
 ====================================================
 */
-Scene::~Scene() {
+Scene::~Scene()
+{
 	for ( int i = 0; i < bodies.size(); i++ ) {
 		delete bodies[ i ].shape;
 	}
@@ -30,7 +31,8 @@ Scene::~Scene() {
 Scene::Reset
 ====================================================
 */
-void Scene::Reset() {
+void Scene::Reset()
+{
 	for ( int i = 0; i < bodies.size(); i++ ) {
 		delete bodies[ i ].shape;
 	}
@@ -44,7 +46,8 @@ void Scene::Reset() {
 Scene::Initialize
 ====================================================
 */
-void Scene::Initialize() {
+void Scene::Initialize()
+{
 	Body body;
 	body.position = Vec3( 0, 0, 0 );
 	body.orientation = Quat( 0, 0, 0, 1 );
@@ -59,6 +62,14 @@ void Scene::Initialize() {
 Scene::Update
 ====================================================
 */
-void Scene::Update( const float dt_sec ) {
-	// TODO: Add code
+void Scene::Update( const float dt_sec )
+{
+	for (auto& bodie : bodies)
+	{
+		bodie.linearVelocity += Vec3(0, 0, -10) * dt_sec;
+	}
+	for (auto& bodie : bodies)
+	{
+		bodie.position += bodie.linearVelocity * dt_sec;
+	}
 }
