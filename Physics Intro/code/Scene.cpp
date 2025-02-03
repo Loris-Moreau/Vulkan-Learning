@@ -54,12 +54,15 @@ void Scene::Initialize()
 	body.orientation = Quat(0, 0, 0, 1);
 	body.shape = new ShapeSphere(1.0f);
 	body.inverseMass = 1.0f;
+	body.elasticity = 0.5f;
 	bodies.push_back(body);
+	
 	Body earth;
 	earth.position = Vec3(0, 0, -1000);
 	earth.orientation = Quat(0, 0, 0, 1);
 	earth.shape = new ShapeSphere(1000.0f);
 	earth.inverseMass = 0.0f;
+	earth.elasticity = 1.0f;
 	bodies.push_back(earth);
 }
 
