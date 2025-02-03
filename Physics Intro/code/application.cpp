@@ -12,6 +12,7 @@
 #include "application.h"
 #include "Fileio.h"
 #include <assert.h>
+#include <iostream>
 
 #include "Renderer/OffscreenRenderer.h"
 
@@ -95,6 +96,8 @@ void Application::Initialize() {
 	m_stepFrame = false;
 	
 	m_escPressed = false;
+	printf(m_isPaused? " Paused \n" : " Resumed \n");
+	printf(m_escPressed? " Cursor Active \n" : " Cursor Not Active \n");
 }
 
 /*
@@ -173,7 +176,7 @@ bool Application::InitializeVulkan() {
 	//	Vulkan Surface for GLFW Window
 	//
 	if ( VK_SUCCESS != glfwCreateWindowSurface( deviceContext.m_vkInstance, glfwWindow, nullptr, &deviceContext.m_vkSurface ) ) {
-		printf( "ERROR: Failed to create window sruface\n" );
+		printf( "ERROR: Failed to create window surface\n" );
 		assert( 0 );
 		return false;
 	}
@@ -429,14 +432,21 @@ void Application::OnKeyboard( GLFWwindow * window, int key, int scancode, int ac
 Application::Keyboard
 ====================================================
 */
-void Application::Keyboard( int key, int scancode, int action, int modifiers ) {
-	if ( GLFW_KEY_R == key && GLFW_RELEASE == action ) {
+void Application::Keyboard( int key, int scancode, int action, int modifiers )
+{
+	if ( GLFW_KEY_R == key && GLFW_RELEASE == action )
+	{
 		scene->Reset();
+		printf(" Scene Reset \n");
 	}
-	if ( GLFW_KEY_T == key && GLFW_RELEASE == action ) {
+	if ( GLFW_KEY_P == key && GLFW_RELEASE == action )
+	{
 		m_isPaused = !m_isPaused;
+		
+		printf(m_isPaused? " Paused \n" : " Resumed \n");
 	}
-	if ( GLFW_KEY_Y == key && ( GLFW_PRESS == action || GLFW_REPEAT == action ) ) {
+	if ( GLFW_KEY_SEMICOLON == key && ( GLFW_PRESS == action || GLFW_REPEAT == action ) )
+	{
 		m_stepFrame = m_isPaused && !m_stepFrame;
 	}
 	
@@ -447,10 +457,12 @@ void Application::Keyboard( int key, int scancode, int action, int modifiers ) {
 		if(m_escPressed)
 		{
 			glfwSetInputMode( glfwWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL );
+			printf(" Cursor Active \n");
 		}
 		else
 		{
 			glfwSetInputMode( glfwWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
+			printf(" Cursor Not Active \n");
 		}
 	}
 }
@@ -466,17 +478,19 @@ void Application::MainLoop() {
 	static float avgTime = 0.0f;
 	static float maxTime = 0.0f;
 
-	while ( !glfwWindowShouldClose( glfwWindow ) ) {
-		int time					= GetTimeMicroseconds();
-		float dt_us					= (float)time - (float)timeLastFrame;
-		if ( dt_us < 16000.0f ) {
+	while ( !glfwWindowShouldClose( glfwWindow ) )
+	{
+		int time = GetTimeMicroseconds();
+		float dt_us = (float)time - (float)timeLastFrame;
+		if ( dt_us < 16000.0f )
+		{
 			int x = 16000 - (int)dt_us;
 			std::this_thread::sleep_for( std::chrono::microseconds( x ) );
 			dt_us = 16000;
 			time = GetTimeMicroseconds();
 		}
 		timeLastFrame = time;
-		printf( "\ndt_ms: %.1f    ", dt_us * 0.001f );
+		//printf( "\ndt_ms: %.1f    ", dt_us * 0.001f );
 
 		// Get User Input
 		glfwPollEvents();
@@ -484,15 +498,18 @@ void Application::MainLoop() {
 		// If the time is greater than 33ms (30fps)
 		// then force the time difference to smaller
 		// to prevent super large simulation steps.
-		if ( dt_us > 33000.0f ) {
+		if ( dt_us > 33000.0f )
+		{
 			dt_us = 33000.0f;
 		}
 
 		bool runPhysics = true;
-		if ( m_isPaused ) {
+		if ( m_isPaused )
+		{
 			dt_us = 0.0f;
 			runPhysics = false;
-			if ( m_stepFrame ) {
+			if ( m_stepFrame )
+			{
 				dt_us = 16667.0f;
 				m_stepFrame = false;
 				runPhysics = true;
@@ -503,22 +520,25 @@ void Application::MainLoop() {
 		float dt_sec = dt_us * 0.001f * 0.001f;
 
 		// Run Update
-		if ( runPhysics ) {
+		if ( runPhysics )
+		{
 			int startTime = GetTimeMicroseconds();
-			for ( int i = 0; i < 2; i++ ) {
+			for ( int i = 0; i < 2; i++ )
+			{
 				scene->Update( dt_sec * 0.5f );
 			}
 			int endTime = GetTimeMicroseconds();
 
 			dt_us = (float)endTime - (float)startTime;
-			if ( dt_us > maxTime ) {
+			if ( dt_us > maxTime )
+			{
 				maxTime = dt_us;
 			}
 
 			avgTime = ( avgTime * float( numSamples ) + dt_us ) / float( numSamples + 1 );
 			numSamples++;
 
-			printf( "frame dt_ms: %.2f %.2f %.2f", avgTime * 0.001f, maxTime * 0.001f, dt_us * 0.001f );
+			//printf( "frame dt_ms: %.2f %.2f %.2f", avgTime * 0.001f, maxTime * 0.001f, dt_us * 0.001f );
 		}
 
 		// Draw the Scene
@@ -531,14 +551,16 @@ void Application::MainLoop() {
 Application::UpdateUniforms
 ====================================================
 */
-void Application::UpdateUniforms() {
+void Application::UpdateUniforms()
+{
 	m_renderModels.clear();
 
 	uint32_t uboByteOffset = 0;
 	uint32_t cameraByteOFfset = 0;
 	uint32_t shadowByteOffset = 0;
 
-	struct camera_t {
+	struct camera_t
+	{
 		Mat4 matView;
 		Mat4 matProj;
 		Mat4 pad0;
@@ -573,10 +595,10 @@ void Application::UpdateUniforms() {
 			int windowHeight;
 			glfwGetWindowSize( glfwWindow, &windowWidth, &windowHeight );
 
-			const float zNear   = 0.1f;
-			const float zFar    = 1000.0f;
-			const float fovy	= 45.0f;
-			const float aspect	= (float)windowHeight / (float)windowWidth;
+			const float zNear = 0.1f;
+			const float zFar = 1000.0f;
+			const float fovy = 45.0f;
+			const float aspect = (float)windowHeight / (float)windowWidth;
 			camera.matProj.PerspectiveVulkan( fovy, aspect, zNear, zFar );
 			camera.matProj = camera.matProj.Transpose();
 
@@ -602,18 +624,18 @@ void Application::UpdateUniforms() {
 			Vec3 tmp = camPos.Cross( camUp );
 			camUp = tmp.Cross( camPos );
 			camUp.Normalize();
-
+			
 			extern FrameBuffer g_shadowFrameBuffer;
 			const int windowWidth = g_shadowFrameBuffer.m_parms.width;
 			const int windowHeight = g_shadowFrameBuffer.m_parms.height;
-
+			
 			const float halfWidth = 60.0f;
-			const float xmin	= -halfWidth;
-			const float xmax	= halfWidth;
-			const float ymin	= -halfWidth;
-			const float ymax	= halfWidth;
-			const float zNear	= 25.0f;
-			const float zFar	= 175.0f;
+			const float xmin = -halfWidth;
+			const float xmax = halfWidth;
+			const float ymin = -halfWidth;
+			const float ymax = halfWidth;
+			const float zNear = 25.0f;
+			const float zFar = 175.0f;
 			camera.matProj.OrthoVulkan( xmin, xmax, ymin, ymax, zNear, zFar );
 			camera.matProj = camera.matProj.Transpose();
 
@@ -632,7 +654,8 @@ void Application::UpdateUniforms() {
 		//
 		//	Update the uniform buffer with the body positions/orientations
 		//
-		for ( int i = 0; i < scene->bodies.size(); i++ ) {
+		for ( int i = 0; i < scene->bodies.size(); i++ )
+		{
 			Body & body = scene->bodies[ i ];
 
 			Vec3 fwd = body.orientation.RotatePoint( Vec3( 1, 0, 0 ) );
@@ -665,7 +688,8 @@ void Application::UpdateUniforms() {
 Application::DrawFrame
 ====================================================
 */
-void Application::DrawFrame() {
+void Application::DrawFrame()
+{
 	UpdateUniforms();
 
 	//

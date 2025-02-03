@@ -79,9 +79,9 @@ void Scene::Initialize()
 			body.orientation = Quat(0, 0, 0, 1);
 			body.shape = new ShapeSphere(radius);
 			body.inverseMass = 0.85f;
-			body.elasticity = 0.15f;
+			body.elasticity = 0.2f;
 			body.friction = 0.65f;
-			body.linearVelocity.Zero();
+			body.linearVelocity = Vec3(5, 5, 0);;
 			bodies.push_back(body);
 		}
 	}
@@ -101,6 +101,7 @@ void Scene::Initialize()
 			body.inverseMass = 0.0f;
 			body.elasticity = 0.99f;
 			body.friction = 0.5f;
+			body.linearVelocity.Zero();
 			bodies.push_back(body);
 		}
 	}
