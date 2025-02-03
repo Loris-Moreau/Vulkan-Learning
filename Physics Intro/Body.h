@@ -10,7 +10,7 @@ public:
 	Vec3 position;
 	Quat orientation;
 	Vec3 linearVelocity;
-	Vec3 rootationalVelocity;
+	float inverseMass;
 	Shape* shape;
 	
 	Vec3 GetCenterOfMassWorldSpace() const;
@@ -18,4 +18,6 @@ public:
 	
 	Vec3 WorldSpaceToBodySpace(const Vec3& worldPoint);
 	Vec3 BodySpaceToWorldSpace(const Vec3& bodyPoint);
+	
+	void ApplyImpulseLinear(const Vec3& impulse);
 };
