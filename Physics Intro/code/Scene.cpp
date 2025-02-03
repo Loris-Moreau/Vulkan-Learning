@@ -53,30 +53,48 @@ Scene::Initialize
 void Scene::Initialize()
 {
 	Body body;
-	for (int i = 0; i < 6; ++i)
+	// Cochonet
+	float radius = 0.15f;
+	float x = 0.0f;
+	float y = 0.0f;
+	body.position = Vec3(x, y, 10);
+	body.orientation = Quat(0, 0, 0, 1);
+	body.shape = new ShapeSphere(radius);
+	body.inverseMass = 1.0f;
+	body.elasticity = 0.3f;
+	body.friction = 0.4f;
+	body.linearVelocity = Vec3(10, 10, 0);
+	bodies.push_back(body);
+	// end of Cochonet
+	
+	// Balls
+	radius *= 4; // 4 Times the radius of the cochonet
+	for (int i = 0; i < 3; ++i)
 	{
-		for (int j = 0; j < 6; ++j)
+		for (int j = 0; j < 1; ++j)
 		{
-			float radius = 0.5f;
-			float x = (i - 1) * radius * 1.5f;
-			float y = (j - 1) * radius * 1.5f;
-			body.position = Vec3(x, y, 10);
+			x = (float)(i - 1) * radius * 1.5f;
+			y = (float)(j - 1) * radius * 1.5f;
+			body.position = Vec3(x, y, 100);
 			body.orientation = Quat(0, 0, 0, 1);
 			body.shape = new ShapeSphere(radius);
-			body.inverseMass = 1.0f;
-			body.elasticity = 0.5f;
-			body.friction = 0.5f;
+			body.inverseMass = 0.85f;
+			body.elasticity = 0.15f;
+			body.friction = 0.65f;
 			body.linearVelocity.Zero();
 			bodies.push_back(body);
 		}
 	}
-	for (int i = 0; i < 3; ++i)
+	// end of Balls
+	
+	// Floor
+	for (int i = 0; i < 5; ++i)
 	{
-		for (int j = 0; j < 3; ++j)
+		for (int j = 0; j < 5; ++j)
 		{
-			float radius = 80.0f;
-			float x = (i - 1) * radius * 0.25f;
-			float y = (j - 1) * radius * 0.25f;
+			radius = 80.0f;
+			x = (float)(i - 1) * radius * 0.25f;
+			y = (float)(j - 1) * radius * 0.25f;
 			body.position = Vec3(x, y, -radius);
 			body.orientation = Quat(0, 0, 0, 1);
 			body.shape = new ShapeSphere(radius);
@@ -86,6 +104,25 @@ void Scene::Initialize()
 			bodies.push_back(body);
 		}
 	}
+	// end of Floor
+	
+	/* // Walls
+	float amountWalls = 4;
+	for (int i = 0; i < amountWalls; ++i)
+	{
+		for (int j = 0; j < amountWalls/2; ++j)
+		{
+			radius = 80.0f;
+			x = (float)(i - 1) * radius * 0.25f + 175;
+			y = (float)(j - 1) * radius * 0.25f;
+			body.position = Vec3(x, y, 10);
+			body.orientation = Quat(0, 0, 0, 1);
+			body.shape = new ShapeSphere(radius);
+			bodies.push_back(body);
+		}
+	}
+	// end of Walls
+	*/
 }
 
 /*
@@ -119,8 +156,8 @@ void Scene::Update(const float dt_sec)
 		const CollisionPair& pair = collisionPairs[i];
 		Body& bodyA = bodies[pair.a];
 		Body& bodyB = bodies[pair.b];
-		if (bodyA.inverseMass == 0.0f && bodyB.inverseMass == 0.0f)
-			continue;
+		if (bodyA.inverseMass == 0.0f && bodyB.inverseMass == 0.0f) continue;
+		
 		Contact contact;
 		if (Intersections::Intersect(bodyA, bodyB, dt_sec, contact))
 		{
