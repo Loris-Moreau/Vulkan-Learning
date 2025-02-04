@@ -2,9 +2,14 @@
 //  Scene.cpp
 //
 #include "Scene.h"
-#include "../Shape.h"
-#include "Intersections.h"
+
+#include <iostream>
+#include <random>
+#include <string>
+
 #include "Broadphase.h"
+#include "Intersections.h"
+#include "../Shape.h"
 
 
 /*
@@ -52,9 +57,16 @@ Scene::Initialize
 */
 void Scene::Initialize()
 {
+	// Random Generator
+	std::random_device rd; // obtain a random number from hardware
+	std::mt19937 gen(rd()); // seed the generator
+	//std::uniform_int_distribution<> distr(-7, 7); // define the range int
+	std::uniform_real_distribution<> test(-7.5f,7.5f); // define the range float
+	
+	
 	Body body;
 	// Cochonet
-	float radius = 0.15f;
+	float radius = 0.25f;
 	float x = 0.0f;
 	float y = 0.0f;
 	body.position = Vec3(x, y, 10);
@@ -63,12 +75,20 @@ void Scene::Initialize()
 	body.inverseMass = 1.0f;
 	body.elasticity = 0.3f;
 	body.friction = 0.4f;
-	body.linearVelocity = Vec3(10, 10, 0);
+	
+	// Random Direction for the Cochonet
+	float impulseDirectionX = floorf((float)test(gen) * 10) / 10;
+	float impulseDirectionY = floorf((float)test(gen) * 10) / 10;
+	
+	body.linearVelocity = Vec3(impulseDirectionX, impulseDirectionY, 0);
 	bodies.push_back(body);
 	// end of Cochonet
+
+	// Debug
+	//std::cout << impulseDirectionX << " " << impulseDirectionY <<'\n';
 	
 	// Balls
-	radius *= 4; // 4 Times the radius of the cochonet
+	radius *= 3; // 4 Times the radius of the cochonet
 	for (int i = 0; i < 3; ++i)
 	{
 		for (int j = 0; j < 1; ++j)
