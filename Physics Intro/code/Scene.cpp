@@ -85,7 +85,7 @@ void Scene::Initialize()
 	// end of Cochonet
 
 	// Debug
-	//std::cout << impulseDirectionX << " " << impulseDirectionY <<'\n';
+	std::cout << "Impulse X : " << impulseDirectionX << "  Impulse Y : " << impulseDirectionY <<'\n';
 	
 	// Balls
 	radius *= 3; // 4 Times the radius of the cochonet
@@ -101,7 +101,7 @@ void Scene::Initialize()
 			body.inverseMass = 0.85f;
 			body.elasticity = 0.2f;
 			body.friction = 0.65f;
-			body.linearVelocity = Vec3(5, 5, 0);;
+			body.linearVelocity = Vec3(5, 5, 0);
 			bodies.push_back(body);
 		}
 	}

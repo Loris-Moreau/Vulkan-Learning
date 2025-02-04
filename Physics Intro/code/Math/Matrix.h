@@ -1,7 +1,7 @@
-//
 //	Matrix.h
-//
+
 #pragma once
+
 #include "Vector.h"
 
 /*
@@ -9,7 +9,8 @@
 Mat2
 ====================================================
 */
-class Mat2 {
+class Mat2
+{
 public:
 	Mat2() {}
 	Mat2( const Mat2 & rhs );
@@ -26,34 +27,40 @@ public:
 	Vec2 rows[ 2 ];
 };
 
-inline Mat2::Mat2( const Mat2 & rhs ) {
+inline Mat2::Mat2( const Mat2 & rhs )
+{
 	rows[ 0 ] = rhs.rows[ 0 ];
 	rows[ 1 ] = rhs.rows[ 1 ];
 }
 
-inline Mat2::Mat2( const float * mat ) {
+inline Mat2::Mat2( const float * mat )
+{
 	rows[ 0 ] = mat + 0;
 	rows[ 1 ] = mat + 2;
 }
 
-inline Mat2::Mat2( const Vec2 & row0, const Vec2 & row1 ) {
+inline Mat2::Mat2( const Vec2 & row0, const Vec2 & row1 )
+{
 	rows[ 0 ] = row0;
 	rows[ 1 ] = row1;
 }
 
-inline Mat2 & Mat2::operator = ( const Mat2 & rhs ) {
+inline Mat2 & Mat2::operator = ( const Mat2 & rhs )
+{
 	rows[ 0 ] = rhs.rows[ 0 ];
 	rows[ 1 ] = rhs.rows[ 1 ];
 	return *this;
 }
 
-inline const Mat2 & Mat2::operator *= ( const float rhs ) {
+inline const Mat2 & Mat2::operator *= ( const float rhs )
+{
 	rows[ 0 ] *= rhs;
 	rows[ 1 ] *= rhs;
 	return *this;
 }
 
-inline const Mat2 & Mat2::operator += ( const Mat2 & rhs ) {
+inline const Mat2 & Mat2::operator += ( const Mat2 & rhs )
+{
 	rows[ 0 ] += rhs.rows[ 0 ];
 	rows[ 1 ] += rhs.rows[ 1 ];
 	return *this;
@@ -64,7 +71,8 @@ inline const Mat2 & Mat2::operator += ( const Mat2 & rhs ) {
 Mat3
 ====================================================
 */
-class Mat3 {
+class Mat3
+{
 public:
 	Mat3() {}
 	Mat3( const Mat3 & rhs );
@@ -93,85 +101,101 @@ public:
 	Vec3 rows[ 3 ];
 };
 
-inline Mat3::Mat3( const Mat3 & rhs ) {
+inline Mat3::Mat3( const Mat3 & rhs )
+{
 	rows[ 0 ] = rhs.rows[ 0 ];
 	rows[ 1 ] = rhs.rows[ 1 ];
 	rows[ 2 ] = rhs.rows[ 2 ];
 }
 
-inline Mat3::Mat3( const float * mat ) {
+inline Mat3::Mat3( const float * mat )
+{
 	rows[ 0 ] = mat + 0;
 	rows[ 1 ] = mat + 3;
 	rows[ 2 ] = mat + 6;
 }
 
-inline Mat3::Mat3( const Vec3 & row0, const Vec3 & row1, const Vec3 & row2 ) {
+inline Mat3::Mat3( const Vec3 & row0, const Vec3 & row1, const Vec3 & row2 )
+{
 	rows[ 0 ] = row0;
 	rows[ 1 ] = row1;
 	rows[ 2 ] = row2;
 }
 
-inline Mat3 & Mat3::operator = ( const Mat3 & rhs ) {
+inline Mat3 & Mat3::operator = ( const Mat3 & rhs )
+{
 	rows[ 0 ] = rhs.rows[ 0 ];
 	rows[ 1 ] = rhs.rows[ 1 ];
 	rows[ 2 ] = rhs.rows[ 2 ];
 	return *this;
 }
 
-inline const Mat3 & Mat3::operator *= ( const float rhs ) {
+inline const Mat3 & Mat3::operator *= ( const float rhs )
+{
 	rows[ 0 ] *= rhs;
 	rows[ 1 ] *= rhs;
 	rows[ 2 ] *= rhs;
 	return *this;
 }
 
-inline const Mat3 & Mat3::operator += ( const Mat3 & rhs ) {
+inline const Mat3 & Mat3::operator += ( const Mat3 & rhs )
+{
 	rows[ 0 ] += rhs.rows[ 0 ];
 	rows[ 1 ] += rhs.rows[ 1 ];
 	rows[ 2 ] += rhs.rows[ 2 ];
 	return *this;
 }
 
-inline void Mat3::Zero() {
+inline void Mat3::Zero()
+{
 	rows[ 0 ].Zero();
 	rows[ 1 ].Zero();
 	rows[ 2 ].Zero();
 }
 
-inline void Mat3::Identity() {
+inline void Mat3::Identity()
+{
 	rows[ 0 ] = Vec3( 1, 0, 0 );
 	rows[ 1 ] = Vec3( 0, 1, 0 );
 	rows[ 2 ] = Vec3( 0, 0, 1 );
 }
 
-inline float Mat3::Trace() const {
+inline float Mat3::Trace() const
+{
 	const float xx = rows[ 0 ][ 0 ] * rows[ 0 ][ 0 ];
 	const float yy = rows[ 1 ][ 1 ] * rows[ 1 ][ 1 ];
 	const float zz = rows[ 2 ][ 2 ] * rows[ 2 ][ 2 ];
 	return ( xx + yy + zz );
 }
 
-inline float Mat3::Determinant() const {
+inline float Mat3::Determinant() const
+{
 	const float i = rows[ 0 ][ 0 ] * ( rows[ 1 ][ 1 ] * rows[ 2 ][ 2 ] - rows[ 1 ][ 2 ] * rows[ 2 ][ 1 ] );
 	const float j = rows[ 0 ][ 1 ] * ( rows[ 1 ][ 0 ] * rows[ 2 ][ 2 ] - rows[ 1 ][ 2 ] * rows[ 2 ][ 0 ] );
 	const float k = rows[ 0 ][ 2 ] * ( rows[ 1 ][ 0 ] * rows[ 2 ][ 1 ] - rows[ 1 ][ 1 ] * rows[ 2 ][ 0 ] );
 	return ( i - j + k );
 }
 
-inline Mat3 Mat3::Transpose() const {
+inline Mat3 Mat3::Transpose() const
+{
 	Mat3 transpose;
-	for ( int i = 0; i < 3; i++ ) {
-		for ( int j = 0; j < 3; j++ ) {
+	for ( int i = 0; i < 3; i++ )
+	{
+		for ( int j = 0; j < 3; j++ )
+		{
 			transpose.rows[ i ][ j ] = rows[ j ][ i ];
 		}
 	}
 	return transpose;
 }
 
-inline Mat3 Mat3::Inverse() const {
+inline Mat3 Mat3::Inverse() const
+{
 	Mat3 inv;
-	for ( int i = 0; i < 3; i++ ) {
-		for ( int j = 0; j < 3; j++ ) {
+	for ( int i = 0; i < 3; i++ )
+	{
+		for ( int j = 0; j < 3; j++ )
+		{
 			inv.rows[ j ][ i ] = Cofactor( i, j );	// Perform the transpose while calculating the cofactors
 		}
 	}
@@ -181,18 +205,23 @@ inline Mat3 Mat3::Inverse() const {
 	return inv;
 }
 
-inline Mat2 Mat3::Minor( const int i, const int j ) const {
+inline Mat2 Mat3::Minor( const int i, const int j ) const
+{
 	Mat2 minor;
 
 	int yy = 0;
-	for ( int y = 0; y < 3; y++ ) {
-		if ( y == j ) {
+	for ( int y = 0; y < 3; y++ )
+	{
+		if ( y == j )
+		{
 			continue;
 		}
 
 		int xx = 0;
-		for ( int x = 0; x < 3; x++ ) {
-			if ( x == i ) {
+		for ( int x = 0; x < 3; x++ )
+		{
+			if ( x == i )
+			{
 				continue;
 			}
 
@@ -205,13 +234,15 @@ inline Mat2 Mat3::Minor( const int i, const int j ) const {
 	return minor;
 }
 
-inline float Mat3::Cofactor( const int i, const int j ) const {
+inline float Mat3::Cofactor( const int i, const int j ) const
+{
 	const Mat2 minor = Minor( i, j );
 	const float C = float( pow( -1, i + 1 + j + 1 ) ) * minor.Determinant();
 	return C;
 }
 
-inline Vec3 Mat3::operator * ( const Vec3 & rhs ) const {
+inline Vec3 Mat3::operator * ( const Vec3 & rhs ) const
+{
 	Vec3 tmp;
 	tmp[ 0 ] = rows[ 0 ].Dot( rhs );
 	tmp[ 1 ] = rows[ 1 ].Dot( rhs );
@@ -219,7 +250,8 @@ inline Vec3 Mat3::operator * ( const Vec3 & rhs ) const {
 	return tmp;
 }
 
-inline Mat3 Mat3::operator * ( const float rhs ) const {
+inline Mat3 Mat3::operator * ( const float rhs ) const
+{
 	Mat3 tmp;
 	tmp.rows[ 0 ] = rows[ 0 ] * rhs;
 	tmp.rows[ 1 ] = rows[ 1 ] * rhs;
@@ -227,9 +259,11 @@ inline Mat3 Mat3::operator * ( const float rhs ) const {
 	return tmp;
 }
 
-inline Mat3 Mat3::operator * ( const Mat3 & rhs ) const {
+inline Mat3 Mat3::operator * ( const Mat3 & rhs ) const
+{
 	Mat3 tmp;
-	for ( int i = 0; i < 3; i++ ) {
+	for ( int i = 0; i < 3; i++ )
+	{
 		tmp.rows[ i ].x = rows[ i ].x * rhs.rows[ 0 ].x + rows[ i ].y * rhs.rows[ 1 ].x + rows[ i ].z * rhs.rows[ 2 ].x;
 		tmp.rows[ i ].y = rows[ i ].x * rhs.rows[ 0 ].y + rows[ i ].y * rhs.rows[ 1 ].y + rows[ i ].z * rhs.rows[ 2 ].y;
 		tmp.rows[ i ].z = rows[ i ].x * rhs.rows[ 0 ].z + rows[ i ].y * rhs.rows[ 1 ].z + rows[ i ].z * rhs.rows[ 2 ].z;
@@ -237,9 +271,11 @@ inline Mat3 Mat3::operator * ( const Mat3 & rhs ) const {
 	return tmp;
 }
 
-inline Mat3 Mat3::operator + ( const Mat3 & rhs ) const {
+inline Mat3 Mat3::operator + ( const Mat3 & rhs ) const
+{
 	Mat3 tmp;
-	for ( int i = 0; i < 3; i++ ) {
+	for ( int i = 0; i < 3; i++ )
+	{
 		tmp.rows[ i ] = rows[ i ] + rhs.rows[ i ];
 	}
 	return tmp;
@@ -250,7 +286,8 @@ inline Mat3 Mat3::operator + ( const Mat3 & rhs ) const {
 Mat4
 ====================================================
 */
-class Mat4 {
+class Mat4
+{
 public:
 	Mat4() {}
 	Mat4( const Mat4 & rhs );
@@ -288,28 +325,32 @@ public:
 	Vec4 rows[ 4 ];
 };
 
-inline Mat4::Mat4( const Mat4 & rhs ) {
+inline Mat4::Mat4( const Mat4 & rhs )
+{
 	rows[ 0 ] = rhs.rows[ 0 ];
 	rows[ 1 ] = rhs.rows[ 1 ];
 	rows[ 2 ] = rhs.rows[ 2 ];
 	rows[ 3 ] = rhs.rows[ 3 ];
 }
 
-inline Mat4::Mat4( const float * mat ) {
+inline Mat4::Mat4( const float * mat )
+{
 	rows[ 0 ] = mat + 0;
 	rows[ 1 ] = mat + 4;
 	rows[ 2 ] = mat + 8;
 	rows[ 3 ] = mat + 12;
 }
 
-inline Mat4::Mat4( const Vec4 & row0, const Vec4 & row1, const Vec4 & row2, const Vec4 & row3 ) {
+inline Mat4::Mat4( const Vec4 & row0, const Vec4 & row1, const Vec4 & row2, const Vec4 & row3 )
+{
 	rows[ 0 ] = row0;
 	rows[ 1 ] = row1;
 	rows[ 2 ] = row2;
 	rows[ 3 ] = row3;
 }
 
-inline Mat4 & Mat4::operator = ( const Mat4 & rhs ) {
+inline Mat4 & Mat4::operator = ( const Mat4 & rhs )
+{
 	rows[ 0 ] = rhs.rows[ 0 ];
 	rows[ 1 ] = rhs.rows[ 1 ];
 	rows[ 2 ] = rhs.rows[ 2 ];
@@ -317,7 +358,8 @@ inline Mat4 & Mat4::operator = ( const Mat4 & rhs ) {
 	return *this;
 }
 
-inline const Mat4 & Mat4::operator *= ( const float rhs ) {
+inline const Mat4 & Mat4::operator *= ( const float rhs )
+{
 	rows[ 0 ] *= rhs;
 	rows[ 1 ] *= rhs;
 	rows[ 2 ] *= rhs;
@@ -325,21 +367,24 @@ inline const Mat4 & Mat4::operator *= ( const float rhs ) {
 	return *this;
 }
 
-inline void Mat4::Zero() {
+inline void Mat4::Zero()
+{
 	rows[ 0 ].Zero();
 	rows[ 1 ].Zero();
 	rows[ 2 ].Zero();
 	rows[ 3 ].Zero();
 }
 
-inline void Mat4::Identity() {
+inline void Mat4::Identity()
+{
 	rows[ 0 ] = Vec4( 1, 0, 0, 0 );
 	rows[ 1 ] = Vec4( 0, 1, 0, 0 );
 	rows[ 2 ] = Vec4( 0, 0, 1, 0 );
 	rows[ 3 ] = Vec4( 0, 0, 0, 1 );
 }
 
-inline float Mat4::Trace() const {
+inline float Mat4::Trace() const
+{
 	const float xx = rows[ 0 ][ 0 ] * rows[ 0 ][ 0 ];
 	const float yy = rows[ 1 ][ 1 ] * rows[ 1 ][ 1 ];
 	const float zz = rows[ 2 ][ 2 ] * rows[ 2 ][ 2 ];
@@ -347,10 +392,12 @@ inline float Mat4::Trace() const {
 	return ( xx + yy + zz + ww );
 }
 
-inline float Mat4::Determinant() const {
+inline float Mat4::Determinant() const
+{
 	float det = 0.0f;
 	float sign = 1.0f;
-	for ( int j = 0; j < 4; j++ ) {
+	for ( int j = 0; j < 4; j++ )
+	{
 		Mat3 minor = Minor( 0, j );
 
 		det += rows[ 0 ][ j ] * minor.Determinant() * sign;
@@ -359,20 +406,26 @@ inline float Mat4::Determinant() const {
 	return det;
 }
 
-inline Mat4 Mat4::Transpose() const {
+inline Mat4 Mat4::Transpose() const
+{
 	Mat4 transpose;
-	for ( int i = 0; i < 4; i++ ) {
-		for ( int j = 0; j < 4; j++ ) {
+	for ( int i = 0; i < 4; i++ )
+	{
+		for ( int j = 0; j < 4; j++ )
+		{
 			transpose.rows[ i ][ j ] = rows[ j ][ i ];
 		}
 	}
 	return transpose;
 }
 
-inline Mat4 Mat4::Inverse() const {
+inline Mat4 Mat4::Inverse() const
+{
 	Mat4 inv;
-	for ( int i = 0; i < 4; i++ ) {
-		for ( int j = 0; j < 4; j++ ) {
+	for ( int i = 0; i < 4; i++ )
+	{
+		for ( int j = 0; j < 4; j++ )
+		{
 			inv.rows[ j ][ i ] = Cofactor( i, j );	// Perform the transpose while calculating the cofactors
 		}
 	}
@@ -382,18 +435,23 @@ inline Mat4 Mat4::Inverse() const {
 	return inv;
 }
 
-inline Mat3 Mat4::Minor( const int i, const int j ) const {
+inline Mat3 Mat4::Minor( const int i, const int j ) const
+{
 	Mat3 minor;
 
 	int yy = 0;
-	for ( int y = 0; y < 4; y++ ) {
-		if ( y == j ) {
+	for ( int y = 0; y < 4; y++ )
+	{
+		if ( y == j )
+		{
 			continue;
 		}
 
 		int xx = 0;
-		for ( int x = 0; x < 4; x++ ) {
-			if ( x == i ) {
+		for ( int x = 0; x < 4; x++ )
+		{
+			if ( x == i )
+			{
 				continue;
 			}
 
@@ -406,13 +464,15 @@ inline Mat3 Mat4::Minor( const int i, const int j ) const {
 	return minor;
 }
 
-inline float Mat4::Cofactor( const int i, const int j ) const {
+inline float Mat4::Cofactor( const int i, const int j ) const
+{
 	const Mat3 minor = Minor( i, j );
 	const float C = float( pow( -1, i + 1 + j + 1 ) ) * minor.Determinant();
 	return C;
 }
 
-inline void Mat4::Orient( Vec3 pos, Vec3 fwd, Vec3 up ) {
+inline void Mat4::Orient( Vec3 pos, Vec3 fwd, Vec3 up )
+{
 	Vec3 left = up.Cross( fwd );
 
 	// For our coordinate system where:
@@ -425,7 +485,8 @@ inline void Mat4::Orient( Vec3 pos, Vec3 fwd, Vec3 up ) {
 	rows[ 3 ] = Vec4( 0, 0, 0, 1 );
 }
 
-inline void Mat4::LookAt( Vec3 pos, Vec3 lookAt, Vec3 up ) {
+inline void Mat4::LookAt( Vec3 pos, Vec3 lookAt, Vec3 up )
+{
 	Vec3 fwd = pos - lookAt;
 	fwd.Normalize();
 
@@ -445,7 +506,8 @@ inline void Mat4::LookAt( Vec3 pos, Vec3 lookAt, Vec3 up ) {
 	rows[ 3 ] = Vec4( 0, 0, 0, 1 );
 }
 
-inline void Mat4::PerspectiveOpenGL( float fovy, float aspect_ratio, float near, float far ) {
+inline void Mat4::PerspectiveOpenGL( float fovy, float aspect_ratio, float near, float far )
+{
 	const float pi = acosf( -1.0f );
 	const float fovy_radians = fovy * pi / 180.0f;
 	const float f = 1.0f / tanf( fovy_radians * 0.5f );
@@ -458,8 +520,9 @@ inline void Mat4::PerspectiveOpenGL( float fovy, float aspect_ratio, float near,
 	rows[ 3 ] = Vec4( 0, 0, -1, 0 );
 }
 
-inline void Mat4::PerspectiveVulkan( float fovy, float aspect_ratio, float near, float far ) {
-	// Vulkan changed its NDC.  It switch from a left handed coordinate system to a right handed one.
+inline void Mat4::PerspectiveVulkan( float fovy, float aspect_ratio, float near, float far )
+{
+	// Vulkan changed its NDC.  It switches from a left-handed coordinate system to a right-handed one.
 	// +x points to the right, +z points into the screen, +y points down (it used to point up, in opengl).
 	// It also changed the range from [-1,1] to [0,1] for the z.
 	// Clip space remains [-1,1] for x and y.
@@ -476,7 +539,8 @@ inline void Mat4::PerspectiveVulkan( float fovy, float aspect_ratio, float near,
 	*this = matVulkan * matOpenGL;
 }
 
-inline void Mat4::OrthoOpenGL( float xmin, float xmax, float ymin, float ymax, float znear, float zfar ) {
+inline void Mat4::OrthoOpenGL( float xmin, float xmax, float ymin, float ymax, float znear, float zfar )
+{
 	const float width	= xmax - xmin;
 	const float height	= ymax - ymin;
 	const float depth	= zfar - znear;
@@ -491,8 +555,9 @@ inline void Mat4::OrthoOpenGL( float xmin, float xmax, float ymin, float ymax, f
 	rows[ 3 ] = Vec4( 0, 0, 0, 1 );
 }
 
-inline void Mat4::OrthoVulkan( float xmin, float xmax, float ymin, float ymax, float znear, float zfar ) {
-	// Vulkan changed its NDC.  It switch from a left handed coordinate system to a right handed one.
+inline void Mat4::OrthoVulkan( float xmin, float xmax, float ymin, float ymax, float znear, float zfar )
+{
+	// Vulkan changed its NDC.  It switches from a left-handed coordinate system to a right-handed one.
 	// +x points to the right, +z points into the screen, +y points down (it used to point up, in opengl).
 	// It also changed the range from [-1,1] to [0,1] for the z.
 	// Clip space remains [-1,1] for x and y.
@@ -509,7 +574,8 @@ inline void Mat4::OrthoVulkan( float xmin, float xmax, float ymin, float ymax, f
 	*this = matVulkan * matOpenGL;
 }
 
-inline Vec4 Mat4::operator * ( const Vec4 & rhs ) const {
+inline Vec4 Mat4::operator * ( const Vec4 & rhs ) const
+{
 	Vec4 tmp;
 	tmp[ 0 ] = rows[ 0 ].Dot( rhs );
 	tmp[ 1 ] = rows[ 1 ].Dot( rhs );
@@ -518,7 +584,8 @@ inline Vec4 Mat4::operator * ( const Vec4 & rhs ) const {
 	return tmp;
 }
 
-inline Mat4 Mat4::operator * ( const float rhs ) const {
+inline Mat4 Mat4::operator * ( const float rhs ) const
+{
 	Mat4 tmp;
 	tmp.rows[ 0 ] = rows[ 0 ] * rhs;
 	tmp.rows[ 1 ] = rows[ 1 ] * rhs;
@@ -527,9 +594,11 @@ inline Mat4 Mat4::operator * ( const float rhs ) const {
 	return tmp;
 }
 
-inline Mat4 Mat4::operator * ( const Mat4 & rhs ) const {
+inline Mat4 Mat4::operator * ( const Mat4 & rhs ) const
+{
 	Mat4 tmp;
-	for ( int i = 0; i < 4; i++ ) {
+	for ( int i = 0; i < 4; i++ )
+	{
 		tmp.rows[ i ].x = rows[ i ].x * rhs.rows[ 0 ].x + rows[ i ].y * rhs.rows[ 1 ].x + rows[ i ].z * rhs.rows[ 2 ].x + rows[ i ].w * rhs.rows[ 3 ].x;
 		tmp.rows[ i ].y = rows[ i ].x * rhs.rows[ 0 ].y + rows[ i ].y * rhs.rows[ 1 ].y + rows[ i ].z * rhs.rows[ 2 ].y + rows[ i ].w * rhs.rows[ 3 ].y;
 		tmp.rows[ i ].z = rows[ i ].x * rhs.rows[ 0 ].z + rows[ i ].y * rhs.rows[ 1 ].z + rows[ i ].z * rhs.rows[ 2 ].z + rows[ i ].w * rhs.rows[ 3 ].z;
@@ -543,13 +612,12 @@ inline Mat4 Mat4::operator * ( const Mat4 & rhs ) const {
 MatMN
 ====================================================
 */
-class MatMN {
+class MatMN
+{
 public:
 	MatMN() : M( 0 ), N( 0 ) {}
 	MatMN( int M, int N );
-	MatMN( const MatMN & rhs ) {
-		*this = rhs;
-	}
+	MatMN( const MatMN & rhs ) { *this = rhs; }
 	~MatMN() { delete[] rows; }
 
 	const MatMN & operator = ( const MatMN & rhs );
@@ -567,82 +635,103 @@ public:
 	VecN *	rows;
 };
 
-inline MatMN::MatMN( int _M, int _N ) {
+inline MatMN::MatMN( int _M, int _N )
+{
 	M = _M;
 	N = _N;
 	rows = new VecN[ M ];
-	for ( int m = 0; m < M; m++ ) {
+	for ( int m = 0; m < M; m++ )
+	{
 		rows[ m ] = VecN( N );
 	}
 }
 
-inline const MatMN & MatMN::operator = ( const MatMN & rhs ) {
+inline const MatMN & MatMN::operator = (const MatMN& rhs )
+{
 	M = rhs.M;
 	N = rhs.N;
 	rows = new VecN[ M ];
-	for ( int m = 0; m < M; m++ ) {
+	for ( int m = 0; m < M; m++ )
+	{
 		rows[ m ] = rhs.rows[ m ];
 	}
 	return *this;
 }
 
-inline const MatMN & MatMN::operator *= ( float rhs ) {
-	for ( int m = 0; m < M; m++ ) {
+inline const MatMN & MatMN::operator *= ( float rhs )
+{
+	for ( int m = 0; m < M; m++ )
+	{
 		rows[ m ] *= rhs;
 	}
 	return *this;
 }
 
-inline VecN MatMN::operator * ( const VecN & rhs ) const {
+inline VecN MatMN::operator * ( const VecN & rhs ) const
+{
 	// Check that the incoming vector is of the correct dimension
-	if ( rhs.N != N ) {
+	if ( rhs.N != N )
+	{
 		return rhs;
 	}
 
 	VecN tmp( M );
-	for ( int m = 0; m < M; m++ ) {
+	for ( int m = 0; m < M; m++ )
+	{
 		tmp[ m ] = rhs.Dot( rows[ m ] );
 	}
 	return tmp;
 }
 
-inline MatMN MatMN::operator * ( const MatMN & rhs ) const {
+inline MatMN MatMN::operator * ( const MatMN & rhs ) const
+{
 	// Check that the incoming matrix of the correct dimension
-	if ( rhs.M != N && rhs.N != M ) {
+	if ( rhs.M != N && rhs.N != M )
+	{
 		return rhs;
 	}
 
 	MatMN tranposedRHS = rhs.Transpose();
 
 	MatMN tmp( M, rhs.N );
-	for ( int m = 0; m < M; m++ ) {
-		for ( int n = 0; n < rhs.N; n++ ) {
+	for ( int m = 0; m < M; m++ )
+	{
+		for ( int n = 0; n < rhs.N; n++ )
+		{
 			tmp.rows[ m ][ n ] = rows[ m ].Dot( tranposedRHS.rows[ n ] );
 		}
 	}
 	return tmp;
 }
 
-inline MatMN MatMN::operator * ( const float rhs ) const {
+inline MatMN MatMN::operator * ( const float rhs ) const
+{
 	MatMN tmp = *this;
-	for ( int m = 0; m < M; m++ ) {
-		for ( int n = 0; n < N; n++ ) {
+	for ( int m = 0; m < M; m++ )
+	{
+		for ( int n = 0; n < N; n++ )
+		{
 			tmp.rows[ m ][ n ] *= rhs;
 		}
 	}
 	return tmp;
 }
 
-inline void MatMN::Zero() {
-	for ( int m = 0; m < M; m++ ) {
+inline void MatMN::Zero()
+{
+	for ( int m = 0; m < M; m++ )
+	{
 		rows[ m ].Zero();
 	}
 }
 
-inline MatMN MatMN::Transpose() const {
+inline MatMN MatMN::Transpose() const
+{
 	MatMN tmp( N, M );
-	for ( int m = 0; m < M; m++ ) {
-		for ( int n = 0; n < N; n++ ) {
+	for ( int m = 0; m < M; m++ )
+	{
+		for ( int n = 0; n < N; n++ )
+		{
 			tmp.rows[ n ][ m ] = rows[ m ][ n ];
 		}		
 	}
@@ -654,16 +743,13 @@ inline MatMN MatMN::Transpose() const {
 MatN
 ====================================================
 */
-class MatN {
+class MatN
+{
 public:
 	MatN() : numDimensions( 0 ) {}
 	MatN( int N );
-	MatN( const MatN & rhs ) {
-		*this = rhs;
-	}
-	MatN( const MatMN & rhs ) {
-		*this = rhs;
-	}
+	MatN( const MatN & rhs ) { *this = rhs; }
+	MatN( const MatMN & rhs ) { *this = rhs; }
 	~MatN() { delete[] rows; }
 
 	const MatN & operator = ( const MatN & rhs );
@@ -682,54 +768,68 @@ public:
 	VecN *	rows;
 };
 
-inline MatN::MatN( int N ) {
+inline MatN::MatN( int N )
+{
 	numDimensions = N;
 	rows = new VecN[ N ];
-	for ( int i = 0; i < N; i++ ) {
+	for ( int i = 0; i < N; i++ )
+	{
 		rows[ i ] = VecN( N );
 	}
 }
 
-inline const MatN & MatN::operator = ( const MatN & rhs ) {
+inline const MatN & MatN::operator = ( const MatN & rhs )
+{
 	numDimensions = rhs.numDimensions;
 	rows = new VecN[ numDimensions ];
-	for ( int i = 0; i < numDimensions; i++ ) {
+	for ( int i = 0; i < numDimensions; i++ )
+	{
 		rows[ i ] = rhs.rows[ i ];
 	}
 	return *this;
 }
 
-inline const MatN & MatN::operator = ( const MatMN & rhs ) {
-	if ( rhs.M != rhs.N ) {
+inline const MatN & MatN::operator = ( const MatMN & rhs )
+{
+	if ( rhs.M != rhs.N )
+	{
 		return *this;
 	}
 
 	numDimensions = rhs.N;
 	rows = new VecN[ numDimensions ];
-	for ( int i = 0; i < numDimensions; i++ ) {
+	for ( int i = 0; i < numDimensions; i++ )
+	{
 		rows[ i ] = rhs.rows[ i ];
 	}
 	return *this;
 }
 
-inline void MatN::Zero() {
-	for ( int i = 0; i < numDimensions; i++ ) {
+inline void MatN::Zero()
+{
+	for ( int i = 0; i < numDimensions; i++ )
+	{
 		rows[ i ].Zero();
 	}
 }
 
-inline void MatN::Identity() {
-	for ( int i = 0; i < numDimensions; i++ ) {
+inline void MatN::Identity()
+{
+	for ( int i = 0; i < numDimensions; i++ )
+	{
 		rows[ i ].Zero();
 		rows[ i ][ i ] = 1.0f;
 	}
 }
 
-inline void MatN::Transpose() {
+inline void MatN::Transpose()
+{
 	MatN tmp( numDimensions );
 
-	for ( int i = 0; i < numDimensions; i++ ) {
-		for ( int j = 0; j < numDimensions; j++ ) {
+	for ( int i = 0; i < numDimensions; i++ )
+	{
+		for ( int j = 0; j < numDimensions; j++ )
+		{
 			tmp.rows[ i ][ j ] = rows[ j ][ i ];
 		}
 	}
@@ -737,28 +837,35 @@ inline void MatN::Transpose() {
 	*this = tmp;
 }
 
-inline void MatN::operator *= ( float rhs ) {
-	for ( int i = 0; i < numDimensions; i++ ) {
+inline void MatN::operator *= ( float rhs )
+{
+	for ( int i = 0; i < numDimensions; i++ )
+	{
 		rows[ i ] *= rhs;
 	}
 }
 
-inline VecN MatN::operator * ( const VecN & rhs ) {
+inline VecN MatN::operator * ( const VecN & rhs )
+{
 	VecN tmp( numDimensions );
 
-	for ( int i = 0; i < numDimensions; i++ ) {
+	for ( int i = 0; i < numDimensions; i++ )
+	{
 		tmp[ i ] = rows[ i ].Dot( rhs );
 	}
 
 	return tmp;
 }
 
-inline MatN MatN::operator * ( const MatN & rhs ) {
+inline MatN MatN::operator * ( const MatN & rhs )
+{
 	MatN tmp( numDimensions );
 	tmp.Zero();
 
-	for ( int i = 0; i < numDimensions; i++ ) {
-		for ( int j = 0; j < numDimensions; j++ ) {
+	for ( int i = 0; i < numDimensions; i++ )
+	{
+		for ( int j = 0; j < numDimensions; j++ )
+		{
 			tmp.rows[ i ][ j ] += rows[ i ][ j ] * rhs.rows[ j ][ i ];
 		}
 	}
