@@ -51,20 +51,20 @@ void Contact::ResolveContact(Contact& contact)
 	// -- with respect to the normal of the collision
 	const Vec3 velNormal = n * n.Dot(velAb);
 	
-	// -- Find the tengent direction of the velocity
+	// -- Find the tangent direction of the velocity
 	// -- with respect to the normal of the collision
-	const Vec3 velTengent = velAb - velNormal;
+	const Vec3 velTangent = velAb - velNormal;
 	
-	// -- Get the tengential velocities relative to the other body
-	Vec3 relativVelTengent = velTengent;
-	relativVelTengent.Normalize();
-	const Vec3 inertiaA = (inverseWorldInertiaA * rA.Cross(relativVelTengent)).Cross(rA);
-	const Vec3 inertiaB = (inverseWorldInertiaB * rB.Cross(relativVelTengent)).Cross(rB);
-	const float inverseInertia = (inertiaA + inertiaB).Dot(relativVelTengent);
+	// -- Get the tangential velocities relative to the other body
+	Vec3 relativeVelTangent = velTangent;
+	relativeVelTangent.Normalize();
+	const Vec3 inertiaA = (inverseWorldInertiaA * rA.Cross(relativeVelTangent)).Cross(rA);
+	const Vec3 inertiaB = (inverseWorldInertiaB * rB.Cross(relativeVelTangent)).Cross(rB);
+	const float inverseInertia = (inertiaA + inertiaB).Dot(relativeVelTangent);
 	
 	// -- Tangential impulse for friction
 	const float reducedMass = 1.0f / (a->inverseMass + b->inverseMass + inverseInertia);
-	const Vec3 impulseFriction = velTengent * reducedMass * friction;
+	const Vec3 impulseFriction = velTangent * reducedMass * friction;
 	
 	// -- Apply kinetic friction
 	a->ApplyImpulse(ptOnA, impulseFriction * -1.0f);
@@ -83,8 +83,8 @@ void Contact::ResolveContact(Contact& contact)
 
 int Contact::CompareContact(const void* p1, const void* p2)
 {
-	const Contact& a = *(Contact*)p1;
-	const Contact& b = *(Contact*)p1;
+	const Contact& a = *(const Contact*)p1;
+	const Contact& b = *(const Contact*)p1;
 	if (a.timeOfImpact < b.timeOfImpact)
 	{
 		return -1;
