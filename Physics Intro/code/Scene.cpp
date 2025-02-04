@@ -87,20 +87,20 @@ void Scene::Initialize()
 	// Debug
 	std::cout << "Impulse X : " << impulseDirectionX << "  Impulse Y : " << impulseDirectionY <<'\n';
 	
-	// Balls
-	radius *= 3; // 4 Times the radius of the cochonet
+	// Balls of Steel
+	radius *= 3; // ~4 Times the radius of the cochonet
 	for (int i = 0; i < 3; ++i)
 	{
 		for (int j = 0; j < 1; ++j)
 		{
 			x = (float)(i - 1) * radius * 1.5f;
 			y = (float)(j - 1) * radius * 1.5f;
-			body.position = Vec3(x, y, 100);
+			body.position = Vec3(x, y, 50);
 			body.orientation = Quat(0, 0, 0, 1);
 			body.shape = new ShapeSphere(radius);
-			body.inverseMass = 0.85f;
-			body.elasticity = 0.2f;
-			body.friction = 0.65f;
+			body.inverseMass = 0.75f;
+			body.elasticity = 0.15f;
+			body.friction = 0.5f;
 			body.linearVelocity = Vec3(5, 5, 0);
 			bodies.push_back(body);
 		}
