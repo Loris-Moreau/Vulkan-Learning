@@ -60,8 +60,8 @@ void Scene::Initialize()
 	// Random Generator
 	std::random_device rd; // obtain a random number from hardware
 	std::mt19937 gen(rd()); // seed the generator
-	//std::uniform_int_distribution<> distr(-7, 7); // define the range int
-	std::uniform_real_distribution<> test(-7.5f,7.5f); // define the range float
+	//std::uniform_int_distribution<> distrInt(-7, 7); // define the range int
+	std::uniform_real_distribution<> distrDouble(-7.5f,7.5f); // define the range float
 	
 	
 	Body body;
@@ -77,8 +77,8 @@ void Scene::Initialize()
 	body.friction = 0.4f;
 	
 	// Random Direction for the Cochonet
-	float impulseDirectionX = floorf((float)test(gen) * 10) / 10;
-	float impulseDirectionY = floorf((float)test(gen) * 10) / 10;
+	float impulseDirectionX = floorf((float)distrDouble(gen) * 10) / 10;
+	float impulseDirectionY = floorf((float)distrDouble(gen) * 10) / 10;
 	
 	body.linearVelocity = Vec3(impulseDirectionX, impulseDirectionY, 0);
 	bodies.push_back(body);
