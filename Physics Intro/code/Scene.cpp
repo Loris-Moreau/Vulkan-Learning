@@ -35,6 +35,232 @@ Scene::~Scene()
 }
 
 /*
+========================================================================================================
+
+Models
+
+========================================================================================================
+*/
+
+static const float w = 50;
+static const float h = 25;
+
+Vec3 g_boxGround[] =
+{
+	Vec3(-w,-h, 0),
+	Vec3(w,-h, 0),
+	Vec3(-w, h, 0),
+	Vec3(w, h, 0),
+
+	Vec3(-w,-h,-1),
+	Vec3(w,-h,-1),
+	Vec3(-w, h,-1),
+	Vec3(w, h,-1),
+};
+
+Vec3 g_boxWall0[] = {
+	Vec3(-1,-h, 0),
+	Vec3(1,-h, 0),
+	Vec3(-1, h, 0),
+	Vec3(1, h, 0),
+
+	Vec3(-1,-h, 5),
+	Vec3(1,-h, 5),
+	Vec3(-1, h, 5),
+	Vec3(1, h, 5),
+};
+
+Vec3 g_boxWall1[] = {
+	Vec3(-w,-1, 0),
+	Vec3(w,-1, 0),
+	Vec3(-w, 1, 0),
+	Vec3(w, 1, 0),
+
+	Vec3(-w,-1, 5),
+	Vec3(w,-1, 5),
+	Vec3(-w, 1, 5),
+	Vec3(w, 1, 5),
+};
+
+Vec3 g_boxUnit[] = {
+	Vec3(-1,-1,-1),
+	Vec3(1,-1,-1),
+	Vec3(-1, 1,-1),
+	Vec3(1, 1,-1),
+
+	Vec3(-1,-1, 1),
+	Vec3(1,-1, 1),
+	Vec3(-1, 1, 1),
+	Vec3(1, 1, 1),
+};
+
+static const float t = 0.25f;
+Vec3 g_boxSmall[] = {
+	Vec3(-t,-t,-t),
+	Vec3(t,-t,-t),
+	Vec3(-t, t,-t),
+	Vec3(t, t,-t),
+
+	Vec3(-t,-t, t),
+	Vec3(t,-t, t),
+	Vec3(-t, t, t),
+	Vec3(t, t, t),
+};
+
+static const float l = 3.0f;
+Vec3 g_boxBeam[] = {
+	Vec3(-l,-t,-t),
+	Vec3(l,-t,-t),
+	Vec3(-l, t,-t),
+	Vec3(l, t,-t),
+
+	Vec3(-l,-t, t),
+	Vec3(l,-t, t),
+	Vec3(-l, t, t),
+	Vec3(l, t, t),
+};
+
+Vec3 g_boxPlatform[] = {
+	Vec3(-l,-l,-t),
+	Vec3(l,-l,-t),
+	Vec3(-l, l,-t),
+	Vec3(l, l,-t),
+
+	Vec3(-l,-l, t),
+	Vec3(l,-l, t),
+	Vec3(-l, l, t),
+	Vec3(l, l, t),
+};
+
+static const float t2 = 0.25f;
+static const float w2 = t2 * 2.0f;
+static const float h3 = t2 * 4.0f;
+Vec3 g_boxBody[] = {
+	Vec3(-t2,-w2,-h3),
+	Vec3(t2,-w2,-h3),
+	Vec3(-t2, w2,-h3),
+	Vec3(t2, w2,-h3),
+
+	Vec3(-t2,-w2, h3),
+	Vec3(t2,-w2, h3),
+	Vec3(-t2, w2, h3),
+	Vec3(t2, w2, h3),
+};
+
+static const float h2 = 0.25f;
+Vec3 g_boxLimb[] = {
+	Vec3(-h3,-h2,-h2),
+	Vec3(h3,-h2,-h2),
+	Vec3(-h3, h2,-h2),
+	Vec3(h3, h2,-h2),
+
+	Vec3(-h3,-h2, h2),
+	Vec3(h3,-h2, h2),
+	Vec3(-h3, h2, h2),
+	Vec3(h3, h2, h2),
+};
+
+Vec3 g_boxHead[] = {
+	Vec3(-h2,-h2,-h2),
+	Vec3(h2,-h2,-h2),
+	Vec3(-h2, h2,-h2),
+	Vec3(h2, h2,-h2),
+
+	Vec3(-h2,-h2, h2),
+	Vec3(h2,-h2, h2),
+	Vec3(-h2, h2, h2),
+	Vec3(h2, h2, h2),
+};
+
+Vec3 g_diamond[7 * 8];
+void FillDiamond()
+{
+	Vec3 pts[4 + 4];
+	pts[0] = Vec3(0.1f, 0, -1);
+	pts[1] = Vec3(1, 0, 0);
+	pts[2] = Vec3(1, 0, 0.1f);
+	pts[3] = Vec3(0.4f, 0, 0.4f);
+
+	const float pi = acosf(-1.0f);
+	const Quat quatHalf(Vec3(0, 0, 1), 2.0f * pi * 0.125f * 0.5f);
+	pts[4] = Vec3(0.8f, 0, 0.3f);
+	pts[4] = quatHalf.RotatePoint(pts[4]);
+	pts[5] = quatHalf.RotatePoint(pts[1]);
+	pts[6] = quatHalf.RotatePoint(pts[2]);
+
+	const Quat quat(Vec3(0, 0, 1), 2.0f * pi * 0.125f);
+	int idx = 0;
+	for (int i = 0; i < 7; i++) {
+		g_diamond[idx] = pts[i];
+		idx++;
+	}
+
+	Quat quatAccumulator;
+	for (int i = 1; i < 8; i++) {
+		quatAccumulator = quatAccumulator * quat;
+		for (int pt = 0; pt < 7; pt++) {
+			g_diamond[idx] = quatAccumulator.RotatePoint(pts[pt]);
+			idx++;
+		}
+	}
+}
+
+void AddStandardSandBox(std::vector<Body>& bodies)
+{
+	Body body;
+
+	body.position = Vec3(0, 0, 0);
+	body.orientation = Quat(0, 0, 0, 1);
+	body.linearVelocity.Zero();
+	body.angularVelocity.Zero();
+	body.inverseMass = 0.0f;
+	body.elasticity = 0.5f;
+	body.friction = 0.5f;
+	body.shape = new ShapeBox(g_boxGround, sizeof(g_boxGround) / sizeof(Vec3));
+	bodies.push_back(body);
+
+	body.position = Vec3(50, 0, 0);
+	body.orientation = Quat(0, 0, 0, 1);
+	body.linearVelocity.Zero();
+	body.angularVelocity.Zero();
+	body.inverseMass = 0.0f;
+	body.elasticity = 0.5f;
+	body.friction = 0.0f;
+	body.shape = new ShapeBox(g_boxWall0, sizeof(g_boxWall0) / sizeof(Vec3));
+	bodies.push_back(body);
+
+	body.position = Vec3(-50, 0, 0);
+	body.orientation = Quat(0, 0, 0, 1);
+	body.linearVelocity.Zero();
+	body.angularVelocity.Zero();
+	body.inverseMass = 0.0f;
+	body.elasticity = 0.5f;
+	body.friction = 0.0f;
+	body.shape = new ShapeBox(g_boxWall0, sizeof(g_boxWall0) / sizeof(Vec3));
+	bodies.push_back(body);
+
+	body.position = Vec3(0, 25, 0);
+	body.orientation = Quat(0, 0, 0, 1);
+	body.linearVelocity.Zero();
+	body.angularVelocity.Zero();
+	body.inverseMass = 0.0f;
+	body.elasticity = 0.5f;
+	body.friction = 0.0f;
+	body.shape = new ShapeBox(g_boxWall1, sizeof(g_boxWall1) / sizeof(Vec3));
+	bodies.push_back(body);
+
+	body.position = Vec3(0, -25, 0);
+	body.orientation = Quat(0, 0, 0, 1);
+	body.linearVelocity.Zero();
+	body.angularVelocity.Zero();
+	body.inverseMass = 0.0f;
+	body.elasticity = 0.5f;
+	body.friction = 0.0f;
+	body.shape = new ShapeBox(g_boxWall1, sizeof(g_boxWall1) / sizeof(Vec3));
+	bodies.push_back(body);
+}
+
+/*
 ====================================================
 Scene::Reset
 ====================================================
@@ -55,95 +281,20 @@ void Scene::Reset()
 Scene::Initialize
 ====================================================
 */
-void Scene::Initialize()
-{
-	// Random Generator
-	std::random_device rd; // obtain a random number from hardware
-	std::mt19937 gen(rd()); // seed the generator
-	//std::uniform_int_distribution<> distrInt(-7, 7); // define the range int
-	std::uniform_real_distribution<> distrDouble(-7.5f,7.5f); // define the range float
-	
-	
+void Scene::Initialize() {
 	Body body;
-	// Cochonet
-	float radius = 0.25f;
-	float x = 0.0f;
-	float y = 0.0f;
-	body.position = Vec3(x, y, 10);
-	body.orientation = Quat(0, 0, 0, 1);
-	body.shape = new ShapeSphere(radius);
-	body.inverseMass = 1.0f;
-	body.elasticity = 0.3f;
-	body.friction = 0.4f;
-	
-	// Random Direction for the Cochonet
-	float impulseDirectionX = floorf((float)distrDouble(gen) * 10) / 10;
-	float impulseDirectionY = floorf((float)distrDouble(gen) * 10) / 10;
-	
-	body.linearVelocity = Vec3(impulseDirectionX, impulseDirectionY, 0);
-	bodies.push_back(body);
-	// end of Cochonet
 
-	// Debug
-	std::cout << "Impulse X : " << impulseDirectionX << "  Impulse Y : " << impulseDirectionY <<'\n';
-	
-	// Balls of Steel
-	radius *= 3; // ~4 Times the radius of the cochonet
-	for (int i = 0; i < 3; ++i)
-	{
-		for (int j = 0; j < 1; ++j)
-		{
-			x = (float)(i - 1) * radius * 1.5f;
-			y = (float)(j - 1) * radius * 1.5f;
-			body.position = Vec3(x, y, 50);
-			body.orientation = Quat(0, 0, 0, 1);
-			body.shape = new ShapeSphere(radius);
-			body.inverseMass = 0.75f;
-			body.elasticity = 0.15f;
-			body.friction = 0.5f;
-			body.linearVelocity = Vec3(5, 5, 0);
-			bodies.push_back(body);
-		}
-	}
-	// end of Balls
-	
-	// Floor
-	for (int i = 0; i < 5; ++i)
-	{
-		for (int j = 0; j < 5; ++j)
-		{
-			radius = 80.0f;
-			x = (float)(i - 1) * radius * 0.25f;
-			y = (float)(j - 1) * radius * 0.25f;
-			body.position = Vec3(x, y, -radius);
-			body.orientation = Quat(0, 0, 0, 1);
-			body.shape = new ShapeSphere(radius);
-			body.inverseMass = 0.0f;
-			body.elasticity = 0.99f;
-			body.friction = 0.5f;
-			body.linearVelocity.Zero();
-			bodies.push_back(body);
-		}
-	}
-	// end of Floor
-	
-	/* // Walls
-	float amountWalls = 4;
-	for (int i = 0; i < amountWalls; ++i)
-	{
-		for (int j = 0; j < amountWalls/2; ++j)
-		{
-			radius = 80.0f;
-			x = (float)(i - 1) * radius * 0.25f + 175;
-			y = (float)(j - 1) * radius * 0.25f;
-			body.position = Vec3(x, y, 10);
-			body.orientation = Quat(0, 0, 0, 1);
-			body.shape = new ShapeSphere(radius);
-			bodies.push_back(body);
-		}
-	}
-	// end of Walls
-	*/
+	body.position = Vec3(10, 0, 3);
+	body.orientation = Quat(0, 0, 0, 1);
+	body.linearVelocity = Vec3(-100, 0, 0);
+	body.angularVelocity = Vec3(0.0f, 0.0f, 0.0f);
+	body.inverseMass = 1.0f;
+	body.elasticity = 0.5f;
+	body.friction = 0.5f;
+	body.shape = new ShapeSphere(0.5f);
+	bodies.push_back(body);
+
+	AddStandardSandBox(bodies);
 }
 
 /*

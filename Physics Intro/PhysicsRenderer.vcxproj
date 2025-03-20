@@ -101,7 +101,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="code\main.cpp" />
-    <ClCompile Include="code\Math\Bounds.cpp" />
+    <ClCompile Include="code\Math\MathsBounds.cpp" />
     <ClCompile Include="code\Math\LCP.cpp" />
     <ClCompile Include="code\Renderer\Buffer.cpp" />
     <ClCompile Include="code\Renderer\Descriptor.cpp" />
@@ -117,6 +117,7 @@
     <ClCompile Include="code\Renderer\SwapChain.cpp" />
     <ClCompile Include="code\Scene.cpp" />
     <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="ShapeUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Body.h" />
@@ -126,7 +127,7 @@
     <ClInclude Include="code\Contact.h" />
     <ClInclude Include="code\Fileio.h" />
     <ClInclude Include="code\Intersections.h" />
-    <ClInclude Include="code\Math\Bounds.h" />
+    <ClInclude Include="code\Math\MathsBounds.h" />
     <ClInclude Include="code\Math\LCP.h" />
     <ClInclude Include="code\Math\Matrix.h" />
     <ClInclude Include="code\Math\Quat.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="code\Renderer\SwapChain.h" />
     <ClInclude Include="code\Scene.h" />
     <ClInclude Include="Shape.h" />
+    <ClInclude Include="ShapeUtils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -2,7 +2,7 @@
 
 #include "../Body.h"
 
-const Bounds& Bounds::operator = (const Bounds& rhs)
+const MBounds& MBounds::operator = (const MBounds& rhs)
 {
 	mins = rhs.mins;
 	maxs = rhs.maxs;
@@ -10,7 +10,7 @@ const Bounds& Bounds::operator = (const Bounds& rhs)
 	return *this;
 }
 
-bool Bounds::DoesIntersect(const Bounds& rhs) const
+bool MBounds::DoesIntersect(const MBounds& rhs) const
 {
 	if (maxs.x < rhs.mins.x || maxs.y < rhs.mins.y || maxs.z < rhs.mins.z)
 	{
@@ -24,14 +24,14 @@ bool Bounds::DoesIntersect(const Bounds& rhs) const
 	return true;
 }
 
-void Bounds::Expand(const Vec3* pts, const int num)
+void MBounds::Expand(const Vec3* pts, const int num)
 {
 	for (int i = 0; i < num; i++)
 	{
 		Expand(pts[i]);
 	}
 }
-void Bounds::Expand(const Vec3& rhs)
+void MBounds::Expand(const Vec3& rhs)
 {
 	if (rhs.x < mins.x)
 	{
@@ -59,7 +59,7 @@ void Bounds::Expand(const Vec3& rhs)
 	}
 }
 
-void Bounds::Expand(const Bounds& rhs)
+void MBounds::Expand(const MBounds& rhs)
 {
 	Expand(rhs.mins);
 	Expand(rhs.maxs);
