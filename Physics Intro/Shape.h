@@ -24,7 +24,7 @@ public:
 	virtual Bounds GetBounds() const = 0;
 	
 	virtual void Build(const Vec3* pts, const int num) {}
-	virtual Vec3 Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) = 0;
+	virtual Vec3 Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) const = 0;
 	virtual float FastestLinearSpeed(const Vec3& angularVelocity, const Vec3& dir) const { return 0; }
 
 protected:
@@ -46,7 +46,7 @@ public:
 	Bounds GetBounds(const Vec3& pos, const Quat& orient) const override;
 	Bounds GetBounds() const override;
 
-	virtual Vec3 Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) override;
+	virtual Vec3 Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) const override;
 	
 	float radius;
 };
@@ -64,7 +64,7 @@ public:
 	Bounds GetBounds(const Vec3& pos, const Quat& orient) const override;
 	Bounds GetBounds() const override;
 	void Build(const Vec3* pts, const int num) override;
-	Vec3 Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) override;
+	Vec3 Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) const override;
 	float FastestLinearSpeed(const Vec3& angularVelocity, const Vec3& dir) const override;
 
 	std::vector<Vec3> points;
@@ -80,7 +80,7 @@ public:
 	}
 
 	void Build(const Vec3* pts, const int num) override;
-	Vec3 Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) /*const*/ override;
+	Vec3 Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) const override;
 	Mat3 InertiaTensor() const override;
 	float FastestLinearSpeed(const Vec3& angularVelocity, const Vec3& dir) const override;
 

@@ -30,7 +30,7 @@ Bounds ShapeSphere::GetBounds() const
 	return tmp;
 }
 
-Vec3 ShapeSphere::Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias)
+Vec3 ShapeSphere::Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) const
 {
 	return pos + dir * (radius + bias);
 }
@@ -94,7 +94,7 @@ Mat3 ShapeBox::InertiaTensor() const
 	return tensor;
 }
 
-Vec3 ShapeBox::Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias)
+Vec3 ShapeBox::Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) const
 {
 	// Find the point in the furthest direction
 	Vec3 maxPt = orient.RotatePoint(points[0]) + pos;
@@ -215,10 +215,27 @@ void ShapeConvex::Build(const Vec3* pts, const int num)
 	inertiaTensor = CalculateInertiaTensor(hullPoints, hullTriangles, centerOfMass);
 }
 
-/*Vec3 ShapeConvex::Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias)
+Vec3 ShapeConvex::Support(const Vec3& dir, const Vec3& pos, const Quat& orient, const float bias) const
 {
-	// Empty for now
-}*/
+	// Find the point in furthest in direction
+	Vec3 maxPt = orient.RotatePoint(points[0]) + pos;
+	float maxDist = dir.Dot(maxPt);
+	for (int i = 1; i < points.size(); i++) {
+		const Vec3 pt = orient.RotatePoint(points[i]) + pos;
+		const float dist = dir.Dot(pt);
+
+		if (dist > maxDist) {
+			maxDist = dist;
+			maxPt = pt;
+		}
+	}
+
+	Vec3 norm = dir;
+	norm.Normalize();
+	norm *= bias;
+
+	return maxPt + norm;
+}
 
 float ShapeConvex::FastestLinearSpeed(const Vec3& angularVelocity, const Vec3& dir) const
 {
