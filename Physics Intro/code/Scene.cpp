@@ -294,6 +294,16 @@ void Scene::Initialize() {
 	body.shape = new ShapeSphere(0.5f);
 	bodies.push_back(body);
 
+	body.position = Vec3(-10, 0, 3);
+	body.orientation = Quat(0, 0, 0, 1);
+	body.linearVelocity = Vec3(100, 0, 0);
+	body.angularVelocity = Vec3(0, 10, 0);
+	body.inverseMass = 1.0f;
+	body.elasticity = 0.5f;
+	body.friction = 0.5f;
+	body.shape = new ShapeConvex(g_diamond, sizeof(g_diamond) / sizeof(Vec3));
+	bodies.push_back(body);
+
 	AddStandardSandBox(bodies);
 }
 
