@@ -15,3 +15,4 @@ The controls for the renderer are very basic.
 **Semicolon ";"** to step the simulation by a single frame *(only works when the simulation is paused)*.
 
 
+![](https://github.com/Loris-Moreau/Vulkan-Learning/blob/main/Physics%20Intro/Showcase%20Intro%20Phy.gif "Showcase Video")
